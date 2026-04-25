@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulf Coast Mow Service — Reliable Weekly Lawn Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d7a22;
+    --green-light: #3a9e2d;
+    --green-glow: #4db840;
+    --green-pale: #f0f9ee;
+    --white: #ffffff;
+    --off-white: #f7f8f6;
+    --gray-100: #eef0ec;
+    --gray-200: #d8dbd5;
+    --gray-500: #7a8075;
+    --gray-700: #3d4238;
+    --dark: #1a1f18;
+    --text: #232820;
+    --font-head: 'Barlow Condensed', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(30,50,20,0.10);
+    --shadow-lg: 0 12px 48px rgba(30,50,20,0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 0 5vw;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--green);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo svg { width: 28px; height: 28px; }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500; color: var(--gray-700);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .btn-nav {
+    background: var(--green); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-family: var(--font-body);
+    font-weight: 600; font-size: 0.88rem; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.1s;
+  }
+  .btn-nav:hover { background: var(--green-light); transform: translateY(-1px); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+  }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    padding-top: 64px;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(10,28,8,0.78) 0%, rgba(20,55,12,0.60) 55%, rgba(45,122,34,0.25) 100%),
+      url('https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=1600&q=80') center 60%/cover no-repeat;
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    padding: 60px 5vw 80px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(77,184,64,0.18);
+    border: 1px solid rgba(77,184,64,0.4);
+    color: #a8eea0;
+    font-size: 0.82rem; font-weight: 600;
+    padding: 5px 14px; border-radius: 40px;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--green-glow); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  h1 {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { color: var(--green-glow); font-style: normal; }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 16px;
+    max-width: 520px;
+    font-weight: 400;
+  }
+  .hero-referral {
+    font-size: 0.92rem;
+    color: rgba(168,238,160,0.92);
+    font-weight: 500;
+    margin-bottom: 36px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .hero-referral::before { content: '💰'; }
+
+  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
+    color: #fff; border: none;
+    padding: 16px 34px; border-radius: 10px;
+    font-family: var(--font-head); font-weight: 800;
+    font-size: 1.15rem; letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(45,122,34,0.45), 0 0 0 1px rgba(255,255,255,0.15) inset;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(45,122,34,0.55), 0 0 0 1px rgba(255,255,255,0.2) inset;
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.12);
+    color: #fff; border: 1.5px solid rgba(255,255,255,0.4);
+    padding: 15px 28px; border-radius: 10px;
+    font-family: var(--font-head); font-weight: 700;
+    font-size: 1.05rem; letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
+
+  .hero-trust {
+    position: relative; z-index: 1;
+    display: flex; gap: 32px; flex-wrap: wrap;
+    padding: 22px 5vw;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.80); font-size: 0.88rem; font-weight: 500;
+  }
+  .trust-icon { color: var(--green-glow); font-size: 1rem; }
+
+  /* ─── SECTIONS SHARED ─── */
+  section { padding: 80px 5vw; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--font-head);
+    font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.05; color: var(--dark);
+    margin-bottom: 16px; letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--gray-500); max-width: 520px; margin-bottom: 52px;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  #how { background: var(--off-white); }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .step-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 36px 32px;
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .step-num {
+    font-family: var(--font-head); font-weight: 900;
+    font-size: 4.5rem; line-height: 1; color: var(--green-pale);
+    position: absolute; top: 16px; right: 20px;
+    z-index: 0; letter-spacing: -0.02em;
+  }
+  .step-icon { font-size: 2.2rem; margin-bottom: 16px; position: relative; z-index: 1; }
+  .step-card h3 {
+    font-family: var(--font-head); font-weight: 800;
+    font-size: 1.45rem; color: var(--dark);
+    margin-bottom: 10px; position: relative; z-index: 1;
+  }
+  .step-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.65; position: relative; z-index: 1; }
+  .step-price {
+    display: inline-block; margin-top: 12px;
+    background: var(--green-pale); color: var(--green);
+    font-weight: 700; font-size: 0.88rem;
+    padding: 4px 12px; border-radius: 6px;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── WHY BETTER ─── */
+  #why { background: var(--white); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    padding: 36px 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-100);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .why-card:hover { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,122,34,0.08); }
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 18px;
+  }
+  .why-card h3 {
+    font-family: var(--font-head); font-weight: 800;
+    font-size: 1.3rem; color: var(--dark); margin-bottom: 8px;
+  }
+  .why-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.65; }
+
+  /* ─── PRICING ─── */
+  #pricing { background: var(--dark); }
+  #pricing h2 { color: #fff; }
+  #pricing .section-tag { color: var(--green-glow); }
+  #pricing .section-sub { color: rgba(255,255,255,0.55); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px; max-width: 680px;
+  }
+  .price-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 40px 36px;
+    position: relative; transition: border-color 0.2s;
+  }
+  .price-card.featured {
+    border-color: var(--green-glow);
+    box-shadow: 0 0 0 1px var(--green-glow), 0 12px 40px rgba(77,184,64,0.2);
+  }
+  .price-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: #fff;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+    padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
+  }
+  .price-label { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .price-amount {
+    font-family: var(--font-head); font-weight: 900;
+    font-size: 3.8rem; line-height: 1; color: #fff;
+    margin-bottom: 4px;
+  }
+  .price-period { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+  .price-list { list-style: none; margin-bottom: 32px; }
+  .price-list li {
+    font-size: 0.92rem; color: rgba(255,255,255,0.75);
+    padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .price-list li::before { content: '✓'; color: var(--green-glow); font-weight: 700; }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: var(--green-pale); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .testi-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 32px 28px; box-shadow: var(--shadow);
+  }
+  .stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 14px; }
+  .testi-text {
+    font-size: 0.97rem; color: var(--gray-700); line-height: 1.7;
+    font-style: italic; margin-bottom: 20px;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--green); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1.1rem;
+  }
+  .testi-name { font-weight: 600; font-size: 0.92rem; color: var(--dark); }
+  .testi-loc { font-size: 0.8rem; color: var(--gray-500); }
+
+  /* ─── FOR / NOT FOR ─── */
+  #forwhom { background: var(--white); }
+  .forwhom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .forwhom-grid { grid-template-columns: 1fr; } }
+  .forwhom-card { border-radius: var(--radius); padding: 36px 32px; }
+  .forwhom-card.yes { background: var(--green-pale); border: 1px solid rgba(45,122,34,0.2); }
+  .forwhom-card.no { background: #fdf6f6; border: 1px solid rgba(200,100,100,0.18); }
+  .forwhom-card h3 {
+    font-family: var(--font-head); font-weight: 800; font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .forwhom-card.yes h3 { color: var(--green); }
+  .forwhom-card.no h3 { color: #c0392b; }
+  .forwhom-list { list-style: none; }
+  .forwhom-list li {
+    font-size: 0.95rem; padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: flex-start; gap: 9px; color: var(--gray-700);
+  }
+  .forwhom-list li:last-child { border-bottom: none; }
+  .forwhom-card.yes .forwhom-list li::before { content: '✓'; color: var(--green); font-weight: 700; margin-top: 1px; }
+  .forwhom-card.no .forwhom-list li::before { content: '✕'; color: #c0392b; font-weight: 700; margin-top: 1px; }
+  .forwhom-footnote {
+    text-align: center; margin-top: 36px; font-size: 1rem;
+    color: var(--gray-500); font-weight: 500;
+  }
+  .forwhom-footnote strong { color: var(--dark); }
+
+  /* ─── CTA BOTTOM ─── */
+  #cta-bottom {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%);
+    text-align: center; padding: 80px 5vw;
+  }
+  #cta-bottom h2 { color: #fff; margin-bottom: 12px; }
+  #cta-bottom p { color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 40px; font-size: 1.05rem; }
+  .cta-pair { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  .btn-cta {
+    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
+    color: #fff; border: none;
+    padding: 18px 40px; border-radius: 10px;
+    font-family: var(--font-head); font-weight: 800;
+    font-size: 1.2rem; letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 4px 24px rgba(45,122,34,0.5);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: inline-block;
+  }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(45,122,34,0.6); }
+
+  .btn-cta-outline {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+    padding: 17px 32px; border-radius: 10px;
+    font-family: var(--font-head); font-weight: 700;
+    font-size: 1.1rem; letter-spacing: 0.04em;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-cta-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 5vw;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  footer a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.82rem; }
+  footer a:hover { color: var(--green-glow); }
+
+  /* ─── PAGE: REFERRAL ─── */
+  #page-referral { display: none; }
+
+  .referral-hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3512 100%);
+    padding: 100px 5vw 80px;
+    text-align: center;
+  }
+  .referral-hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); color: #fff; max-width: 700px; margin: 0 auto 16px; }
+  .referral-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; margin-bottom: 0; }
+
+  .ref-steps { background: var(--white); padding: 72px 5vw; }
+  .ref-steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; max-width: 860px; margin: 0 auto;
+  }
+  .ref-step {
+    text-align: center; padding: 36px 24px;
+    border-radius: var(--radius); border: 1px solid var(--gray-100);
+  }
+  .ref-step-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--green); color: #fff;
+    font-family: var(--font-head); font-weight: 900; font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .ref-step h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.25rem; margin-bottom: 8px; }
+  .ref-step p { font-size: 0.92rem; color: var(--gray-500); }
+
+  .ref-earnings { background: var(--green-pale); padding: 72px 5vw; text-align: center; }
+  .earnings-grid {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;
+  }
+  .earn-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 32px 40px; box-shadow: var(--shadow);
+    min-width: 180px; border-bottom: 3px solid var(--green);
+  }
+  .earn-homes { font-size: 0.85rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .earn-amount { font-family: var(--font-head); font-weight: 900; font-size: 2.8rem; color: var(--green); line-height: 1; }
+  .earn-period { font-size: 0.85rem; color: var(--gray-500); margin-top: 4px; }
+
+  .ref-faq { background: var(--white); padding: 72px 5vw; }
+  .faq-list { max-width: 680px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--gray-100); padding: 22px 0;
+    cursor: pointer;
+  }
+  .faq-q {
+    font-weight: 600; font-size: 1rem; color: var(--dark);
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .faq-q .arrow { font-size: 0.9rem; color: var(--green); transition: transform 0.2s; }
+  .faq-a { font-size: 0.93rem; color: var(--gray-500); margin-top: 10px; line-height: 1.65; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+
+  .ref-cta { background: var(--dark); padding: 80px 5vw; text-align: center; }
+  .ref-cta h2 { color: #fff; margin-bottom: 12px; }
+  .ref-cta p { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+
+  /* ─── DIVIDER ─── */
+  .wave-divider { overflow: hidden; line-height: 0; }
+  .wave-divider svg { display: block; width: 100%; }
+
+  /* ─── UTILITY ─── */
+  .text-center { text-align: center; }
+  .mt-8 { margin-top: 8px; }
+  .mb-0 { margin-bottom: 0; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.32s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.42s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.52s; }
+
+  @media (max-width: 768px) {
+    section { padding: 56px 4vw; }
+    .pricing-grid { max-width: 100%; }
+  }
+
+  /* ─── SIGNUP MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(10,20,8,0.72);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: var(--white);
+    border-radius: 20px;
+    width: 100%; max-width: 480px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    overflow: hidden;
+    animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.88) translateY(24px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%);
+    padding: 32px 36px 28px;
+    position: relative;
+  }
+  .modal-header .modal-plan-badge {
+    display: inline-block;
+    background: rgba(77,184,64,0.22);
+    border: 1px solid rgba(77,184,64,0.45);
+    color: #a8eea0;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+    padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .modal-header h3 {
+    font-family: var(--font-head); font-weight: 900;
+    font-size: 1.8rem; color: #fff; line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+  .modal-price {
+    font-family: var(--font-head); font-weight: 900;
+    font-size: 2.6rem; color: var(--green-glow);
+    line-height: 1; margin-top: 8px;
+  }
+  .modal-price span { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.45); }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6);
+    width: 32px; height: 32px; border-radius: 50%; font-size: 1rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+  .modal-body { padding: 32px 36px 36px; }
+
+  .modal-step-indicator {
+    display: flex; gap: 6px; margin-bottom: 28px;
+  }
+  .modal-step-dot {
+    height: 4px; border-radius: 2px; flex: 1;
+    background: var(--gray-100); transition: background 0.3s;
+  }
+  .modal-step-dot.active { background: var(--green); }
+  .modal-step-dot.done { background: var(--green-light); }
+
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+
+  .form-label {
+    display: block; font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--gray-500); margin-bottom: 8px;
+  }
+  .form-input {
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid var(--gray-200); border-radius: 10px;
+    font-family: var(--font-body); font-size: 1rem; color: var(--dark);
+    background: var(--white); transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none; margin-bottom: 20px;
+  }
+  .form-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(45,122,34,0.12);
+  }
+  .form-input.error { border-color: #e53e3e; box-shadow: 0 0 0 3px rgba(229,62,62,0.10); }
+  .form-error { color: #e53e3e; font-size: 0.82rem; margin-top: -14px; margin-bottom: 14px; display: none; }
+  .form-error.visible { display: block; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 460px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-hint {
+    font-size: 0.82rem; color: var(--gray-500);
+    margin-top: -14px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .form-hint::before { content: 'ℹ'; font-size: 0.75rem; color: var(--green); }
+
+  .plan-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .plan-option {
+    border: 2px solid var(--gray-200); border-radius: 12px;
+    padding: 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    text-align: center; position: relative;
+  }
+  .plan-option:hover { border-color: var(--green); background: var(--green-pale); }
+  .plan-option.selected { border-color: var(--green); background: var(--green-pale); }
+  .plan-option.selected::after {
+    content: '✓'; position: absolute; top: 8px; right: 10px;
+    color: var(--green); font-weight: 700; font-size: 0.85rem;
+  }
+  .plan-option-price { font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; color: var(--dark); }
+  .plan-option-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
+
+  .modal-btn-row { display: flex; gap: 10px; margin-top: 8px; }
+  .modal-btn-back {
+    background: var(--gray-100); color: var(--gray-700); border: none;
+    padding: 14px 20px; border-radius: 10px;
+    font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .modal-btn-back:hover { background: var(--gray-200); }
+  .modal-btn-next {
+    flex: 1;
+    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
+    color: #fff; border: none;
+    padding: 14px 24px; border-radius: 10px;
+    font-family: var(--font-head); font-weight: 800;
+    font-size: 1.05rem; letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(45,122,34,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .modal-btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(45,122,34,0.45); }
+  .modal-btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .confirm-summary {
+    background: var(--green-pale); border-radius: 12px;
+    padding: 20px; margin-bottom: 24px;
+    border: 1px solid rgba(45,122,34,0.15);
+  }
+  .confirm-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.92rem; padding: 6px 0;
+    border-bottom: 1px solid rgba(45,122,34,0.1);
+  }
+  .confirm-row:last-child { border-bottom: none; }
+  .confirm-label { color: var(--gray-500); }
+  .confirm-value { font-weight: 600; color: var(--dark); }
+  .confirm-price { color: var(--green); font-family: var(--font-head); font-weight: 900; font-size: 1.2rem; }
+
+  .modal-trust {
+    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid var(--gray-100);
+  }
+  .modal-trust-item {
+    font-size: 0.78rem; color: var(--gray-500);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .modal-trust-item::before { content: '🔒'; font-size: 0.7rem; }
+  /* ─── REFERRAL HERO STATS ─── */
+  .ref-hero-stats {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin-top: 48px; flex-wrap: wrap;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 28px 40px;
+    max-width: 560px; margin: 40px auto 0;
+  }
+  .ref-hero-stat { text-align: center; flex: 1; min-width: 120px; }
+  .ref-hero-stat-num {
+    font-family: var(--font-head); font-weight: 900;
+    font-size: 2.6rem; color: var(--green-glow); line-height: 1;
+  }
+  .ref-hero-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 500; }
+  .ref-hero-stat-divider {
+    width: 1px; height: 48px; background: rgba(255,255,255,0.12); flex-shrink: 0;
+    margin: 0 8px;
+  }
+
+  /* ─── EARNINGS CALCULATOR ─── */
+  .earn-calc-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    max-width: 680px; margin: 0 auto;
+    background: var(--white); border-radius: 20px;
+    padding: 36px 40px; box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-100);
+  }
+  @media (max-width: 600px) { .earn-calc-wrap { grid-template-columns: 1fr; } }
+
+  .earn-slider-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--gray-500); display: block; margin-bottom: 16px; }
+  .earn-slider-val-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; }
+  .earn-slider-val-num { font-family: var(--font-head); font-weight: 900; font-size: 3rem; color: var(--dark); line-height: 1; }
+  .earn-slider-val-label { font-size: 0.9rem; color: var(--gray-500); }
+
+  .earn-slider {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    height: 6px; border-radius: 3px;
+    background: linear-gradient(to right, var(--green) 0%, var(--green) 20%, var(--gray-200) 20%);
+    outline: none; cursor: pointer;
+  }
+  .earn-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--green);
+    box-shadow: 0 2px 8px rgba(45,122,34,0.4); cursor: pointer;
+    border: 3px solid #fff;
+  }
+  .earn-slider-range-labels {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; color: var(--gray-500); margin-top: 8px;
+  }
+
+  .earn-calc-result {
+    display: flex; flex-direction: column; justify-content: center;
+    text-align: center; border-left: 1px solid var(--gray-100);
+    padding-left: 40px;
+  }
+  @media (max-width: 600px) { .earn-calc-result { border-left: none; border-top: 1px solid var(--gray-100); padding-left: 0; padding-top: 24px; } }
+  .earn-result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 8px; }
+  .earn-result-amount { font-family: var(--font-head); font-weight: 900; font-size: 3.8rem; color: var(--green); line-height: 1; margin-bottom: 4px; }
+  .earn-result-annual { font-size: 0.92rem; color: var(--gray-500); margin-bottom: 12px; }
+  .earn-result-annual span { color: var(--dark); font-weight: 600; }
+  .earn-result-note { font-size: 0.78rem; color: var(--gray-500); line-height: 1.5; background: var(--green-pale); padding: 8px 12px; border-radius: 8px; }
+
+  /* ─── HOW TRACKING WORKS ─── */
+  @media (max-width: 768px) {
+    .section-inner > div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  .how-track-list { display: flex; flex-direction: column; gap: 20px; }
+  .how-track-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px; border-radius: 12px; border: 1px solid var(--gray-100);
+    transition: border-color 0.2s;
+  }
+  .how-track-item:hover { border-color: var(--green); background: var(--green-pale); }
+  .how-track-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .how-track-item strong { display: block; font-size: 0.95rem; color: var(--dark); margin-bottom: 4px; }
+  .how-track-item p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; margin: 0; }
+
+  /* ─── DASHBOARD MOCKUP ─── */
+  .ref-dashboard-mockup {
+    background: var(--white); border-radius: 16px;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden; font-size: 0.85rem;
+  }
+  .ref-dash-header {
+    background: var(--dark); padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ref-dash-logo { color: #a8eea0; font-weight: 600; font-size: 0.82rem; }
+  .ref-dash-user { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+  .ref-dash-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .ref-dash-stat { padding: 16px 14px; text-align: center; border-right: 1px solid var(--gray-100); }
+  .ref-dash-stat:last-child { border-right: none; }
+  .ref-dash-stat-val { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: var(--green); }
+  .ref-dash-stat-lbl { font-size: 0.72rem; color: var(--gray-500); margin-top: 2px; }
+  .ref-dash-link-row {
+    padding: 12px 16px; background: var(--green-pale);
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .ref-dash-link-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--gray-500); white-space: nowrap; }
+  .ref-dash-link-box { flex: 1; font-size: 0.78rem; color: var(--green); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ref-dash-copy-btn { background: var(--green); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .ref-dash-table-head {
+    display: grid; grid-template-columns: 1fr auto auto;
+    padding: 8px 16px; background: var(--gray-100);
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    color: var(--gray-500); letter-spacing: 0.06em; gap: 12px;
+  }
+  .ref-dash-row {
+    display: grid; grid-template-columns: 1fr auto auto;
+    padding: 10px 16px; border-bottom: 1px solid var(--gray-100);
+    font-size: 0.84rem; color: var(--dark); gap: 12px; align-items: center;
+  }
+  .ref-status { padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
+  .ref-status.active { background: rgba(45,122,34,0.12); color: var(--green); }
+  .ref-status.paused { background: rgba(200,150,0,0.12); color: #a07800; }
+  .ref-dash-payout {
+    padding: 12px 16px; background: var(--dark);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+  }
+  .ref-dash-payout-amt { color: var(--green-glow); font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; }
+
+  /* ─── WHO CARDS ─── */
+  .who-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 28px 24px; border: 1px solid var(--gray-100);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .who-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--green); }
+  .who-icon { font-size: 2rem; margin-bottom: 12px; }
+  .who-card h4 { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; margin-bottom: 8px; color: var(--dark); }
+  .who-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIGNUP MODAL ═══════════════ -->
+<div class="modal-overlay" id="signupModal" onclick="handleModalOverlayClick(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-header">
+      <div class="modal-plan-badge" id="modalPlanBadge">Weekly Service</div>
+      <h3>Let's Get Your Lawn Sorted.</h3>
+      <p>Takes 60 seconds. No commitment required.</p>
+      <div class="modal-price" id="modalPriceDisplay">$45 <span>/ week</span></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-step-indicator">
+        <div class="modal-step-dot active" id="dot1"></div>
+        <div class="modal-step-dot" id="dot2"></div>
+        <div class="modal-step-dot" id="dot3"></div>
+      </div>
+
+      <!-- STEP 1: Contact Info -->
+      <div class="modal-step active" id="step1">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" id="fieldName" placeholder="First &amp; Last Name" autocomplete="name">
+        <div class="form-error" id="errName">Please enter your name.</div>
+
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" id="fieldEmail" placeholder="you@email.com" autocomplete="email">
+        <div class="form-error" id="errEmail">Please enter a valid email.</div>
+
+        <label class="form-label">Mobile Phone</label>
+        <input type="tel" class="form-input" id="fieldPhone" placeholder="(555) 000-0000" autocomplete="tel" style="margin-bottom:4px;">
+        <div class="form-error" id="errPhone">Please enter a valid phone number.</div>
+        <div class="form-hint">We'll only text you — no calls, no spam. Just your service window.</div>
+
+        <div class="modal-btn-row">
+          <button class="modal-btn-next" style="width:100%;" onclick="goStep(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Yard + Date -->
+      <div class="modal-step" id="step2">
+        <label class="form-label">Select Your Plan</label>
+        <div class="plan-selector">
+          <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
+            <div class="plan-option-price">$45</div>
+            <div class="plan-option-label">Small / Medium Yard</div>
+          </div>
+          <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
+            <div class="plan-option-price">$60</div>
+            <div class="plan-option-label">Larger Yard</div>
+          </div>
+        </div>
+
+        <label class="form-label">Service Address</label>
+        <input type="text" class="form-input" id="fieldAddress" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
+        <div class="form-error" id="errAddress">Please enter your service address.</div>
+
+        <label class="form-label">Preferred First Mow Date</label>
+        <input type="date" class="form-input" id="fieldDate" style="margin-bottom:4px;">
+        <div class="form-error" id="errDate">Please select a date at least 72 hours from today.</div>
+        <div class="form-hint">First mow requires 72 hours notice. We'll text you to confirm.</div>
+
+        <div class="modal-btn-row">
+          <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
+          <button class="modal-btn-next" onclick="goStep(3)">Review &amp; Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Confirm -->
+      <div class="modal-step" id="step3">
+        <div class="confirm-summary" id="confirmSummary">
+          <div class="confirm-row">
+            <span class="confirm-label">Name</span>
+            <span class="confirm-value" id="cName">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Email</span>
+            <span class="confirm-value" id="cEmail">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Phone (SMS)</span>
+            <span class="confirm-value" id="cPhone">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Address</span>
+            <span class="confirm-value" id="cAddress">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Preferred Start</span>
+            <span class="confirm-value" id="cDate">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Weekly Plan</span>
+            <span class="confirm-price" id="cPlan">$45/week</span>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:20px;line-height:1.6;">
+          Clicking below takes you to our secure Stripe checkout to set up your weekly subscription. You won't be charged until your first mow is confirmed.
+        </p>
+        <div class="modal-btn-row">
+          <button class="modal-btn-back" onclick="goStep(2)">← Back</button>
+          <button class="modal-btn-next" id="stripeBtn" onclick="goToStripe()">Pay Securely via Stripe →</button>
+        </div>
+        <div class="modal-trust">
+          <span class="modal-trust-item">Secured by Stripe</span>
+          <span class="modal-trust-item">No charge until confirmed</span>
+          <span class="modal-trust-item">Cancel anytime</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo" onclick="showPage('home')">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#2d7a22"/>
+      <path d="M6 24 C6 24, 10 14, 16 14 C22 14, 26 24, 26 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 24 L24 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M16 14 L16 8" stroke="#a8eea0" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="16" cy="7" r="2" fill="#a8eea0"/>
+    </svg>
+    Gulf Coast Mow
+  </a>
+  <div class="nav-links">
+    <a href="#how" onclick="showPage('home')">How It Works</a>
+    <a href="#pricing" onclick="showPage('home')">Pricing</a>
+    <a href="#" onclick="showPage('referral'); return false;">Referrals</a>
+    <a href="#" class="btn-nav" onclick="openModal('small'); return false;">Start Service →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<div id="page-home">
+
+  <!-- HERO -->
+  <section id="home" style="padding:0; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end;">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Now Serving Pearland · Manvel · League City</div>
+      <h1>Reliable Weekly Lawn Care<br><em>Without the Hassle.</em></h1>
+      <p class="hero-sub">Mow service starting at $45/week. No contracts. Auto-billing. We handle all the scheduling.</p>
+      <p class="hero-referral">Earn $10/month for every yard you refer — as long as they're a customer.</p>
+      <div class="cta-group">
+        <a href="#" class="btn-primary" onclick="openModal('small'); return false;">🌿 Start Service</a>
+        <a href="#" class="btn-secondary" onclick="showPage('referral'); return false;">Join Referral Program</a>
+      </div>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-icon">✓</span> No contracts</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Auto-billing via Stripe</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> 7-day re-mow guarantee</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime</div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="section-tag">Simple Process</div>
+      <h2>Up and Running in Minutes.</h2>
+      <p class="section-sub">Three steps and your lawn is on autopilot. No phone tag, no cash, no chasing.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">🏡</div>
+          <h3>Tell Us About Your Yard</h3>
+          <p>Enter your address and confirm your yard size. Pricing is clear upfront — no surprises later.</p>
+          <span class="step-price">Small/Medium $45/wk &nbsp;·&nbsp; Large $60/wk</span>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">📅</div>
+          <h3>Pick a Start Date</h3>
+          <p>We schedule based on availability. Most customers get serviced within the first available window after signup.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">✅</div>
+          <h3>Relax — We're On Our Way</h3>
+          <p>Your lawn is mowed every week as scheduled. If anything's off, report within 7 days for a re-mow or a refund.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BETTER -->
+  <section id="why">
+    <div class="section-inner">
+      <div class="section-tag">Why Gulf Coast Mow</div>
+      <h2>Not Just a Guy With a Truck.</h2>
+      <p class="section-sub">We built a system. You get reliability, clear pricing, and real accountability every single week.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">📵</div>
+          <h3>No More Chasing Your Lawn Guy</h3>
+          <p>Traditional services mean awkward texts, cash under the mat, and hoping he shows up. We automate everything. You set it and forget it.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💲</div>
+          <h3>Clear, Upfront Pricing</h3>
+          <p>$45 or $60 per week — that's it. You know the price before you start. No surprise charges, no rate creep, no negotiation every visit.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🛡️</div>
+          <h3>We're Accountable</h3>
+          <p>You're dealing with a real service company, not a solo operator. If something goes wrong, contact us and we fix it — no ghosting, no excuses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="section-tag">Simple Pricing</div>
+      <h2>Pick Your Plan. That's It.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.55);">Weekly recurring. Auto-billed. Cancel anytime. No commitments.</p>
+      <div class="pricing-grid">
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-label">Small / Medium Yards</div>
+          <div class="price-amount">$45</div>
+          <div class="price-period">per week, billed weekly</div>
+          <ul class="price-list">
+            <li>Weekly mow &amp; blow</li>
+            <li>Auto-billing via Stripe</li>
+            <li>We handle scheduling</li>
+            <li>7-day re-mow guarantee</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="#" class="btn-cta" style="width:100%; text-align:center; display:block;" onclick="openModal('small'); return false;">Start Service — $45/wk</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Larger Yards</div>
+          <div class="price-amount">$60</div>
+          <div class="price-period">per week, billed weekly</div>
+          <ul class="price-list">
+            <li>Weekly mow &amp; blow</li>
+            <li>Auto-billing via Stripe</li>
+            <li>We handle scheduling</li>
+            <li>7-day re-mow guarantee</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0;" onclick="openModal('large'); return false;">Start Service — $60/wk</a>
+        </div>
+      </div>
+      <p style="color:rgba(255,255,255,0.35); font-size:0.82rem; margin-top:20px;">Not sure which plan? Choose Small/Medium for yards under ~6,000 sq ft. We'll confirm at signup.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div class="section-tag">Customer Stories</div>
+      <h2>What Our Customers In The Gulf Coast Area Are Saying.</h2>
+      <p class="section-sub mb-0"></p>
+      <div class="testi-grid" style="margin-top:40px;">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"I tried two different guys before this. Both would go MIA for weeks at a time. Gulf Coast Mow just shows up — every single week. It actually works the way it's supposed to."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JR</div>
+            <div>
+              <div class="testi-name">Jason R.</div>
+              <div class="testi-loc">Pearland, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"I knew exactly what I was paying before I ever signed up. No texts, no haggling, just auto-billing and a clean lawn. I've referred three of my neighbors already."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">ML</div>
+            <div>
+              <div class="testi-name">Michelle L.</div>
+              <div class="testi-loc">Manvel, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"My last lawn guy was unreliable and kept changing his rate. This service is way more consistent. Set it up on my phone in 5 minutes and haven't thought about it since."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DT</div>
+            <div>
+              <div class="testi-name">Derek T.</div>
+              <div class="testi-loc">League City, TX</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR / NOT FOR -->
+  <section id="forwhom">
+    <div class="section-inner">
+      <div class="section-tag">Is This For You?</div>
+      <h2>Built For the Right Customer.</h2>
+      <div class="forwhom-grid" style="margin-top:40px;">
+        <div class="forwhom-card yes">
+          <h3>✓ This is for you if…</h3>
+          <ul class="forwhom-list">
+            <li>You want weekly recurring mowing</li>
+            <li>You prefer clear, upfront pricing</li>
+            <li>You don't want to manage a mower or crew</li>
+            <li>You like auto-billing — set it and forget it</li>
+            <li>Reliability matters more than the cheapest rate</li>
+          </ul>
+        </div>
+        <div class="forwhom-card no">
+          <h3>✕ This isn't for you if…</h3>
+          <ul class="forwhom-list">
+            <li>You only need a one-time mow</li>
+            <li>You want to negotiate pricing each visit</li>
+            <li>You need landscaping or specialty work</li>
+            <li>You prefer to coordinate directly with a mower</li>
+          </ul>
+        </div>
+      </div>
+      <p class="forwhom-footnote"><strong>We focus on simple recurring lawn service — done reliably, every week.</strong></p>
+    </div>
+  </section>
+
+  <!-- CTA BOTTOM -->
+  <section id="cta-bottom">
+    <h2>Your Lawn Sorted. Every Week.</h2>
+    <p>Sign up in minutes. We handle the rest. No hassle, no chasing, no surprises.</p>
+    <div class="cta-pair">
+      <a href="#" class="btn-cta" onclick="openModal('small'); return false;">🌿 Start Service</a>
+      <a href="#" class="btn-cta-outline" onclick="showPage('referral'); return false;">💰 Join Referral Program</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
+    <div style="display:flex;gap:20px;">
+      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
+      <a href="#" onclick="showPage('referral'); return false;">Referral Program</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ═══════════════════ REFERRAL PAGE ═══════════════════ -->
+<div id="page-referral">
+
+  <div style="height:64px;"></div>
+
+  <!-- REFERRAL HERO -->
+  <div class="referral-hero">
+    <div class="section-tag" style="color:var(--green-glow); margin-bottom:14px;">Referral Program</div>
+    <h1>Earn $10 Every Month<br>For Every Yard You Refer.</h1>
+    <p style="color:rgba(255,255,255,0.65); font-size:1.1rem; max-width:540px; margin:12px auto 0;">As long as your referral is a customer, you get paid. No selling, no follow-up, no tracking spreadsheets.</p>
+
+    <div class="ref-hero-stats">
+      <div class="ref-hero-stat">
+        <div class="ref-hero-stat-num">$10</div>
+        <div class="ref-hero-stat-label">Per yard / per month</div>
+      </div>
+      <div class="ref-hero-stat-divider"></div>
+      <div class="ref-hero-stat">
+        <div class="ref-hero-stat-num">∞</div>
+        <div class="ref-hero-stat-label">No cap on referrals</div>
+      </div>
+      <div class="ref-hero-stat-divider"></div>
+      <div class="ref-hero-stat">
+        <div class="ref-hero-stat-num">Auto</div>
+        <div class="ref-hero-stat-label">Payouts every month</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://REPLACE_REFERRAL_SIGNUP_URL" class="btn-cta">💰 Get My Referral Link</a>
+      <a href="#ref-how" class="btn-cta-outline" style="border-color:rgba(255,255,255,0.35); color:#fff; padding:17px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1.05rem; letter-spacing:0.04em; text-decoration:none; border:2px solid rgba(255,255,255,0.35); transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">See How It Works ↓</a>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="ref-steps" id="ref-how">
+    <div style="text-align:center; margin-bottom:52px;">
+      <div class="section-tag">Simple Process</div>
+      <h2>Three Steps. Then Just Collect.</h2>
+      <p style="color:var(--gray-500); max-width:460px; margin:0 auto; font-size:1rem;">We use <strong>Tolt</strong> or <strong>Rewardful</strong> to handle all the tracking and payouts automatically — no spreadsheets, no manual calculations.</p>
+    </div>
+    <div class="ref-steps-grid">
+      <div class="ref-step">
+        <div class="ref-step-num">1</div>
+        <div style="font-size:2rem; margin-bottom:12px;">🔗</div>
+        <h3>Get Your Unique Link</h3>
+        <p>Sign up and get a personal referral link instantly. It looks like: <span style="color:var(--green); font-weight:600; font-size:0.88rem;">gulfcoastmow.com?ref=yourname</span></p>
+      </div>
+      <div class="ref-step">
+        <div class="ref-step-num">2</div>
+        <div style="font-size:2rem; margin-bottom:12px;">📲</div>
+        <h3>Share It Anywhere</h3>
+        <p>Text neighbors. Post in Nextdoor or Facebook groups. Share in your HOA chat. Anyone in Pearland, Manvel, or League City is a potential referral.</p>
+      </div>
+      <div class="ref-step">
+        <div class="ref-step-num">3</div>
+        <div style="font-size:2rem; margin-bottom:12px;">💸</div>
+        <h3>Get Paid Every Month</h3>
+        <p>$10 per active customer per month, automatically. You'll receive a payout on the 1st of each month for the previous month's active referrals.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EARNINGS CALCULATOR -->
+  <div class="ref-earnings">
+    <div class="section-tag">Earnings Calculator</div>
+    <h2>See What You Could Earn.</h2>
+    <p style="color:var(--gray-500); margin-top:8px; margin-bottom:36px;">$10 flat per active referral, every month, for as long as they're a customer.</p>
+
+    <div class="earn-calc-wrap">
+      <div class="earn-calc-slider-section">
+        <label class="earn-slider-label">Drag to see your monthly earnings</label>
+        <div class="earn-slider-val-row">
+          <span class="earn-slider-val-num" id="sliderVal">5</span>
+          <span class="earn-slider-val-label">referred yards</span>
+        </div>
+        <input type="range" class="earn-slider" id="earningsSlider" min="1" max="25" value="5" oninput="updateEarnings(this.value)">
+        <div class="earn-slider-range-labels">
+          <span>1 yard</span><span>25 yards</span>
+        </div>
+      </div>
+      <div class="earn-calc-result">
+        <div class="earn-result-label">Monthly earnings</div>
+        <div class="earn-result-amount" id="earningsAmount">$50</div>
+        <div class="earn-result-annual">= <span id="earningsAnnual">$600</span> per year</div>
+        <div class="earn-result-note">As long as those yards stay active subscribers.</div>
+      </div>
+    </div>
+
+    <div class="earnings-grid" style="margin-top:40px;">
+      <div class="earn-card">
+        <div class="earn-homes">1 Yard</div>
+        <div class="earn-amount">$10</div>
+        <div class="earn-period">/ month</div>
+      </div>
+      <div class="earn-card">
+        <div class="earn-homes">5 Yards</div>
+        <div class="earn-amount">$50</div>
+        <div class="earn-period">/ month</div>
+      </div>
+      <div class="earn-card">
+        <div class="earn-homes">10 Yards</div>
+        <div class="earn-amount">$100</div>
+        <div class="earn-period">/ month</div>
+      </div>
+      <div class="earn-card" style="border-bottom-color:var(--green-glow);">
+        <div class="earn-homes">20 Yards</div>
+        <div class="earn-amount" style="color:var(--green);">$200</div>
+        <div class="earn-period">/ month</div>
+      </div>
+    </div>
+    <p style="color:var(--gray-500); font-size:0.85rem; margin-top:20px;">No cap. No tiers. Every active referral pays the same $10/month.</p>
+  </div>
+
+  <!-- HOW TRACKING & PAYOUTS WORK -->
+  <div style="background:var(--white); padding:72px 5vw;">
+    <div class="section-inner">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+
+        <div>
+          <div class="section-tag">How Tracking Works</div>
+          <h2 style="font-size:clamp(1.7rem,3vw,2.4rem); margin-bottom:16px;">We Use Software So Nothing Falls Through the Cracks.</h2>
+          <p style="color:var(--gray-500); margin-bottom:28px; font-size:0.97rem; line-height:1.7;">We run the referral program through <strong style="color:var(--dark);">Tolt</strong> (or Rewardful) — a platform built specifically for subscription businesses running on Stripe. It handles everything automatically.</p>
+
+          <div class="how-track-list">
+            <div class="how-track-item">
+              <div class="how-track-icon">🍪</div>
+              <div>
+                <strong>Cookie + Link Tracking</strong>
+                <p>When someone clicks your link, a tracking cookie is set. Even if they don't sign up immediately, you still get credit if they subscribe within 30 days.</p>
+              </div>
+            </div>
+            <div class="how-track-item">
+              <div class="how-track-icon">🔄</div>
+              <div>
+                <strong>Stripe Integration</strong>
+                <p>Tolt connects directly to our Stripe account. It automatically detects when a referred customer pays their weekly bill and credits your account $10 for that month.</p>
+              </div>
+            </div>
+            <div class="how-track-item">
+              <div class="how-track-icon">📊</div>
+              <div>
+                <strong>Your Own Dashboard</strong>
+                <p>You get a login to your own affiliate dashboard where you can see every referral, their status (active/cancelled), and your pending/paid earnings in real time.</p>
+              </div>
+            </div>
+            <div class="how-track-item">
+              <div class="how-track-icon">🏦</div>
+              <div>
+                <strong>Automatic Payouts</strong>
+                <p>On the 1st of every month, earnings are automatically sent to your PayPal or bank account (ACH). No invoicing, no chasing — just a deposit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-tag">What Your Dashboard Looks Like</div>
+          <div class="ref-dashboard-mockup">
+            <div class="ref-dash-header">
+              <div class="ref-dash-logo">🌿 Gulf Coast Mow — Affiliate Portal</div>
+              <div class="ref-dash-user">👤 Your Account</div>
+            </div>
+            <div class="ref-dash-stats">
+              <div class="ref-dash-stat">
+                <div class="ref-dash-stat-val">7</div>
+                <div class="ref-dash-stat-lbl">Active Referrals</div>
+              </div>
+              <div class="ref-dash-stat">
+                <div class="ref-dash-stat-val">$70</div>
+                <div class="ref-dash-stat-lbl">This Month</div>
+              </div>
+              <div class="ref-dash-stat">
+                <div class="ref-dash-stat-val">$350</div>
+                <div class="ref-dash-stat-lbl">Total Earned</div>
+              </div>
+            </div>
+            <div class="ref-dash-link-row">
+              <span class="ref-dash-link-label">Your Link</span>
+              <div class="ref-dash-link-box">gulfcoastmow.com?ref=<strong>yourname</strong></div>
+              <div class="ref-dash-copy-btn">Copy</div>
+            </div>
+            <div class="ref-dash-table-head">
+              <span>Referral</span><span>Status</span><span>This Month</span>
+            </div>
+            <div class="ref-dash-row"><span>J. Rodriguez</span><span class="ref-status active">Active</span><span>$10</span></div>
+            <div class="ref-dash-row"><span>M. Thompson</span><span class="ref-status active">Active</span><span>$10</span></div>
+            <div class="ref-dash-row"><span>D. Williams</span><span class="ref-status active">Active</span><span>$10</span></div>
+            <div class="ref-dash-row"><span>C. Patel</span><span class="ref-status paused">Paused</span><span>$0</span></div>
+            <div class="ref-dash-row"><span>S. Johnson</span><span class="ref-status active">Active</span><span>$10</span></div>
+            <div class="ref-dash-payout">
+              <span>💳 Next payout: <strong>August 1st</strong></span>
+              <span class="ref-dash-payout-amt">$70.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO SHOULD REFER -->
+  <div style="background:var(--off-white); padding:72px 5vw;">
+    <div class="section-inner">
+      <div class="section-tag" style="text-align:center;">Who This Is For</div>
+      <h2 style="text-align:center; margin-bottom:48px;">Perfect If You Know Your Neighborhood.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
+        <div class="who-card">
+          <div class="who-icon">🏘️</div>
+          <h4>HOA Members</h4>
+          <p>You know 50+ homeowners. One post in the community app could earn you $100–$200/month.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">📱</div>
+          <h4>Nextdoor Regulars</h4>
+          <p>Already active on neighborhood social? Your referral link fits naturally in lawn care threads.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🏡</div>
+          <h4>Current Customers</h4>
+          <p>If you already use Gulf Coast Mow, you're the best advocate. Tell your neighbors and earn while you're at it.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🤝</div>
+          <h4>Local Connectors</h4>
+          <p>Real estate agents, property managers, anyone who knows homeowners in Pearland, Manvel, or League City.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="ref-faq">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="section-tag">FAQ</div>
+      <h2>Every Question Answered.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does $10/month work exactly? <span class="arrow">▼</span></div>
+        <div class="faq-a">For every person who signs up through your referral link and remains an active subscriber, you earn $10 flat each calendar month. It doesn't matter if they're on the $45/week or $60/week plan — you always earn $10/month per active yard. If a referral cancels, that $10 stops. If they resubscribe, it starts again automatically.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">When and how do I get paid? <span class="arrow">▼</span></div>
+        <div class="faq-a">Payouts are processed automatically on the 1st of every month for the previous month's active referrals. You can receive payment via PayPal or direct bank deposit (ACH). You'll get a payout summary email each month showing exactly which referrals earned what.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How are referrals tracked? Won't I lose credit? <span class="arrow">▼</span></div>
+        <div class="faq-a">We use Tolt (tolt.io), a dedicated affiliate tracking platform built for Stripe subscriptions. When someone clicks your link, a 30-day cookie is set. If they sign up anytime within that 30 days, you get permanent credit for that customer. Tolt connects directly to our Stripe account so there's no manual tracking — it's all automatic and auditable. You can see every referral's status in your dashboard at any time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if my referral pauses or cancels? <span class="arrow">▼</span></div>
+        <div class="faq-a">You only earn on active months. If a referral pauses or cancels, the $10 stops for that period. No clawbacks on months already paid — those are yours to keep. If they resubscribe later, the earnings resume automatically. You don't need to do anything.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a limit on how many people I can refer? <span class="arrow">▼</span></div>
+        <div class="faq-a">No limit whatsoever. Refer 1 yard or 100 yards — the $10/month rate applies equally to every active referral. There are no tiers, no caps, and no diminishing returns.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need to be a Gulf Coast Mow customer to refer? <span class="arrow">▼</span></div>
+        <div class="faq-a">No. You can join the referral program without being a lawn service customer. Anyone can refer — neighbors, friends, local community members, real estate agents, or anyone who knows homeowners in our service area.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I refer myself or someone in my household? <span class="arrow">▼</span></div>
+        <div class="faq-a">No. Self-referrals are not permitted and are automatically flagged in the system. The referral program is designed for referring other households only. Violations result in removal from the program.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if someone I referred signed up without using my link? <span class="arrow">▼</span></div>
+        <div class="faq-a">Unfortunately, we can only track referrals that come through your unique link — that's what makes automatic payouts possible. We'd encourage you to share your link directly rather than just mentioning the service, since the link is what connects the signup to your account.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="ref-cta" id="ref-cta">
+    <div class="section-tag" style="color:var(--green-glow); margin-bottom:12px;">Ready to Start?</div>
+    <h2>Your Neighborhood Is Your Income.</h2>
+    <p>Sign up free. Get your link. Share it. Collect $10/month per yard, automatically.</p>
+    <a href="https://REPLACE_REFERRAL_SIGNUP_URL" class="btn-cta" style="font-size:1.15rem; padding:18px 44px;">💰 Join the Referral Program — It's Free</a>
+    <p style="color:rgba(255,255,255,0.35); font-size:0.82rem; margin-top:16px;">Powered by Tolt · Stripe-verified payouts · Cancel anytime</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
+    <div style="display:flex;gap:20px;">
+      <a href="#" onclick="showPage('home'); return false;">← Back to Home</a>
+      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ─── EARNINGS SLIDER ───
+  function updateEarnings(val) {
+    const num = parseInt(val);
+    const monthly = num * 10;
+    const annual = monthly * 12;
+    document.getElementById('sliderVal').textContent = num;
+    document.getElementById('earningsAmount').textContent = '$' + monthly;
+    document.getElementById('earningsAnnual').textContent = '$' + annual.toLocaleString();
+    // Update slider fill gradient
+    const pct = ((num - 1) / 24 * 100).toFixed(1);
+    document.getElementById('earningsSlider').style.background =
+      `linear-gradient(to right, var(--green) 0%, var(--green) ${pct}%, var(--gray-200) ${pct}%)`;
+  }
+  // Init slider on load
+  document.addEventListener('DOMContentLoaded', () => updateEarnings(5));
+  function showPage(page) {
+    document.getElementById('page-home').style.display = page === 'home' ? '' : 'none';
+    document.getElementById('page-referral').style.display = page === 'referral' ? '' : 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─── SMOOTH SCROLL ───
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ─── FAQ TOGGLE ───
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  // ─── MODAL STATE ───
+  let selectedPlan = 'small';
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // STRIPE CHECKOUT LINKS
+  // Replace these with your actual Stripe Payment Links.
+  //
+  // HOW STRIPE RECEIVES THE CUSTOMER DATA:
+  // Stripe Payment Links accept these URL parameters natively:
+  //   ?prefilled_email=  → pre-fills the email field on the Stripe checkout page
+  //   ?client_reference_id= → stored on the Stripe Checkout Session; visible
+  //                           in your Stripe dashboard and webhooks. Use this
+  //                           to pass a compact identifier like "2025-08-01|John Smith|5551234567|123 Main St Pearland"
+  //
+  // To fully capture name/phone/address you have two options:
+  //   OPTION A (simple, no backend): Use Stripe's "Collect additional info"
+  //             setting in the Payment Link editor to add custom fields
+  //             (phone, address). Stripe stores them on the customer object.
+  //   OPTION B (backend): Set up a Stripe webhook on checkout.session.completed
+  //             which fires with the full session including client_reference_id,
+  //             customer email, and any custom fields. Your webhook handler
+  //             can then write the signup data to your CRM / Airtable / etc.
+  //             and send a confirmation SMS via Twilio.
+  //
+  // For now, the code passes prefilled_email + a pipe-delimited client_reference_id
+  // containing all fields, which you can read in your Stripe dashboard instantly.
+  // ─────────────────────────────────────────────────────────────────────────
+  const STRIPE_SMALL = 'https://buy.stripe.com/REPLACE_SMALL_PLAN';
+  const STRIPE_LARGE = 'https://buy.stripe.com/REPLACE_LARGE_PLAN';
+
+  function get72hrMinDate() {
+    const d = new Date();
+    d.setHours(d.getHours() + 72);
+    return d.toISOString().split('T')[0];
+  }
+
+  function openModal(plan) {
+    selectedPlan = plan || 'small';
+    updatePlanDisplay();
+    goStep(1, true);
+    // Sync plan selector buttons to match what was clicked
+    document.getElementById('planSmall').classList.toggle('selected', selectedPlan === 'small');
+    document.getElementById('planLarge').classList.toggle('selected', selectedPlan === 'large');
+    document.getElementById('signupModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Min date = 72 hours from now
+    const minDate = get72hrMinDate();
+    document.getElementById('fieldDate').min = minDate;
+    document.getElementById('fieldDate').value = '';
+  }
+
+  function closeModal() {
+    document.getElementById('signupModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function handleModalOverlayClick(e) {
+    if (e.target === document.getElementById('signupModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  function selectPlan(plan) {
+    selectedPlan = plan;
+    document.getElementById('planSmall').classList.toggle('selected', plan === 'small');
+    document.getElementById('planLarge').classList.toggle('selected', plan === 'large');
+    updatePlanDisplay();
+  }
+
+  function updatePlanDisplay() {
+    const isSmall = selectedPlan === 'small';
+    document.getElementById('modalPlanBadge').textContent = isSmall ? 'Small / Medium Yard' : 'Larger Yard';
+    document.getElementById('modalPriceDisplay').innerHTML = isSmall ? '$45 <span>/ week</span>' : '$60 <span>/ week</span>';
+  }
+
+  function goStep(num, reset) {
+    if (!reset && num > currentStep()) {
+      if (!validateStep(currentStep())) return;
+    }
+    [1,2,3].forEach(i => {
+      document.getElementById('step'+i).classList.toggle('active', i === num);
+      const dot = document.getElementById('dot'+i);
+      dot.classList.remove('active','done');
+      if (i === num) dot.classList.add('active');
+      else if (i < num) dot.classList.add('done');
+    });
+    if (num === 3) populateConfirm();
+    document.getElementById('modalBox').scrollTop = 0;
+  }
+
+  function currentStep() {
+    for (let i = 1; i <= 3; i++) {
+      if (document.getElementById('step'+i).classList.contains('active')) return i;
+    }
+    return 1;
+  }
+
+  function validateStep(step) {
+    let valid = true;
+
+    if (step === 1) {
+      const name  = document.getElementById('fieldName').value.trim();
+      const email = document.getElementById('fieldEmail').value.trim();
+      const phone = document.getElementById('fieldPhone').value.trim();
+      const phoneClean = phone.replace(/\D/g,'');
+
+      setError('errName',  !name);                                        if (!name)  valid = false;
+      setError('errEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) valid = false;
+      setError('errPhone', phoneClean.length < 10);                       if (phoneClean.length < 10) valid = false;
+    }
+
+    if (step === 2) {
+      const addr    = document.getElementById('fieldAddress').value.trim();
+      const dateVal = document.getElementById('fieldDate').value;
+      const minDate = get72hrMinDate();
+
+      setError('errAddress', !addr);                    if (!addr)  valid = false;
+      setError('errDate',    !dateVal || dateVal < minDate); if (!dateVal || dateVal < minDate) valid = false;
+    }
+
+    return valid;
+  }
+
+  function setError(id, show) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('visible', show);
+    const input = el.previousElementSibling;
+    if (input && input.classList.contains('form-input')) input.classList.toggle('error', show);
+  }
+
+  function populateConfirm() {
+    const dateVal = document.getElementById('fieldDate').value;
+    document.getElementById('cName').textContent    = document.getElementById('fieldName').value.trim();
+    document.getElementById('cEmail').textContent   = document.getElementById('fieldEmail').value.trim();
+    document.getElementById('cPhone').textContent   = document.getElementById('fieldPhone').value.trim();
+    document.getElementById('cAddress').textContent = document.getElementById('fieldAddress').value.trim();
+    document.getElementById('cDate').textContent    = dateVal
+      ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })
+      : '—';
+    document.getElementById('cPlan').textContent = selectedPlan === 'small' ? '$45/week' : '$60/week';
+  }
+
+  function goToStripe() {
+    const email   = document.getElementById('fieldEmail').value.trim();
+    const name    = document.getElementById('fieldName').value.trim();
+    const phone   = document.getElementById('fieldPhone').value.trim();
+    const address = document.getElementById('fieldAddress').value.trim();
+    const date    = document.getElementById('fieldDate').value;
+    const plan    = selectedPlan === 'small' ? '$45/wk' : '$60/wk';
+
+    // Build a compact pipe-delimited reference ID readable in Stripe dashboard
+    // Format: YYYY-MM-DD | Name | Phone | Address | Plan
+    const ref = `${date}|${name}|${phone}|${address}|${plan}`;
+
+    const base = selectedPlan === 'small' ? STRIPE_SMALL : STRIPE_LARGE;
+    const url  = `${base}?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${encodeURIComponent(ref)}`;
+
+    window.location.href = url;
+  }
+</script>
+
+</body>
+</html>
