@@ -1020,7 +1020,7 @@
         </div>
         <div class="modal-trust">
           <span class="modal-trust-item">Secured by Stripe</span>
-          <span class="modal-trust-item">Cancel anytime by text or email</span>
+          <span class="modal-trust-item">Cancel by text or email anytime</span>
           <span class="modal-trust-item">7-day re-mow guarantee</span>
         </div>
       </div>
@@ -1297,9 +1297,14 @@
         <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Not sure of your yard size? No problem — we confirm it using satellite imagery at signup.</p>
 
         <!-- Cancel info -->
-        <div style="margin-top:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px 20px; max-width:680px; display:flex; gap:10px; align-items:center;">
-          <span style="font-size:1.1rem; flex-shrink:0;">📱</span>
-          <p style="color:rgba(255,255,255,0.55); font-size:0.85rem; margin:0; line-height:1.6;"><strong style="color:rgba(255,255,255,0.8);">Need to cancel?</strong> Just text or email us anytime — <a href="mailto:hello@gulfcoastmow.com?subject=Cancel%20My%20Service" style="color:var(--green-glow); font-weight:600;">hello@gulfcoastmow.com</a>. No forms, no hold music, no hassle. We'll handle it same day.</p>
+        <div style="margin-top:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 20px; max-width:680px; display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size:1.1rem; flex-shrink:0; margin-top:2px;">📱</span>
+          <div>
+            <p style="color:rgba(255,255,255,0.8); font-size:0.88rem; font-weight:600; margin:0 0 6px;">Need to cancel? It takes one message.</p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0; line-height:1.7;">
+              Text <strong style="color:rgba(255,255,255,0.75);">REPLACE_GOOGLE_PHONE</strong> or email <strong style="color:rgba(255,255,255,0.75);">hello@gulfcoastmow.com</strong> with your name and address. We'll cancel same day — no hassle, no hold music.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1396,7 +1401,7 @@
     <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
     <div style="display:flex;gap:20px; flex-wrap:wrap;">
       <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
-      <a href="mailto:hello@gulfcoastmow.com?subject=Cancel%20My%20Service">Cancel Service</a>
+      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Cancel: text REPLACE_GOOGLE_PHONE or email us</span>
       <a href="#" onclick="showPage('referral'); return false;">Referral Program</a>
     </div>
   </footer>
