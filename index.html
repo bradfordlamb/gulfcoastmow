@@ -89,8 +89,8 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      linear-gradient(135deg, rgba(10,28,8,0.78) 0%, rgba(20,55,12,0.60) 55%, rgba(45,122,34,0.25) 100%),
-      url('https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=1600&q=80') center 60%/cover no-repeat;
+      linear-gradient(135deg, rgba(10,28,8,0.78) 0%, rgba(20,55,12,0.60) 55%, rgba(45,122,34,0.22) 100%),
+      url('https://images.unsplash.com/photo-1700937528069-817a4d0be7e6?w=1600&q=80') center 50%/cover no-repeat;
     z-index: 0;
   }
   .hero-content {
@@ -806,8 +806,8 @@
   <div class="modal-box" id="modalBox">
     <div class="modal-header">
       <div class="modal-plan-badge" id="modalPlanBadge">Weekly Service</div>
-      <h3>Let's Get Your Lawn Sorted.</h3>
-      <p>Takes 60 seconds. No commitment required.</p>
+      <h3 id="modalHeadline">Let's Get Your Lawn Sorted.</h3>
+      <p id="modalSubline">Takes 60 seconds. No commitment required.</p>
       <div class="modal-price" id="modalPriceDisplay">$45 <span>/ week</span></div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
@@ -818,7 +818,7 @@
         <div class="modal-step-dot" id="dot3"></div>
       </div>
 
-      <!-- STEP 1: Contact Info -->
+      <!-- STEP 1: Contact Info (same for all flows) -->
       <div class="modal-step active" id="step1">
         <label class="form-label">Your Name</label>
         <input type="text" class="form-input" id="fieldName" placeholder="First &amp; Last Name" autocomplete="name">
@@ -838,19 +838,20 @@
         </div>
       </div>
 
-      <!-- STEP 2: Yard + Date -->
+      <!-- STEP 2A: Standard/Large yard — plan + address + date -->
       <div class="modal-step" id="step2">
         <label class="form-label">Select Your Plan</label>
         <div class="plan-selector">
           <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
             <div class="plan-option-price">$45</div>
-            <div class="plan-option-label">Small / Medium Yard</div>
+            <div class="plan-option-label">Up to 10,000 sq ft</div>
           </div>
           <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
             <div class="plan-option-price">$60</div>
-            <div class="plan-option-label">Larger Yard</div>
+            <div class="plan-option-label">10,001 – 15,000 sq ft</div>
           </div>
         </div>
+        <p style="font-size:0.8rem; color:var(--gray-500); margin-top:-12px; margin-bottom:16px; line-height:1.5;">Not sure of your size? We verify with satellite imagery — you'll never be on the wrong plan. Over 15,000 sq ft? <a href="#" style="color:var(--green); font-weight:600;" onclick="switchToCustom(); return false;">Get a custom quote instead.</a></p>
 
         <label class="form-label">Service Address</label>
         <input type="text" class="form-input" id="fieldAddress" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
@@ -867,7 +868,30 @@
         </div>
       </div>
 
-      <!-- STEP 3: Confirm -->
+      <!-- STEP 2B: Custom quote — address + yard size description -->
+      <div class="modal-step" id="step2c">
+        <div style="background:rgba(45,122,34,0.08); border:1px solid rgba(45,122,34,0.2); border-radius:10px; padding:12px 14px; margin-bottom:20px; font-size:0.85rem; color:var(--gray-700); line-height:1.6;">
+          🌿 We'll review your yard and send you a custom weekly rate within <strong>24 hours</strong>. No obligation.
+        </div>
+
+        <label class="form-label">Service Address</label>
+        <input type="text" class="form-input" id="fieldAddressCustom" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
+        <div class="form-error" id="errAddressCustom">Please enter your service address.</div>
+
+        <label class="form-label">Approx. Yard Size</label>
+        <input type="text" class="form-input" id="fieldYardSize" placeholder="e.g. 18,000 sq ft or about 0.4 acres" style="margin-bottom:4px;">
+        <div class="form-hint">Best estimate is fine — we'll verify with satellite imagery.</div>
+
+        <label class="form-label">Anything Else We Should Know? <span style="font-weight:400; text-transform:none; color:var(--gray-500);">(optional)</span></label>
+        <textarea class="form-input" id="fieldNotes" placeholder="e.g. fenced yard, slope, gate code, obstacles..." rows="3" style="resize:vertical; font-family:var(--font-body);"></textarea>
+
+        <div class="modal-btn-row">
+          <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
+          <button class="modal-btn-next" onclick="goStepCustom(3)">Review &amp; Submit →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Review + CTA (standard flow) -->
       <div class="modal-step" id="step3">
         <div class="confirm-summary" id="confirmSummary">
           <div class="confirm-row">
@@ -895,9 +919,13 @@
             <span class="confirm-price" id="cPlan">$45/week</span>
           </div>
         </div>
-        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:20px;line-height:1.6;">
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:12px;line-height:1.6;">
           Clicking below takes you to our secure Stripe checkout to set up your weekly subscription. You won't be charged until your first mow is confirmed.
         </p>
+        <div style="background:#fffbeb; border:1px solid #f5d76e; border-radius:10px; padding:12px 14px; margin-bottom:18px; font-size:0.82rem; color:#7a5c00; line-height:1.55; display:flex; gap:8px;">
+          <span style="flex-shrink:0;">⚠️</span>
+          <span><strong>First mow note:</strong> If grass is over 9 inches tall, a one-time overgrowth fee (50–100% of your weekly rate) may apply for that first visit only. We'll always notify you before charging anything extra.</span>
+        </div>
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="goStep(2)">← Back</button>
           <button class="modal-btn-next" id="stripeBtn" onclick="goToStripe()">Pay Securely via Stripe →</button>
@@ -909,6 +937,60 @@
         </div>
       </div>
 
+      <!-- STEP 3C: Review + Submit (custom quote flow) -->
+      <div class="modal-step" id="step3c">
+        <div class="confirm-summary">
+          <div class="confirm-row">
+            <span class="confirm-label">Name</span>
+            <span class="confirm-value" id="ccName">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Email</span>
+            <span class="confirm-value" id="ccEmail">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Phone (SMS)</span>
+            <span class="confirm-value" id="ccPhone">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Address</span>
+            <span class="confirm-value" id="ccAddress">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Yard Size</span>
+            <span class="confirm-value" id="ccYardSize">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="confirm-label">Notes</span>
+            <span class="confirm-value" id="ccNotes" style="font-size:0.85rem;">—</span>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">
+          Everything look right? We'll text and email you a custom quote within <strong style="color:var(--dark);">24 hours</strong>. No payment required.
+        </p>
+        <div class="modal-btn-row">
+          <button class="modal-btn-back" onclick="showCustomStep2()">← Back</button>
+          <button class="modal-btn-next" onclick="submitCustomQuote()">Submit Quote Request →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Thank you (custom quote flow only) -->
+      <div class="modal-step" id="step4c">
+        <div style="text-align:center; padding:12px 0 24px;">
+          <div style="font-size:3.5rem; margin-bottom:16px;">✅</div>
+          <h3 style="font-family:var(--font-head); font-weight:900; font-size:1.7rem; color:var(--dark); margin-bottom:10px;">We've Got Your Request!</h3>
+          <p style="font-size:0.95rem; color:var(--gray-500); line-height:1.7; max-width:340px; margin:0 auto 24px;">We'll review your yard and send a custom weekly rate to <strong id="thankYouEmail" style="color:var(--dark);">your email</strong> and text <strong id="thankYouPhone" style="color:var(--dark);">your phone</strong> within <strong style="color:var(--green);">24 hours</strong>.</p>
+          <div style="background:var(--green-pale); border-radius:12px; padding:16px 20px; margin-bottom:24px; text-align:left;">
+            <p style="font-size:0.85rem; color:var(--gray-700); margin:0; line-height:1.65;">📍 <strong>Address:</strong> <span id="thankYouAddress"></span><br>📐 <strong>Yard Size:</strong> <span id="thankYouSize"></span></p>
+          </div>
+          <p style="font-size:0.82rem; color:var(--gray-500); margin-bottom:20px;">While you wait, check out our referral program — earn $10/month for every neighbor you refer.</p>
+          <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+            <button class="modal-btn-next" style="flex:none; padding:12px 24px;" onclick="closeModal()">Done</button>
+            <button class="modal-btn-back" onclick="closeModal(); showPage('referral');" style="padding:12px 20px;">See Referral Program →</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -916,12 +998,29 @@
 <!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo" onclick="showPage('home')">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#2d7a22"/>
-      <path d="M6 24 C6 24, 10 14, 16 14 C22 14, 26 24, 26 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M8 24 L24 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M16 14 L16 8" stroke="#a8eea0" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="16" cy="7" r="2" fill="#a8eea0"/>
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+      <!-- Badge background -->
+      <rect width="40" height="40" rx="10" fill="#2d7a22"/>
+      <!-- Grass ground line -->
+      <rect x="4" y="27" width="32" height="3" rx="1.5" fill="#a8eea0" opacity="0.5"/>
+      <!-- Rear wheel -->
+      <circle cx="10" cy="27" r="4" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="10" cy="27" r="1.5" fill="#fff"/>
+      <!-- Front wheel -->
+      <circle cx="28" cy="27" r="3" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="28" cy="27" r="1.2" fill="#fff"/>
+      <!-- Mower deck / body -->
+      <rect x="8" y="20" width="22" height="7" rx="3.5" fill="#fff"/>
+      <!-- Blade indicator line under deck -->
+      <line x1="12" y1="23.5" x2="26" y2="23.5" stroke="#2d7a22" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Engine block on top of deck -->
+      <rect x="17" y="15" width="9" height="6" rx="2" fill="#e8f5e5" stroke="#fff" stroke-width="1"/>
+      <!-- Handle bar — angled up-left -->
+      <line x1="10" y1="20" x2="6" y2="10" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Handle grip crossbar -->
+      <line x1="4" y1="10" x2="9" y2="8" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Exhaust / spark detail on engine -->
+      <circle cx="23" cy="14" r="1" fill="#4db840"/>
     </svg>
     Gulf Coast Mow
   </a>
@@ -943,10 +1042,10 @@
       <div class="hero-badge">Now Serving Pearland · Manvel · League City</div>
       <h1>Reliable Weekly Lawn Care<br><em>Without the Hassle.</em></h1>
       <p class="hero-sub">Mow service starting at $45/week. No contracts. Auto-billing. We handle all the scheduling.</p>
-      <p class="hero-referral">Earn $10/month for every yard you refer — as long as they're a customer.</p>
+      <p class="hero-referral">Earn $10/month per referral — no cap, paid automatically while they're active.</p>
       <div class="cta-group">
         <a href="#" class="btn-primary" onclick="openModal('small'); return false;">🌿 Start Service</a>
-        <a href="#" class="btn-secondary" onclick="showPage('referral'); return false;">Join Referral Program</a>
+        <a href="#" class="btn-secondary" onclick="showPage('referral'); return false;">💰 Earn $10/Month Per Referral</a>
       </div>
     </div>
     <div class="hero-trust">
@@ -968,8 +1067,10 @@
           <div class="step-num">1</div>
           <div class="step-icon">🏡</div>
           <h3>Tell Us About Your Yard</h3>
-          <p>Enter your address and confirm your yard size. Pricing is clear upfront — no surprises later.</p>
-          <span class="step-price">Small/Medium $45/wk &nbsp;·&nbsp; Large $60/wk</span>
+          <p>Enter your address and confirm your yard size. Pricing is clear and locked in before you subscribe — no surprises.</p>
+          <span class="step-price">Up to 10,000 sq ft — $45/wk</span>
+          <span class="step-price" style="margin-top:6px; display:inline-block;">10,001 – 15,000 sq ft — $60/wk</span>
+          <span class="step-price" style="margin-top:6px; display:inline-block; background:#f0f0f0; color:#888;">Over 15,000 sq ft — Contact us</span>
         </div>
         <div class="step-card">
           <div class="step-num">2</div>
@@ -1018,37 +1119,63 @@
     <div class="section-inner">
       <div class="section-tag">Simple Pricing</div>
       <h2>Pick Your Plan. That's It.</h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.55);">Weekly recurring. Auto-billed. Cancel anytime. No commitments.</p>
-      <div class="pricing-grid">
+      <p class="section-sub" style="color:rgba(255,255,255,0.55);">Weekly recurring. Auto-billed. Cancel anytime. No contracts. Pricing is based on yard size — we confirm yours at signup.</p>
+      <div class="pricing-grid" style="max-width:960px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
         <div class="price-card featured">
           <div class="price-badge">Most Popular</div>
-          <div class="price-label">Small / Medium Yards</div>
+          <div class="price-label">Standard Yard</div>
           <div class="price-amount">$45</div>
           <div class="price-period">per week, billed weekly</div>
+          <div style="display:inline-block; background:rgba(77,184,64,0.18); border:1px solid rgba(77,184,64,0.35); color:#a8eea0; font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:20px; letter-spacing:0.05em;">UP TO 10,000 SQ FT</div>
           <ul class="price-list">
-            <li>Weekly mow &amp; blow</li>
+            <li>Weekly mow, trim &amp; blow</li>
             <li>Auto-billing via Stripe</li>
-            <li>We handle scheduling</li>
+            <li>We handle all scheduling</li>
             <li>7-day re-mow guarantee</li>
-            <li>Cancel anytime</li>
+            <li>No contracts — cancel anytime</li>
           </ul>
           <a href="#" class="btn-cta" style="width:100%; text-align:center; display:block;" onclick="openModal('small'); return false;">Start Service — $45/wk</a>
         </div>
+
         <div class="price-card">
-          <div class="price-label">Larger Yards</div>
+          <div class="price-label">Large Yard</div>
           <div class="price-amount">$60</div>
           <div class="price-period">per week, billed weekly</div>
+          <div style="display:inline-block; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.6); font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:20px; letter-spacing:0.05em;">10,001 – 15,000 SQ FT</div>
           <ul class="price-list">
-            <li>Weekly mow &amp; blow</li>
+            <li>Weekly mow, trim &amp; blow</li>
             <li>Auto-billing via Stripe</li>
-            <li>We handle scheduling</li>
+            <li>We handle all scheduling</li>
             <li>7-day re-mow guarantee</li>
-            <li>Cancel anytime</li>
+            <li>No contracts — cancel anytime</li>
           </ul>
           <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0;" onclick="openModal('large'); return false;">Start Service — $60/wk</a>
         </div>
+
+        <div class="price-card" style="border-color:rgba(255,255,255,0.07); opacity:0.85;">
+          <div class="price-label" style="color:rgba(255,255,255,0.4);">Extra-Large Yard</div>
+          <div class="price-amount" style="font-size:2.2rem; color:rgba(255,255,255,0.45); letter-spacing:-0.02em;">Custom</div>
+          <div class="price-period" style="color:rgba(255,255,255,0.35);">quote required</div>
+          <div style="display:inline-block; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.35); font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:20px; letter-spacing:0.05em;">OVER 15,000 SQ FT</div>
+          <ul class="price-list">
+            <li style="color:rgba(255,255,255,0.4);">Yards over ~1/3 acre</li>
+            <li style="color:rgba(255,255,255,0.4);">Priced by size &amp; complexity</li>
+            <li style="color:rgba(255,255,255,0.4);">Same auto-billing &amp; reliability</li>
+            <li style="color:rgba(255,255,255,0.4);">We'll respond within 24 hrs</li>
+            <li style="color:rgba(255,255,255,0.4);">No obligation to proceed</li>
+          </ul>
+          <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0; border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.75);" onclick="openModal('custom'); return false;">Get a Custom Quote →</a>
+        </div>
       </div>
-      <p style="color:rgba(255,255,255,0.35); font-size:0.82rem; margin-top:20px;">Not sure which plan? Choose Small/Medium for yards under ~6,000 sq ft. We'll confirm at signup.</p>
+
+      <!-- Overgrowth notice -->
+      <div style="margin-top:28px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px 20px; max-width:680px; display:flex; gap:12px; align-items:flex-start;">
+        <span style="font-size:1.2rem; flex-shrink:0; margin-top:1px;">⚠️</span>
+        <div>
+          <p style="color:rgba(255,255,255,0.7); font-size:0.88rem; line-height:1.6; margin:0;"><strong style="color:rgba(255,255,255,0.9);">First mow overgrowth note:</strong> If your grass is over 9 inches tall on the first visit, an additional one-time fee (up to 50–100% of the regular rate) may apply to cover the extra time and equipment strain. After that first cut, you'll be on regular weekly pricing. We'll always notify you before charging anything extra.</p>
+        </div>
+      </div>
+      <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Not sure of your yard size? No problem — we confirm it using satellite imagery at signup. You'll never be charged the wrong rate.</p>
     </div>
   </section>
 
@@ -1105,6 +1232,7 @@
         <div class="forwhom-card yes">
           <h3>✓ This is for you if…</h3>
           <ul class="forwhom-list">
+            <li>Your yard is under 15,000 sq ft</li>
             <li>You want weekly recurring mowing</li>
             <li>You prefer clear, upfront pricing</li>
             <li>You don't want to manage a mower or crew</li>
@@ -1115,6 +1243,7 @@
         <div class="forwhom-card no">
           <h3>✕ This isn't for you if…</h3>
           <ul class="forwhom-list">
+            <li>Your yard is over 15,000 sq ft (contact us instead)</li>
             <li>You only need a one-time mow</li>
             <li>You want to negotiate pricing each visit</li>
             <li>You need landscaping or specialty work</li>
@@ -1129,10 +1258,10 @@
   <!-- CTA BOTTOM -->
   <section id="cta-bottom">
     <h2>Your Lawn Sorted. Every Week.</h2>
-    <p>Sign up in minutes. We handle the rest. No hassle, no chasing, no surprises.</p>
+    <p>Sign up in minutes. We handle the rest. Or refer neighbors and earn $10/month per active yard — no cap, no limit.</p>
     <div class="cta-pair">
       <a href="#" class="btn-cta" onclick="openModal('small'); return false;">🌿 Start Service</a>
-      <a href="#" class="btn-cta-outline" onclick="showPage('referral'); return false;">💰 Join Referral Program</a>
+      <a href="#" class="btn-cta-outline" onclick="showPage('referral'); return false;">💰 Earn $10/Month Per Referral</a>
     </div>
   </section>
 
@@ -1147,7 +1276,7 @@
 </div>
 
 <!-- ═══════════════════ REFERRAL PAGE ═══════════════════ -->
-<div id="page-referral">
+<div id="page-referral" style="display:none;">
 
   <div style="height:64px;"></div>
 
@@ -1439,25 +1568,39 @@
 </div>
 
 <script>
+  // ─── PAGE SWITCHING ───
+  function showPage(page) {
+    const home = document.getElementById('page-home');
+    const ref  = document.getElementById('page-referral');
+    if (page === 'referral') {
+      home.style.display = 'none';
+      ref.style.display  = 'block';
+    } else {
+      home.style.display = 'block';
+      ref.style.display  = 'none';
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   // ─── EARNINGS SLIDER ───
   function updateEarnings(val) {
     const num = parseInt(val);
     const monthly = num * 10;
     const annual = monthly * 12;
-    document.getElementById('sliderVal').textContent = num;
-    document.getElementById('earningsAmount').textContent = '$' + monthly;
-    document.getElementById('earningsAnnual').textContent = '$' + annual.toLocaleString();
-    // Update slider fill gradient
-    const pct = ((num - 1) / 24 * 100).toFixed(1);
-    document.getElementById('earningsSlider').style.background =
-      `linear-gradient(to right, var(--green) 0%, var(--green) ${pct}%, var(--gray-200) ${pct}%)`;
-  }
-  // Init slider on load
-  document.addEventListener('DOMContentLoaded', () => updateEarnings(5));
-  function showPage(page) {
-    document.getElementById('page-home').style.display = page === 'home' ? '' : 'none';
-    document.getElementById('page-referral').style.display = page === 'referral' ? '' : 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const sliderVal = document.getElementById('sliderVal');
+    const earningsAmount = document.getElementById('earningsAmount');
+    const earningsAnnual = document.getElementById('earningsAnnual');
+    const slider = document.getElementById('earningsSlider');
+    if (sliderVal) sliderVal.textContent = num;
+    if (earningsAmount) earningsAmount.textContent = '$' + monthly;
+    if (earningsAnnual) earningsAnnual.textContent = '$' + annual.toLocaleString();
+    if (slider) {
+      const pct = ((num - 1) / 24 * 100).toFixed(1);
+      slider.style.background =
+        `linear-gradient(to right, var(--green) 0%, var(--green) ${pct}%, var(--gray-200) ${pct}%)`;
+    }
   }
 
   // ─── SMOOTH SCROLL ───
@@ -1476,34 +1619,32 @@
   }
 
   // ─── MODAL STATE ───
-  let selectedPlan = 'small';
+  let selectedPlan = 'small'; // 'small' | 'large' | 'custom'
 
-  // ─────────────────────────────────────────────────────────────────────────
-  // STRIPE CHECKOUT LINKS
-  // Replace these with your actual Stripe Payment Links.
-  //
-  // HOW STRIPE RECEIVES THE CUSTOMER DATA:
-  // Stripe Payment Links accept these URL parameters natively:
-  //   ?prefilled_email=  → pre-fills the email field on the Stripe checkout page
-  //   ?client_reference_id= → stored on the Stripe Checkout Session; visible
-  //                           in your Stripe dashboard and webhooks. Use this
-  //                           to pass a compact identifier like "2025-08-01|John Smith|5551234567|123 Main St Pearland"
-  //
-  // To fully capture name/phone/address you have two options:
-  //   OPTION A (simple, no backend): Use Stripe's "Collect additional info"
-  //             setting in the Payment Link editor to add custom fields
-  //             (phone, address). Stripe stores them on the customer object.
-  //   OPTION B (backend): Set up a Stripe webhook on checkout.session.completed
-  //             which fires with the full session including client_reference_id,
-  //             customer email, and any custom fields. Your webhook handler
-  //             can then write the signup data to your CRM / Airtable / etc.
-  //             and send a confirmation SMS via Twilio.
-  //
-  // For now, the code passes prefilled_email + a pipe-delimited client_reference_id
-  // containing all fields, which you can read in your Stripe dashboard instantly.
-  // ─────────────────────────────────────────────────────────────────────────
   const STRIPE_SMALL = 'https://buy.stripe.com/REPLACE_SMALL_PLAN';
   const STRIPE_LARGE = 'https://buy.stripe.com/REPLACE_LARGE_PLAN';
+
+  // All step IDs in the system
+  const ALL_STEPS = ['step1','step2','step2c','step3','step3c','step4c'];
+
+  function showOnlyStep(id) {
+    ALL_STEPS.forEach(s => {
+      document.getElementById(s).classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+    document.getElementById('modalBox').scrollTop = 0;
+  }
+
+  function setDots(active, total) {
+    // active = 1-indexed current dot, total = how many dots to show
+    [1,2,3].forEach(i => {
+      const dot = document.getElementById('dot'+i);
+      dot.style.display = i <= total ? '' : 'none';
+      dot.classList.remove('active','done');
+      if (i === active) dot.classList.add('active');
+      else if (i < active) dot.classList.add('done');
+    });
+  }
 
   function get72hrMinDate() {
     const d = new Date();
@@ -1513,17 +1654,33 @@
 
   function openModal(plan) {
     selectedPlan = plan || 'small';
+
+    // Reset all fields
+    ['fieldName','fieldEmail','fieldPhone','fieldAddress','fieldDate',
+     'fieldAddressCustom','fieldYardSize','fieldNotes'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    // Clear errors
+    document.querySelectorAll('.form-error').forEach(e => e.classList.remove('visible'));
+    document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
+
     updatePlanDisplay();
-    goStep(1, true);
-    // Sync plan selector buttons to match what was clicked
+
+    // Sync plan buttons
     document.getElementById('planSmall').classList.toggle('selected', selectedPlan === 'small');
     document.getElementById('planLarge').classList.toggle('selected', selectedPlan === 'large');
-    document.getElementById('signupModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-    // Min date = 72 hours from now
+
+    // Set 72hr min date
     const minDate = get72hrMinDate();
     document.getElementById('fieldDate').min = minDate;
-    document.getElementById('fieldDate').value = '';
+
+    // Show correct first step
+    showOnlyStep('step1');
+    setDots(1, 3);
+
+    document.getElementById('signupModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
@@ -1546,57 +1703,109 @@
     updatePlanDisplay();
   }
 
+  function switchToCustom() {
+    selectedPlan = 'custom';
+    updatePlanDisplay();
+    showOnlyStep('step2c');
+    setDots(2, 3);
+  }
+
   function updatePlanDisplay() {
-    const isSmall = selectedPlan === 'small';
-    document.getElementById('modalPlanBadge').textContent = isSmall ? 'Small / Medium Yard' : 'Larger Yard';
-    document.getElementById('modalPriceDisplay').innerHTML = isSmall ? '$45 <span>/ week</span>' : '$60 <span>/ week</span>';
+    const badge = document.getElementById('modalPlanBadge');
+    const price = document.getElementById('modalPriceDisplay');
+    const headline = document.getElementById('modalHeadline');
+    const subline  = document.getElementById('modalSubline');
+
+    if (selectedPlan === 'custom') {
+      badge.textContent = 'Extra-Large Yard — Custom Quote';
+      price.innerHTML   = 'Custom <span>/ week</span>';
+      headline.textContent = 'Let\'s Figure Out Your Rate.';
+      subline.textContent  = 'Tell us about your yard. We\'ll get back to you within 24 hours.';
+    } else {
+      const isSmall = selectedPlan === 'small';
+      badge.textContent = isSmall ? 'Standard Yard — Up to 10,000 sq ft' : 'Large Yard — 10,001–15,000 sq ft';
+      price.innerHTML   = isSmall ? '$45 <span>/ week</span>' : '$60 <span>/ week</span>';
+      headline.textContent = 'Let\'s Get Your Lawn Sorted.';
+      subline.textContent  = 'Takes 60 seconds. No commitment required.';
+    }
   }
 
+  // ── Standard flow step navigation ──
   function goStep(num, reset) {
-    if (!reset && num > currentStep()) {
-      if (!validateStep(currentStep())) return;
+    if (!reset && num > currentStandardStep()) {
+      if (!validateStep(currentStandardStep())) return;
     }
-    [1,2,3].forEach(i => {
-      document.getElementById('step'+i).classList.toggle('active', i === num);
-      const dot = document.getElementById('dot'+i);
-      dot.classList.remove('active','done');
-      if (i === num) dot.classList.add('active');
-      else if (i < num) dot.classList.add('done');
-    });
-    if (num === 3) populateConfirm();
-    document.getElementById('modalBox').scrollTop = 0;
+    if (num === 1) { showOnlyStep('step1'); setDots(1,3); }
+    if (num === 2) { showOnlyStep('step2'); setDots(2,3); }
+    if (num === 3) { populateConfirm(); showOnlyStep('step3'); setDots(3,3); }
   }
 
-  function currentStep() {
-    for (let i = 1; i <= 3; i++) {
-      if (document.getElementById('step'+i).classList.contains('active')) return i;
-    }
+  function currentStandardStep() {
+    if (document.getElementById('step1').classList.contains('active')) return 1;
+    if (document.getElementById('step2').classList.contains('active')) return 2;
+    if (document.getElementById('step3').classList.contains('active')) return 3;
     return 1;
   }
 
+  // ── Custom flow step navigation ──
+  function goStepCustom(num) {
+    if (num === 3) {
+      if (!validateCustomStep2()) return;
+      populateCustomConfirm();
+      showOnlyStep('step3c');
+      setDots(3,3);
+    }
+  }
+
+  function showCustomStep2() {
+    showOnlyStep('step2c');
+    setDots(2,3);
+  }
+
+  function submitCustomQuote() {
+    // Populate thank-you screen
+    document.getElementById('thankYouEmail').textContent   = document.getElementById('fieldEmail').value.trim();
+    document.getElementById('thankYouPhone').textContent   = document.getElementById('fieldPhone').value.trim();
+    document.getElementById('thankYouAddress').textContent = document.getElementById('fieldAddressCustom').value.trim();
+    document.getElementById('thankYouSize').textContent    = document.getElementById('fieldYardSize').value.trim() || 'Not specified';
+
+    // In production: POST this data to your backend/webhook here
+    // For now it just shows the thank-you screen — all data is captured
+    // in the form fields and you can wire a fetch() to Zapier/Make/your API
+
+    showOnlyStep('step4c');
+    // Hide step dots on thank-you screen
+    [1,2,3].forEach(i => document.getElementById('dot'+i).style.display = 'none');
+  }
+
+  // ── Validation ──
   function validateStep(step) {
     let valid = true;
-
     if (step === 1) {
       const name  = document.getElementById('fieldName').value.trim();
       const email = document.getElementById('fieldEmail').value.trim();
-      const phone = document.getElementById('fieldPhone').value.trim();
-      const phoneClean = phone.replace(/\D/g,'');
-
-      setError('errName',  !name);                                        if (!name)  valid = false;
-      setError('errEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) valid = false;
-      setError('errPhone', phoneClean.length < 10);                       if (phoneClean.length < 10) valid = false;
+      const phone = document.getElementById('fieldPhone').value.trim().replace(/\D/g,'');
+      setError('errName',  !name);
+      setError('errEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+      setError('errPhone', phone.length < 10);
+      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || phone.length < 10) valid = false;
     }
-
     if (step === 2) {
       const addr    = document.getElementById('fieldAddress').value.trim();
       const dateVal = document.getElementById('fieldDate').value;
       const minDate = get72hrMinDate();
-
-      setError('errAddress', !addr);                    if (!addr)  valid = false;
-      setError('errDate',    !dateVal || dateVal < minDate); if (!dateVal || dateVal < minDate) valid = false;
+      setError('errAddress', !addr);
+      setError('errDate', !dateVal || dateVal < minDate);
+      if (!addr || !dateVal || dateVal < minDate) valid = false;
     }
+    return valid;
+  }
 
+  function validateCustomStep2() {
+    let valid = true;
+    const addr = document.getElementById('fieldAddressCustom').value.trim();
+    setError('errAddressCustom', !addr);
+    if (!addr) valid = false;
     return valid;
   }
 
@@ -1608,6 +1817,7 @@
     if (input && input.classList.contains('form-input')) input.classList.toggle('error', show);
   }
 
+  // ── Confirm population ──
   function populateConfirm() {
     const dateVal = document.getElementById('fieldDate').value;
     document.getElementById('cName').textContent    = document.getElementById('fieldName').value.trim();
@@ -1620,6 +1830,17 @@
     document.getElementById('cPlan').textContent = selectedPlan === 'small' ? '$45/week' : '$60/week';
   }
 
+  function populateCustomConfirm() {
+    document.getElementById('ccName').textContent    = document.getElementById('fieldName').value.trim();
+    document.getElementById('ccEmail').textContent   = document.getElementById('fieldEmail').value.trim();
+    document.getElementById('ccPhone').textContent   = document.getElementById('fieldPhone').value.trim();
+    document.getElementById('ccAddress').textContent = document.getElementById('fieldAddressCustom').value.trim();
+    document.getElementById('ccYardSize').textContent = document.getElementById('fieldYardSize').value.trim() || 'Not specified';
+    const notes = document.getElementById('fieldNotes').value.trim();
+    document.getElementById('ccNotes').textContent   = notes || 'None';
+  }
+
+  // ── Stripe redirect ──
   function goToStripe() {
     const email   = document.getElementById('fieldEmail').value.trim();
     const name    = document.getElementById('fieldName').value.trim();
@@ -1627,16 +1848,18 @@
     const address = document.getElementById('fieldAddress').value.trim();
     const date    = document.getElementById('fieldDate').value;
     const plan    = selectedPlan === 'small' ? '$45/wk' : '$60/wk';
-
-    // Build a compact pipe-delimited reference ID readable in Stripe dashboard
-    // Format: YYYY-MM-DD | Name | Phone | Address | Plan
-    const ref = `${date}|${name}|${phone}|${address}|${plan}`;
-
-    const base = selectedPlan === 'small' ? STRIPE_SMALL : STRIPE_LARGE;
-    const url  = `${base}?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${encodeURIComponent(ref)}`;
-
+    const ref     = `${date}|${name}|${phone}|${address}|${plan}`;
+    const base    = selectedPlan === 'small' ? STRIPE_SMALL : STRIPE_LARGE;
+    const url     = `${base}?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${encodeURIComponent(ref)}`;
     window.location.href = url;
   }
+
+  // ─── INIT ───
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('page-home').style.display = 'block';
+    document.getElementById('page-referral').style.display = 'none';
+    updateEarnings(5);
+  });
 </script>
 
 </body>
