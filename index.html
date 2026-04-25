@@ -1116,6 +1116,7 @@
     <a href="#how" onclick="showPage('home')">How It Works</a>
     <a href="#pricing" onclick="showPage('home')">Pricing</a>
     <a href="#" onclick="showPage('referral'); return false;">Referrals</a>
+    <a href="#" onclick="showPage('crew'); return false;">Mow With Us</a>
     <a href="#" class="btn-nav" onclick="openModal('small'); return false;">Start Service →</a>
   </div>
 </nav>
@@ -1403,6 +1404,7 @@
       <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
       <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Cancel: text REPLACE_GOOGLE_PHONE or email us</span>
       <a href="#" onclick="showPage('referral'); return false;">Referral Program</a>
+      <a href="#" onclick="showPage('crew'); return false;">Mow With Us</a>
     </div>
   </footer>
 
@@ -1745,13 +1747,10 @@
   function showPage(page) {
     const home = document.getElementById('page-home');
     const ref  = document.getElementById('page-referral');
-    if (page === 'referral') {
-      home.style.display = 'none';
-      ref.style.display  = 'block';
-    } else {
-      home.style.display = 'block';
-      ref.style.display  = 'none';
-    }
+    const crew = document.getElementById('page-crew');
+    home.style.display = page === 'home'     ? 'block' : 'none';
+    ref.style.display  = page === 'referral' ? 'block' : 'none';
+    crew.style.display = page === 'crew'     ? 'block' : 'none';
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -2031,9 +2030,238 @@
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('page-home').style.display = 'block';
     document.getElementById('page-referral').style.display = 'none';
+    document.getElementById('page-crew').style.display = 'none';
     updateEarnings(5);
   });
 </script>
+
+<!-- ═══════════════════ CREW PAGE ═══════════════════ -->
+<div id="page-crew" style="display:none;">
+
+  <div style="height:64px;"></div>
+
+  <!-- HERO -->
+  <div style="background:linear-gradient(135deg, var(--dark) 0%, #1a3512 100%); padding:80px 5vw 72px; text-align:center;">
+    <div class="section-tag" style="color:var(--green-glow); margin-bottom:14px;">For Lawn Crews</div>
+    <h1 style="font-family:var(--font-head); font-weight:900; font-size:clamp(2.4rem,5vw,4rem); color:#fff; max-width:680px; margin:0 auto 16px; line-height:1.05;">Get Paid to Mow.<br><em style="color:var(--green-glow); font-style:normal;">We Handle Everything Else.</em></h1>
+    <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:520px; margin:0 auto 40px; line-height:1.7;">We bring you the customers, the schedule, and the billing. You show up and mow. Direct deposit to your bank account after every job — no chasing payments, no invoices.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="font-size:1.1rem; padding:16px 36px;">💳 Set Up Direct Deposit → </a>
+      <a href="#crew-how" class="btn-cta-outline" style="border:2px solid rgba(255,255,255,0.35); color:#fff; padding:15px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1rem; letter-spacing:0.04em; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">See How It Works ↓</a>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:flex; justify-content:center; gap:0; margin-top:52px; flex-wrap:wrap; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:24px 32px; max-width:560px; margin:52px auto 0;">
+      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
+        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">1-2 days</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Deposit after job</div>
+      </div>
+      <div style="width:1px; background:rgba(255,255,255,0.1); margin:0 8px;"></div>
+      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
+        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">Weekly</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Recurring routes</div>
+      </div>
+      <div style="width:1px; background:rgba(255,255,255,0.1); margin:0 8px;"></div>
+      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
+        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">$0</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Cost to join</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="background:var(--off-white); padding:72px 5vw;" id="crew-how">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:52px;">
+        <div class="section-tag">Simple Process</div>
+        <h2>Four Steps. Then Just Mow.</h2>
+        <p style="color:var(--gray-500); max-width:460px; margin:0 auto; font-size:1rem; line-height:1.7;">We use Stripe to pay you directly and securely. All you need is a bank account and a phone number to get started.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">📋</div>
+          <h3>Apply to Join</h3>
+          <p>Fill out a short form telling us about your crew, your equipment, and which areas you can cover. We'll reach out within 24 hours.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">💳</div>
+          <h3>Set Up Direct Deposit</h3>
+          <p>Connect your bank account through Stripe — takes about 5 minutes on your phone. This is how you get paid after every job.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">📍</div>
+          <h3>Get Your Schedule</h3>
+          <p>We'll text you the week's addresses every Monday. Each job has the address, yard size, and what needs to be done.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-icon">💸</div>
+          <h3>Mow, Text a Photo, Get Paid</h3>
+          <p>Finish the job, text us one photo of the completed lawn. We release payment to your account — arrives in 1-2 business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY WORK WITH US -->
+  <div style="background:var(--white); padding:72px 5vw;">
+    <div class="section-inner">
+      <div class="section-tag">Why Gulf Coast Mow</div>
+      <h2>No More Chasing Customers or Payments.</h2>
+      <p class="section-sub">We handle everything on the business side. You focus on doing great work.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">📅</div>
+          <h3>Steady Weekly Work</h3>
+          <p>Our customers are on recurring weekly subscriptions — that means consistent, predictable routes for you. No slow weeks, no scrambling for one-off jobs.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💰</div>
+          <h3>Guaranteed Payment</h3>
+          <p>Customers pay us upfront via Stripe before you ever show up. Your payment is already collected — there's no chasing, no "I'll get you next time."</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📱</div>
+          <h3>No App Required</h3>
+          <p>We run everything through text messages and a simple photo confirmation. No app to download, no platform to learn — just a phone and a mower.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE NEED FROM YOU -->
+  <div style="background:var(--green-pale); padding:72px 5vw;">
+    <div class="section-inner">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; max-width:860px;">
+        <div>
+          <div class="section-tag">Requirements</div>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:24px;">What We're Looking For</h2>
+          <ul class="forwhom-list" style="list-style:none; padding:0;">
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Reliable push mower, trimmer, and blower</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Truck or trailer to transport equipment</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Ability to service Pearland, Manvel, or League City</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> A phone that can send and receive texts</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> A US bank account for direct deposit</li>
+            <li style="display:flex; gap:10px; padding:10px 0; color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Consistent availability — weekly routes</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-tag">What You Get</div>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:24px;">Your Side of the Deal</h2>
+          <ul class="forwhom-list" style="list-style:none; padding:0;">
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Steady weekly route in your area</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Direct deposit within 1-2 days of each job</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> No customer billing or collections — ever</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Schedule sent every Monday via text</li>
+            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> No apps, no platforms to learn</li>
+            <li style="display:flex; gap:10px; padding:10px 0; color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Grow with us as we expand routes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRIPE CONNECT EXPLAINER -->
+  <div style="background:var(--dark); padding:72px 5vw;">
+    <div class="section-inner">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; max-width:860px;">
+        <div>
+          <div class="section-tag" style="color:var(--green-glow);">Getting Paid</div>
+          <h2 style="color:#fff; font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:16px;">Direct Deposit via Stripe — Setup Takes 5 Minutes</h2>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.97rem; line-height:1.75; margin-bottom:28px;">We pay all crew members through <strong style="color:#fff;">Stripe Connect</strong> — the same payment platform used by Amazon, Lyft, and DoorDash to pay their contractors. It's secure, fast, and works with any US bank account.</p>
+          <div class="how-track-list">
+            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
+              <div class="how-track-icon">🏦</div>
+              <div>
+                <strong style="color:#fff;">Connect Your Bank Account</strong>
+                <p style="color:rgba(255,255,255,0.5);">Enter your bank routing and account number securely through Stripe's encrypted portal.</p>
+              </div>
+            </div>
+            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
+              <div class="how-track-icon">✅</div>
+              <div>
+                <strong style="color:#fff;">One-Time Verification</strong>
+                <p style="color:rgba(255,255,255,0.5);">Stripe will verify your identity once using your name, DOB, and last 4 of your SSN — standard for any direct deposit setup.</p>
+              </div>
+            </div>
+            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
+              <div class="how-track-icon">💸</div>
+              <div>
+                <strong style="color:#fff;">Get Paid After Every Job</strong>
+                <p style="color:rgba(255,255,255,0.5);">Once you confirm a job is done, we release payment. Funds arrive in your bank account within 1-2 business days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:40px 32px;">
+            <div style="font-size:3rem; margin-bottom:16px;">💳</div>
+            <h3 style="font-family:var(--font-head); font-weight:900; font-size:1.8rem; color:#fff; margin-bottom:8px;">Ready to Get Started?</h3>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem; margin-bottom:28px; line-height:1.6;">Click below to set up your Stripe direct deposit account. Once that's done, reach out and we'll add you to the route schedule.</p>
+            <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="display:block; text-align:center; margin-bottom:14px;">Set Up Direct Deposit →</a>
+            <p style="color:rgba(255,255,255,0.3); font-size:0.78rem;">Powered by Stripe · Bank-level encryption · Free to set up</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="ref-faq" style="background:var(--white);">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="section-tag">FAQ</div>
+      <h2>Questions From Crews.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How much do I get paid per job? <span class="arrow">▼</span></div>
+        <div class="faq-a">Pay per job is discussed during onboarding and depends on yard size and your area. We structure it so you keep the majority of the job revenue — we take a cut to cover customer acquisition, billing, and platform costs. You'll know the rate before you agree to any route.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need to download an app? <span class="arrow">▼</span></div>
+        <div class="faq-a">No app required. We send your weekly schedule by text every Monday. When a job is done, you text us one photo of the completed lawn and we release your payment. That's it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does Stripe work — is it safe? <span class="arrow">▼</span></div>
+        <div class="faq-a">Stripe is one of the largest and most trusted payment platforms in the world — used by Amazon, Lyft, Instacart, and millions of businesses. Your bank info is encrypted and never shared. The setup takes about 5 minutes and is completely secure.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Will I get a 1099 at the end of the year? <span class="arrow">▼</span></div>
+        <div class="faq-a">If your total payments exceed $600 in a calendar year, Stripe automatically generates and sends you a 1099-K for tax purposes. This is standard for independent contractors. Stripe handles the paperwork — you don't need to do anything.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I pick which days or areas I work? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes — during onboarding we'll ask which zip codes you can cover and what days work for you. We try to build routes that match your availability. The more flexible you are, the more jobs we can send your way.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I can't make a scheduled job? <span class="arrow">▼</span></div>
+        <div class="faq-a">Text us as early as possible — at least 24 hours before the scheduled mow if you can. We'll reassign the job. Reliability is the most important thing to us and to our customers, so consistent no-shows will affect whether we can keep you on the route.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div style="background:linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding:72px 5vw; text-align:center;">
+    <div class="section-tag" style="color:var(--green-glow); margin-bottom:12px;">Ready to Join?</div>
+    <h2 style="color:#fff; margin-bottom:12px;">Start Getting Paid to Mow.</h2>
+    <p style="color:rgba(255,255,255,0.55); max-width:440px; margin:0 auto 36px; font-size:1rem; line-height:1.7;">Set up your direct deposit through Stripe, then text us at <strong style="color:rgba(255,255,255,0.8);">REPLACE_GOOGLE_PHONE</strong> to get added to the schedule.</p>
+    <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="font-size:1.15rem; padding:18px 44px;">💳 Set Up Direct Deposit — It's Free</a>
+    <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Powered by Stripe · Takes 5 minutes · Questions? Text REPLACE_GOOGLE_PHONE</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
+    <div style="display:flex;gap:20px; flex-wrap:wrap;">
+      <a href="#" onclick="showPage('home'); return false;">← Back to Home</a>
+      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
+      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Crew questions: text REPLACE_GOOGLE_PHONE</span>
+    </div>
+  </footer>
+
+</div>
 
 </body>
 </html>
