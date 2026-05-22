@@ -360,20 +360,27 @@
       </div>
 
       <div class="modal-step" id="step2">
-        <label class="form-label">Select Your Plan</label>
-        <div class="plan-selector">
-          <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
-            <div class="plan-option-price">$45</div>
-            <div class="plan-option-label">Up to 10,000 sq ft</div>
-            <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">+ 8.25% tax</div>
-          </div>
-          <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
-            <div class="plan-option-price">$60</div>
-            <div class="plan-option-label">10,001 – 15,000 sq ft</div>
-            <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">+ 8.25% tax</div>
-          </div>
-        </div>
-        <p style="font-size:0.78rem; color:var(--gray-500); margin-top:-8px; margin-bottom:12px; line-height:1.4;">Not sure? We verify via satellite. Over 15,000 sq ft? <a href="#" style="color:var(--green); font-weight:600;" onclick="switchToCustom(); return false;">Get a custom quote.</a></p>
+        
+<label class="form-label">What Best Describes Your Property?</label>
+
+<div class="plan-selector">
+  <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
+    <div class="plan-option-price">$45</div>
+    <div class="plan-option-label">Standard subdivision yard</div>
+    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">Most homes</div>
+  </div>
+
+  <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
+    <div class="plan-option-price">$60</div>
+    <div class="plan-option-label">Larger yard / corner lot</div>
+    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">Bigger backyard or lot</div>
+  </div>
+</div>
+
+<p style="font-size:0.78rem; color:var(--gray-500); margin-top:-8px; margin-bottom:12px; line-height:1.4;">
+No measuring required. We verify pricing via satellite before your first mow. Oversized or acreage lots may require a custom quote.
+</p>
+
         <label class="form-label">Service Address</label>
         <input type="text" class="form-input" id="fieldAddress" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
         <div class="form-error" id="errAddress">Please enter your service address.</div>
@@ -526,10 +533,10 @@
           <div class="step-num">1</div>
           <div class="step-icon">🏡</div>
           <h3>Tell Us About Your Yard</h3>
-          <p>Enter your address and confirm your yard size. Pricing is clear and locked in before you subscribe — no surprises.</p>
-          <span class="step-price">Up to 10,000 sq ft — $45/wk + tax</span>
-          <span class="step-price" style="margin-top:6px; display:inline-block;">10,001 – 15,000 sq ft — $60/wk + tax</span>
-          <span class="step-price" style="margin-top:6px; display:inline-block; background:#f0f0f0; color:#888;">Over 15,000 sq ft — Contact us</span>
+          <p>Enter your address and choose the option that best matches your property. Pricing is clear and locked in before you subscribe — no surprises.</p>
+          <span class="step-price">Standard subdivision yard — $45/wk + tax</span>
+          <span class="step-price" style="margin-top:6px; display:inline-block;">Larger yard / corner lot — $60/wk + tax</span>
+          <span class="step-price" style="margin-top:6px; display:inline-block; background:#f0f0f0; color:#888;">Oversized lots — Custom quote</span>
         </div>
         <div class="step-card">
           <div class="step-num">2</div>
