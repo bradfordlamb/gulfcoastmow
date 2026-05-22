@@ -798,19 +798,25 @@ No measuring required. Choose the closest option. We verify all pricing by satel
 
   <div class="ref-earnings">
     <div class="section-tag">Earnings Calculator</div>
-    <h2>See What You Could Earn.</h2>
+    <h2>Refer Neighbors. Lower Your Lawn Bill.</h2>
+      <p style="color:var(--gray-500); font-size:1rem; max-width:620px; margin:0 auto 26px; line-height:1.6; text-align:center;">
+        
+Each active referral earns $10/month in referral credits while they remain an active customer.
+Credits are reviewed monthly and typically applied toward your own lawn service first through Stripe billing adjustments.
+ About 18 active referrals can offset a $45/week plan (~$180/month), and about 24 can offset a $60/week plan (~$240/month). After your lawn is covered, referral profit is capped at $600/year per person due to IRS reporting requirements.
+      </p>
     <div class="earn-calc-wrap">
       <div>
         <label class="earn-slider-label">Drag to see your monthly earnings</label>
         <div class="earn-slider-val-row"><span class="earn-slider-val-num" id="sliderVal">5</span><span class="earn-slider-val-label">referred yards</span></div>
         <input type="range" class="earn-slider" id="earningsSlider" min="1" max="25" value="5" oninput="updateEarnings(this.value)">
-        <div class="earn-slider-range-labels"><span>1 yard</span><span>25 yards</span></div>
+        <div class="earn-slider-range-labels"><span>1 yard</span><span>29 yards</span></div>
       </div>
       <div class="earn-calc-result">
         <div class="earn-result-label">Monthly earnings</div>
         <div class="earn-result-amount" id="earningsAmount">$50</div>
         <div class="earn-result-annual">= <span id="earningsAnnual">$600</span> per year</div>
-        <div class="earn-result-note">As long as those yards stay active subscribers.</div>
+        <div class="earn-result-note">Credits offset your own mow first. Extra referral profit is capped at $600/year per person.</div>
       </div>
     </div>
     <div class="earnings-grid" style="margin-top:40px;">
@@ -992,6 +998,80 @@ No measuring required. Choose the closest option. We verify all pricing by satel
     updateEarnings(5);
   });
 </script>
+
+
+<script>
+(function(){
+  function updateReferralCalculatorLabels(){
+    const slider = document.getElementById('earnSlider') || document.querySelector('.earn-slider');
+    if (!slider) return;
+
+    const count = parseInt(slider.value || '1', 10);
+    const monthlyCredit = count * 10;
+    const annualCredit = monthlyCredit * 12;
+    const standardBreakEven = 18;
+    const largeBreakEven = 24;
+    const annualProfitCap = 600;
+
+    const resultAmount = document.getElementById('earnResultAmount') || document.querySelector('.earn-result-amount');
+    const annualText = document.getElementById('earnResultAnnual') || document.querySelector('.earn-result-annual');
+    const note = document.getElementById('earnResultNote') || document.querySelector('.earn-result-note');
+    const yardCount = document.getElementById('earnYardCount') || document.querySelector('.earn-slider-val-num');
+
+    if (yardCount) yardCount.textContent = count;
+    if (resultAmount) resultAmount.textContent = '$' + monthlyCredit;
+
+    if (annualText) {
+      if (count < standardBreakEven) {
+        annualText.innerHTML = '= $' + annualCredit.toLocaleString() + ' per year in mow credits';
+      } else if (count < largeBreakEven) {
+        annualText.innerHTML = '≈ enough to heavily reduce a standard mow plan';
+      } else {
+        annualText.innerHTML = '≈ enough to potentially cover your mowing bill';
+      }
+    }
+
+    if (note) {
+      if (count < standardBreakEven) {
+        note.textContent = standardBreakEven + ' active referrals is the rough break-even point for the $45/week plan.';
+      } else if (count < largeBreakEven) {
+        note.textContent = 'Your standard lawn plan is roughly covered. Extra profit is capped at $600/year per person.';
+      } else {
+        note.textContent = 'Your large-yard plan is roughly covered. Extra profit is capped at $600/year per person.';
+      }
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', function(){
+    const slider = document.getElementById('earnSlider') || document.querySelector('.earn-slider');
+    if (slider) {
+      slider.max = 29;
+      slider.addEventListener('input', updateReferralCalculatorLabels);
+      updateReferralCalculatorLabels();
+    }
+  });
+})();
+</script>
+
+
+<div style="margin:18px auto 0; max-width:760px; background:rgba(45,122,34,0.06); border:1px solid rgba(45,122,34,0.15); border-radius:14px; padding:14px 16px; font-size:0.84rem; color:var(--gray-600); line-height:1.6; text-align:center;">
+  Referral program terms are subject to change at any time. Current promotion allows referral credits up to the IRS reporting threshold of <strong>$600/year per person</strong>. In practice, this could fully offset your own lawn service and provide up to an additional $600/year for helping promote Gulf Coast Mow.
+</div>
+<div style="margin:22px auto 0; max-width:760px; background:rgba(45,122,34,0.06); border:1px solid rgba(45,122,34,0.15); border-radius:16px; padding:18px 20px; line-height:1.65;">
+  <div style="font-weight:800; color:var(--dark); margin-bottom:8px; font-size:1rem;">
+    How Referral Credits Work
+  </div>
+
+  <div style="font-size:0.9rem; color:var(--gray-600);">
+    • Referral activity is reviewed monthly.<br>
+    • Credits are generally applied toward your own Gulf Coast Mow service first.<br>
+    • Example: If your mow bill is $180/month and you earn $50 in referral credits, your next Stripe bill would typically be reduced to about $130.<br>
+    • If referral credits exceed your mowing bill, additional promotional payouts may be issued manually.<br>
+    • Current promotional payouts are capped at $600/year per person due to IRS reporting considerations.<br>
+    • Referral program terms and promotional structures are subject to change at any time.
+  </div>
+</div>
+
 
 </body>
 </html>
