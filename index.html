@@ -232,47 +232,55 @@
   .who-card h4 { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; margin-bottom: 8px; color: var(--dark); }
   .who-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(10,20,8,0.72); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(10,20,8,0.72); backdrop-filter: blur(6px); align-items: flex-end; justify-content: center; padding: 0; }
+  @media (min-width: 600px) { .modal-overlay { align-items: center; padding: 20px; } }
   .modal-overlay.active { display: flex; }
-  .modal-box { background: var(--white); border-radius: 20px; width: 100%; max-width: 480px; box-shadow: 0 24px 80px rgba(0,0,0,0.35); overflow: hidden; animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both; }
+  .modal-box { background: var(--white); border-radius: 20px 20px 0 0; width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto; box-shadow: 0 -8px 40px rgba(0,0,0,0.35); animation: modalUp 0.3s cubic-bezier(0.34,1.2,0.64,1) both; }
+  @media (min-width: 600px) { .modal-box { border-radius: 20px; max-height: 90vh; animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both; } }
+  @keyframes modalUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes modalIn { from { opacity: 0; transform: scale(0.88) translateY(24px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-  .modal-header { background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding: 32px 36px 28px; position: relative; }
-  .modal-header .modal-plan-badge { display: inline-block; background: rgba(77,184,64,0.22); border: 1px solid rgba(77,184,64,0.45); color: #a8eea0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; margin-bottom: 12px; }
-  .modal-header h3 { font-family: var(--font-head); font-weight: 900; font-size: 1.8rem; color: #fff; line-height: 1.1; margin-bottom: 6px; }
-  .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
-  .modal-price { font-family: var(--font-head); font-weight: 900; font-size: 2.6rem; color: var(--green-glow); line-height: 1; margin-top: 8px; }
-  .modal-price span { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.45); }
-  .modal-close { position: absolute; top: 16px; right: 18px; background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6); width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .modal-header { background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding: 20px 24px 16px; position: relative; }
+  @media (min-width: 600px) { .modal-header { padding: 32px 36px 28px; } }
+  .modal-header .modal-plan-badge { display: inline-block; background: rgba(77,184,64,0.22); border: 1px solid rgba(77,184,64,0.45); color: #a8eea0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; margin-bottom: 8px; }
+  .modal-header h3 { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: #fff; line-height: 1.1; margin-bottom: 4px; }
+  @media (min-width: 600px) { .modal-header h3 { font-size: 1.8rem; margin-bottom: 6px; } }
+  .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+  .modal-price { font-family: var(--font-head); font-weight: 900; font-size: 2rem; color: var(--green-glow); line-height: 1; margin-top: 6px; }
+  @media (min-width: 600px) { .modal-price { font-size: 2.6rem; margin-top: 8px; } }
+  .modal-price span { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.45); }
+  .modal-close { position: absolute; top: 14px; right: 16px; background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6); width: 36px; height: 36px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .modal-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
-  .modal-body { padding: 32px 36px 36px; }
-  .modal-step-indicator { display: flex; gap: 6px; margin-bottom: 28px; }
+  .modal-body { padding: 20px 24px 32px; }
+  @media (min-width: 600px) { .modal-body { padding: 32px 36px 36px; } }
+  .modal-step-indicator { display: flex; gap: 6px; margin-bottom: 20px; }
   .modal-step-dot { height: 4px; border-radius: 2px; flex: 1; background: var(--gray-100); transition: background 0.3s; }
   .modal-step-dot.active { background: var(--green); }
   .modal-step-dot.done { background: var(--green-light); }
   .modal-step { display: none; }
   .modal-step.active { display: block; }
-  .form-label { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 8px; }
-  .form-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font-body); font-size: 1rem; color: var(--dark); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; margin-bottom: 20px; }
+  .form-label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 6px; }
+  .form-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font-body); font-size: 1rem; color: var(--dark); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; margin-bottom: 14px; }
   .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,122,34,0.12); }
   .form-input.error { border-color: #e53e3e; box-shadow: 0 0 0 3px rgba(229,62,62,0.10); }
-  .form-error { color: #e53e3e; font-size: 0.82rem; margin-top: -14px; margin-bottom: 14px; display: none; }
+  .form-error { color: #e53e3e; font-size: 0.78rem; margin-top: -10px; margin-bottom: 10px; display: none; }
   .form-error.visible { display: block; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 460px) { .form-row { grid-template-columns: 1fr; } }
-  .form-hint { font-size: 0.82rem; color: var(--gray-500); margin-top: -14px; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
-  .form-hint::before { content: 'ℹ'; font-size: 0.75rem; color: var(--green); }
-  .plan-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-  .plan-option { border: 2px solid var(--gray-200); border-radius: 12px; padding: 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s; text-align: center; position: relative; }
+  .form-hint { font-size: 0.78rem; color: var(--gray-500); margin-top: -10px; margin-bottom: 14px; display: flex; align-items: center; gap: 5px; line-height: 1.4; }
+  .form-hint::before { content: 'ℹ'; font-size: 0.75rem; color: var(--green); flex-shrink: 0; }
+  .plan-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .plan-option { border: 2px solid var(--gray-200); border-radius: 12px; padding: 12px 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; text-align: center; position: relative; }
   .plan-option:hover { border-color: var(--green); background: var(--green-pale); }
   .plan-option.selected { border-color: var(--green); background: var(--green-pale); }
-  .plan-option.selected::after { content: '✓'; position: absolute; top: 8px; right: 10px; color: var(--green); font-weight: 700; font-size: 0.85rem; }
-  .plan-option-price { font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; color: var(--dark); }
-  .plan-option-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
-  .modal-btn-row { display: flex; gap: 10px; margin-top: 8px; }
-  .modal-btn-back { background: var(--gray-100); color: var(--gray-700); border: none; padding: 14px 20px; border-radius: 10px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+  .plan-option.selected::after { content: '✓'; position: absolute; top: 6px; right: 8px; color: var(--green); font-weight: 700; font-size: 0.85rem; }
+  .plan-option-price { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: var(--dark); }
+  .plan-option-label { font-size: 0.72rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
+  .modal-btn-row { display: flex; gap: 10px; margin-top: 16px; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .modal-btn-back { background: var(--gray-100); color: var(--gray-700); border: none; padding: 16px 18px; border-radius: 10px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; min-height: 56px; }
   .modal-btn-back:hover { background: var(--gray-200); }
-  .modal-btn-next { flex: 1; background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%); color: #fff; border: none; padding: 14px 24px; border-radius: 10px; font-family: var(--font-head); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 16px rgba(45,122,34,0.35); transition: transform 0.15s, box-shadow 0.15s; }
+  .modal-btn-next { flex: 1; background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%); color: #fff; border: none; padding: 16px 24px; border-radius: 10px; font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 16px rgba(45,122,34,0.35); transition: transform 0.15s, box-shadow 0.15s; min-height: 56px; }
   .modal-btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(45,122,34,0.45); }
+  .modal-btn-next:active { transform: scale(0.98); }
   .modal-btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   .confirm-summary { background: var(--green-pale); border-radius: 12px; padding: 20px; margin-bottom: 24px; border: 1px solid rgba(45,122,34,0.15); }
   .confirm-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.92rem; padding: 6px 0; border-bottom: 1px solid rgba(45,122,34,0.1); }
@@ -343,7 +351,7 @@
             <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">+ 8.25% tax</div>
           </div>
         </div>
-        <p style="font-size:0.8rem; color:var(--gray-500); margin-top:-12px; margin-bottom:16px; line-height:1.5;">Not sure of your size? We verify with satellite imagery — you'll never be on the wrong plan. Over 15,000 sq ft? <a href="#" style="color:var(--green); font-weight:600;" onclick="switchToCustom(); return false;">Get a custom quote instead.</a></p>
+        <p style="font-size:0.78rem; color:var(--gray-500); margin-top:-8px; margin-bottom:12px; line-height:1.4;">Not sure? We verify via satellite. Over 15,000 sq ft? <a href="#" style="color:var(--green); font-weight:600;" onclick="switchToCustom(); return false;">Get a custom quote.</a></p>
         <label class="form-label">Service Address</label>
         <input type="text" class="form-input" id="fieldAddress" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
         <div class="form-error" id="errAddress">Please enter your service address.</div>
