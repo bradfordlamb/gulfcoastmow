@@ -398,23 +398,24 @@ No measuring required. We verify pricing via satellite before your first mow. Ov
         </div>
       </div>
 
-      <div class="modal-step" id="step2c">
-        <div style="background:rgba(45,122,34,0.08); border:1px solid rgba(45,122,34,0.2); border-radius:10px; padding:12px 14px; margin-bottom:20px; font-size:0.85rem; color:var(--gray-700); line-height:1.6;">
-          🌿 We'll review your yard and send you a custom weekly rate within <strong>24 hours</strong>. No obligation.
-        </div>
-        <label class="form-label">Service Address</label>
-        <input type="text" class="form-input" id="fieldAddressCustom" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
-        <div class="form-error" id="errAddressCustom">Please enter your service address.</div>
-        <label class="form-label">Approx. Yard Size</label>
-        <input type="text" class="form-input" id="fieldYardSize" placeholder="e.g. 18,000 sq ft or about 0.4 acres" style="margin-bottom:4px;">
-        <div class="form-hint">Best estimate is fine — we'll verify with satellite imagery.</div>
-        <label class="form-label">Anything Else We Should Know? <span style="font-weight:400; text-transform:none; color:var(--gray-500);">(optional)</span></label>
-        <textarea class="form-input" id="fieldNotes" placeholder="e.g. fenced yard, slope, gate code, obstacles..." rows="3" style="resize:vertical; font-family:var(--font-body);"></textarea>
-        <div class="modal-btn-row">
-          <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
-          <button class="modal-btn-next" onclick="goStepCustom(3)">Review &amp; Submit →</button>
-        </div>
-      </div>
+      
+<div class="modal-step" id="step2c">
+  <div style="background:rgba(45,122,34,0.08); border:1px solid rgba(45,122,34,0.2); border-radius:10px; padding:12px 14px; margin-bottom:20px; font-size:0.85rem; color:var(--gray-700); line-height:1.6;">
+    🌿 For extra-large or unusual yards, just provide your address. We’ll review the property by satellite and confirm pricing by text or email within <strong>24 hours</strong>. No payment required.
+  </div>
+
+  <label class="form-label">Service Address</label>
+  <input type="text" class="form-input" id="fieldAddressCustom" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
+  <div class="form-error" id="errAddressCustom">Please enter your service address.</div>
+
+  <label class="form-label">Anything Else We Should Know? <span style="font-weight:400; text-transform:none; color:var(--gray-500);">(optional)</span></label>
+  <textarea class="form-input" id="fieldNotes" placeholder="e.g. gate code, fenced backyard, dogs, preferred day..." rows="3" style="resize:vertical; font-family:var(--font-body);"></textarea>
+
+  <div class="modal-btn-row">
+    <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
+    <button class="modal-btn-next" onclick="goStepCustom(3)">Review &amp; Submit →</button>
+  </div>
+</div>
 
       <div class="modal-step" id="step3">
         <div class="confirm-summary" id="confirmSummary">
@@ -449,10 +450,9 @@ No measuring required. We verify pricing via satellite before your first mow. Ov
           <div class="confirm-row"><span class="confirm-label">Email</span><span class="confirm-value" id="ccEmail">—</span></div>
           <div class="confirm-row"><span class="confirm-label">Phone (SMS)</span><span class="confirm-value" id="ccPhone">—</span></div>
           <div class="confirm-row"><span class="confirm-label">Address</span><span class="confirm-value" id="ccAddress">—</span></div>
-          <div class="confirm-row"><span class="confirm-label">Yard Size</span><span class="confirm-value" id="ccYardSize">—</span></div>
           <div class="confirm-row"><span class="confirm-label">Notes</span><span class="confirm-value" id="ccNotes" style="font-size:0.85rem;">—</span></div>
         </div>
-        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">Everything look right? We'll text and email you a custom quote within <strong style="color:var(--dark);">24 hours</strong>. No payment required.</p>
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">Everything look right? We’ll review your property by satellite and confirm pricing by text or email within <strong style="color:var(--dark);">24 hours</strong>. No payment required.</p>
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="showCustomStep2()">← Back</button>
           <button class="modal-btn-next" onclick="submitCustomQuote()">Submit Quote Request →</button>
@@ -463,9 +463,9 @@ No measuring required. We verify pricing via satellite before your first mow. Ov
         <div style="text-align:center; padding:12px 0 24px;">
           <div style="font-size:3.5rem; margin-bottom:16px;">✅</div>
           <h3 style="font-family:var(--font-head); font-weight:900; font-size:1.7rem; color:var(--dark); margin-bottom:10px;">We've Got Your Request!</h3>
-          <p style="font-size:0.95rem; color:var(--gray-500); line-height:1.7; max-width:340px; margin:0 auto 24px;">We'll review your yard and send a custom weekly rate to <strong id="thankYouEmail" style="color:var(--dark);">your email</strong> and text <strong id="thankYouPhone" style="color:var(--dark);">your phone</strong> within <strong style="color:var(--green);">24 hours</strong>.</p>
+          <p style="font-size:0.95rem; color:var(--gray-500); line-height:1.7; max-width:340px; margin:0 auto 24px;">We’ll review your property by satellite and send a custom weekly rate to <strong id="thankYouEmail" style="color:var(--dark);">your email</strong> and text <strong id="thankYouPhone" style="color:var(--dark);">your phone</strong> within <strong style="color:var(--green);">24 hours</strong>.</p>
           <div style="background:var(--green-pale); border-radius:12px; padding:16px 20px; margin-bottom:24px; text-align:left;">
-            <p style="font-size:0.85rem; color:var(--gray-700); margin:0; line-height:1.65;">📍 <strong>Address:</strong> <span id="thankYouAddress"></span><br>📐 <strong>Yard Size:</strong> <span id="thankYouSize"></span></p>
+            <p style="font-size:0.85rem; color:var(--gray-700); margin:0; line-height:1.65;">📍 <strong>Address:</strong> <span id="thankYouAddress"></span><br>🛰️ <strong>Review:</strong> <span id="thankYouSize">Satellite pricing confirmation requested</span></p>
           </div>
           <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
             <button class="modal-btn-next" style="flex:none; padding:12px 24px;" onclick="closeModal()">Done</button>
