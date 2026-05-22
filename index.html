@@ -308,6 +308,11 @@
   .hero-content > *:nth-child(3) { animation-delay: 0.32s; }
   .hero-content > *:nth-child(4) { animation-delay: 0.42s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.52s; }
+
+  @media (max-width: 720px) {
+    .plan-selector[style*="repeat(3"] { grid-template-columns: 1fr !important; }
+  }
+
 </style>
 
 <script type="application/ld+json">
@@ -361,28 +366,37 @@
 
       <div class="modal-step" id="step2">
         
+
 <label class="form-label">What Best Describes Your Property?</label>
 
-<div class="plan-selector">
+<div class="plan-selector" style="grid-template-columns: repeat(3, 1fr);">
   <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
     <div class="plan-option-price">$45</div>
     <div class="plan-option-label">Standard subdivision yard</div>
-    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">Most homes</div>
+    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px; line-height:1.45;">
+      Most homes with a typical front yard and backyard.
+    </div>
   </div>
 
   <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
     <div class="plan-option-price">$60</div>
     <div class="plan-option-label">Larger yard / corner lot</div>
-    
-<div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px; line-height:1.45;">
-Examples: corner lots, large backyards, cul-de-sac lots, long fence lines, or homes noticeably larger than surrounding properties.
-</div>
+    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px; line-height:1.45;">
+      Corner lots, large backyards, cul-de-sac lots, long fence lines, or homes noticeably larger than surrounding properties.
+    </div>
+  </div>
 
+  <div class="plan-option" id="planCustom" onclick="switchToCustom()">
+    <div class="plan-option-price" style="font-size:1.15rem;">Custom</div>
+    <div class="plan-option-label">Extra-large / unusual property</div>
+    <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px; line-height:1.45;">
+      Acreage, oversized lots, unusual layouts, or if you are not sure which option fits.
+    </div>
   </div>
 </div>
 
-<p style="font-size:0.78rem; color:var(--gray-500); margin-top:-8px; margin-bottom:12px; line-height:1.4;">
-No measuring required. We verify pricing via satellite before your first mow. Oversized or acreage lots may require a custom quote.
+<p style="font-size:0.78rem; color:var(--gray-500); margin-top:-2px; margin-bottom:12px; line-height:1.45;">
+No measuring required. Choose the closest option. We verify all pricing by satellite before your first mow.
 </p>
 
         <label class="form-label">Service Address</label>
@@ -392,6 +406,10 @@ No measuring required. We verify pricing via satellite before your first mow. Ov
         <input type="date" class="form-input" id="fieldDate" style="margin-bottom:4px;">
         <div class="form-error" id="errDate">Please select a date at least 72 hours from today.</div>
         <div class="form-hint">First mow requires 72 hours notice. We'll text you to confirm.</div>
+<div class="form-hint" style="margin-top:10px; line-height:1.5;">
+🗓 Preferred mow day is not guaranteed. Service will typically occur within a 1–3 day window each week depending on routing, weather, and crew availability.
+</div>
+
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
           <button class="modal-btn-next" onclick="goStep(3)">Review &amp; Continue →</button>
@@ -892,7 +910,10 @@ No measuring required. We verify pricing via satellite before your first mow. Ov
 
   function selectPlan(plan) { selectedPlan=plan; document.getElementById('planSmall').classList.toggle('selected',plan==='small'); document.getElementById('planLarge').classList.toggle('selected',plan==='large'); updatePlanDisplay(); }
 
-  function switchToCustom() { selectedPlan='custom'; updatePlanDisplay(); showOnlyStep('step2c'); setDots(2,3); }
+  function switchToCustom() {
+  document.getElementById('planSmall')?.classList.remove('selected');
+  document.getElementById('planLarge')?.classList.remove('selected');
+  document.getElementById('planCustom')?.classList.add('selected'); selectedPlan='custom'; updatePlanDisplay(); showOnlyStep('step2c'); setDots(2,3); }
 
   function updatePlanDisplay() {
     const badge=document.getElementById('modalPlanBadge'), price=document.getElementById('modalPriceDisplay'), headline=document.getElementById('modalHeadline'), subline=document.getElementById('modalSubline');
