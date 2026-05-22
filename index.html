@@ -29,690 +29,167 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-  body {
-    font-family: var(--font-body);
-    background: var(--white);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--gray-100);
-    padding: 0 5vw;
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-100); padding: 0 5vw;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-logo {
-    font-family: var(--font-head);
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: var(--green);
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .nav-logo { font-family: var(--font-head); font-weight: 900; font-size: 1.4rem; color: var(--green); letter-spacing: 0.02em; text-decoration: none; display: flex; align-items: center; gap: 8px; }
   .nav-logo svg { width: 28px; height: 28px; }
   .nav-links { display: flex; align-items: center; gap: 24px; }
-  .nav-links a {
-    font-size: 0.88rem; font-weight: 500; color: var(--gray-700);
-    text-decoration: none; transition: color 0.2s;
-  }
+  .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--gray-700); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--green); }
-  .btn-nav {
-    background: var(--green); color: #fff; border: none;
-    padding: 9px 20px; border-radius: 8px; font-family: var(--font-body);
-    font-weight: 600; font-size: 0.88rem; cursor: pointer;
-    text-decoration: none; transition: background 0.2s, transform 0.1s;
-  }
+  .btn-nav { background: var(--green); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.1s; }
   .btn-nav:hover { background: var(--green-light); transform: translateY(-1px); }
+  @media (max-width: 600px) { .nav-links { display: none; } }
 
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
-  }
-
-  /* ─── HERO ─── */
-  #home {
-    min-height: 100vh;
-    padding-top: 64px;
-    display: flex; align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      linear-gradient(135deg, rgba(10,28,8,0.80) 0%, rgba(20,55,12,0.62) 55%, rgba(45,122,34,0.22) 100%),
-      url('https://images.pexels.com/photos/6728933/pexels-photo-6728933.jpeg?auto=compress&cs=tinysrgb&w=1600') center 50%/cover no-repeat;
-  }
-  .hero-bg-slide { display: none; }
-  .hero-content {
-    position: relative; z-index: 1;
-    max-width: 680px;
-    padding: 60px 5vw 80px;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(77,184,64,0.18);
-    border: 1px solid rgba(77,184,64,0.4);
-    color: #a8eea0;
-    font-size: 0.82rem; font-weight: 600;
-    padding: 5px 14px; border-radius: 40px;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em; text-transform: uppercase;
-  }
+  #home { min-height: 100vh; padding-top: 64px; display: flex; align-items: center; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(135deg, rgba(10,28,8,0.80) 0%, rgba(20,55,12,0.62) 55%, rgba(45,122,34,0.22) 100%), url('https://images.pexels.com/photos/6728933/pexels-photo-6728933.jpeg?auto=compress&cs=tinysrgb&w=1600') center 50%/cover no-repeat; }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; padding: 60px 5vw 80px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(77,184,64,0.18); border: 1px solid rgba(77,184,64,0.4); color: #a8eea0; font-size: 0.82rem; font-weight: 600; padding: 5px 14px; border-radius: 40px; margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
   .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--green-glow); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-  h1 {
-    font-family: var(--font-head);
-    font-weight: 900;
-    font-size: clamp(2.8rem, 6vw, 5.2rem);
-    line-height: 1.0;
-    color: #fff;
-    margin-bottom: 20px;
-    letter-spacing: -0.01em;
-  }
+  h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(2.8rem, 6vw, 5.2rem); line-height: 1.0; color: #fff; margin-bottom: 20px; letter-spacing: -0.01em; }
   h1 em { color: var(--green-glow); font-style: normal; }
-
-  .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.18rem);
-    color: rgba(255,255,255,0.88);
-    margin-bottom: 16px;
-    max-width: 520px;
-    font-weight: 400;
-  }
-  .hero-referral {
-    font-size: 0.92rem;
-    color: rgba(168,238,160,0.92);
-    font-weight: 500;
-    margin-bottom: 36px;
-    display: flex; align-items: center; gap: 7px;
-  }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.18rem); color: rgba(255,255,255,0.88); margin-bottom: 16px; max-width: 520px; font-weight: 400; }
+  .hero-referral { font-size: 0.92rem; color: rgba(168,238,160,0.92); font-weight: 500; margin-bottom: 36px; display: flex; align-items: center; gap: 7px; }
   .hero-referral::before { content: '💰'; }
-
   .cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
-    color: #fff; border: none;
-    padding: 16px 34px; border-radius: 10px;
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 1.15rem; letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    box-shadow: 0 4px 20px rgba(45,122,34,0.45), 0 0 0 1px rgba(255,255,255,0.15) inset;
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(45,122,34,0.55), 0 0 0 1px rgba(255,255,255,0.2) inset;
-  }
-  .btn-primary:active { transform: translateY(0); }
-
-  .btn-secondary {
-    background: rgba(255,255,255,0.12);
-    color: #fff; border: 1.5px solid rgba(255,255,255,0.4);
-    padding: 15px 28px; border-radius: 10px;
-    font-family: var(--font-head); font-weight: 700;
-    font-size: 1.05rem; letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    backdrop-filter: blur(8px);
-    transition: background 0.2s, transform 0.15s;
-    display: inline-flex; align-items: center; gap: 7px;
-  }
+  .btn-primary { background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%); color: #fff; border: none; padding: 16px 34px; border-radius: 10px; font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none; box-shadow: 0 4px 20px rgba(45,122,34,0.45), 0 0 0 1px rgba(255,255,255,0.15) inset; transition: transform 0.15s, box-shadow 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,122,34,0.55), 0 0 0 1px rgba(255,255,255,0.2) inset; }
+  .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 15px 28px; border-radius: 10px; font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none; backdrop-filter: blur(8px); transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 7px; }
   .btn-secondary:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
-
-  .hero-trust {
-    position: relative; z-index: 1;
-    display: flex; gap: 32px; flex-wrap: wrap;
-    padding: 22px 5vw;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .trust-item {
-    display: flex; align-items: center; gap: 8px;
-    color: rgba(255,255,255,0.80); font-size: 0.88rem; font-weight: 500;
-  }
+  .hero-trust { position: relative; z-index: 1; display: flex; gap: 32px; flex-wrap: wrap; padding: 22px 5vw; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.80); font-size: 0.88rem; font-weight: 500; }
   .trust-icon { color: var(--green-glow); font-size: 1rem; }
 
-  /* ─── SECTIONS SHARED ─── */
   section { padding: 80px 5vw; }
   .section-inner { max-width: 1080px; margin: 0 auto; }
-  .section-tag {
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--green);
-    margin-bottom: 10px;
-  }
-  h2 {
-    font-family: var(--font-head);
-    font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.05; color: var(--dark);
-    margin-bottom: 16px; letter-spacing: -0.01em;
-  }
-  .section-sub {
-    font-size: 1.05rem; color: var(--gray-500); max-width: 520px; margin-bottom: 52px;
-  }
+  .section-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+  h2 { font-family: var(--font-head); font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+  .section-sub { font-size: 1.05rem; color: var(--gray-500); max-width: 520px; margin-bottom: 52px; }
 
-  /* ─── HOW IT WORKS ─── */
   #how { background: var(--off-white); }
-  .steps-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-  }
-  .step-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 36px 32px;
-    border: 1px solid var(--gray-100);
-    box-shadow: var(--shadow);
-    position: relative; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+  .step-card { background: var(--white); border-radius: var(--radius); padding: 36px 32px; border: 1px solid var(--gray-100); box-shadow: var(--shadow); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
   .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .step-num {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 4.5rem; line-height: 1; color: var(--green-pale);
-    position: absolute; top: 16px; right: 20px;
-    z-index: 0; letter-spacing: -0.02em;
-  }
+  .step-num { font-family: var(--font-head); font-weight: 900; font-size: 4.5rem; line-height: 1; color: var(--green-pale); position: absolute; top: 16px; right: 20px; z-index: 0; letter-spacing: -0.02em; }
   .step-icon { font-size: 2.2rem; margin-bottom: 16px; position: relative; z-index: 1; }
-  .step-card h3 {
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 1.45rem; color: var(--dark);
-    margin-bottom: 10px; position: relative; z-index: 1;
-  }
+  .step-card h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.45rem; color: var(--dark); margin-bottom: 10px; position: relative; z-index: 1; }
   .step-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.65; position: relative; z-index: 1; }
-  .step-price {
-    display: inline-block; margin-top: 12px;
-    background: var(--green-pale); color: var(--green);
-    font-weight: 700; font-size: 0.88rem;
-    padding: 4px 12px; border-radius: 6px;
-    position: relative; z-index: 1;
-  }
+  .step-price { display: inline-block; margin-top: 12px; background: var(--green-pale); color: var(--green); font-weight: 700; font-size: 0.88rem; padding: 4px 12px; border-radius: 6px; position: relative; z-index: 1; }
 
-  /* ─── WHY BETTER ─── */
   #why { background: var(--white); }
-  .why-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  .why-card {
-    padding: 36px 32px;
-    border-radius: var(--radius);
-    border: 1px solid var(--gray-100);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .why-card { padding: 36px 32px; border-radius: var(--radius); border: 1px solid var(--gray-100); transition: border-color 0.2s, box-shadow 0.2s; }
   .why-card:hover { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,122,34,0.08); }
-  .why-icon {
-    width: 52px; height: 52px; border-radius: 14px;
-    background: var(--green-pale);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.6rem; margin-bottom: 18px;
-  }
-  .why-card h3 {
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 1.3rem; color: var(--dark); margin-bottom: 8px;
-  }
+  .why-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 18px; }
+  .why-card h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; color: var(--dark); margin-bottom: 8px; }
   .why-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.65; }
 
-  /* ─── PRICING ─── */
   #pricing { background: var(--dark); }
   #pricing h2 { color: #fff; }
   #pricing .section-tag { color: var(--green-glow); }
   #pricing .section-sub { color: rgba(255,255,255,0.55); }
-  .pricing-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px; max-width: 680px;
-  }
-  .price-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 40px 36px;
-    position: relative; transition: border-color 0.2s;
-  }
-  .price-card.featured {
-    border-color: var(--green-glow);
-    box-shadow: 0 0 0 1px var(--green-glow), 0 12px 40px rgba(77,184,64,0.2);
-  }
-  .price-badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    background: var(--green); color: #fff;
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-    padding: 4px 14px; border-radius: 20px; text-transform: uppercase;
-  }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 680px; }
+  .price-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px 36px; position: relative; transition: border-color 0.2s; }
+  .price-card.featured { border-color: var(--green-glow); box-shadow: 0 0 0 1px var(--green-glow), 0 12px 40px rgba(77,184,64,0.2); }
+  .price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; }
   .price-label { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
-  .price-amount {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 3.8rem; line-height: 1; color: #fff;
-    margin-bottom: 4px;
-  }
+  .price-amount { font-family: var(--font-head); font-weight: 900; font-size: 3.8rem; line-height: 1; color: #fff; margin-bottom: 4px; }
   .price-period { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
   .price-list { list-style: none; margin-bottom: 32px; }
-  .price-list li {
-    font-size: 0.92rem; color: rgba(255,255,255,0.75);
-    padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-    display: flex; align-items: center; gap: 8px;
-  }
+  .price-list li { font-size: 0.92rem; color: rgba(255,255,255,0.75); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; gap: 8px; }
   .price-list li::before { content: '✓'; color: var(--green-glow); font-weight: 700; }
 
-  /* ─── TESTIMONIALS ─── */
   #testimonials { background: var(--green-pale); }
-  .testi-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-  .testi-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 32px 28px; box-shadow: var(--shadow);
-  }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .testi-card { background: var(--white); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow); }
   .stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 14px; }
-  .testi-text {
-    font-size: 0.97rem; color: var(--gray-700); line-height: 1.7;
-    font-style: italic; margin-bottom: 20px;
-  }
+  .testi-text { font-size: 0.97rem; color: var(--gray-700); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
   .testi-author { display: flex; align-items: center; gap: 12px; }
-  .testi-avatar {
-    width: 42px; height: 42px; border-radius: 50%;
-    background: var(--green); display: flex; align-items: center; justify-content: center;
-    color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1.1rem;
-  }
+  .testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; }
   .testi-name { font-weight: 600; font-size: 0.92rem; color: var(--dark); }
   .testi-loc { font-size: 0.8rem; color: var(--gray-500); }
 
-  /* ─── FOR / NOT FOR ─── */
   #forwhom { background: var(--white); }
   .forwhom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 640px) { .forwhom-grid { grid-template-columns: 1fr; } }
   .forwhom-card { border-radius: var(--radius); padding: 36px 32px; }
   .forwhom-card.yes { background: var(--green-pale); border: 1px solid rgba(45,122,34,0.2); }
   .forwhom-card.no { background: #fdf6f6; border: 1px solid rgba(200,100,100,0.18); }
-  .forwhom-card h3 {
-    font-family: var(--font-head); font-weight: 800; font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
+  .forwhom-card h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.4rem; margin-bottom: 20px; }
   .forwhom-card.yes h3 { color: var(--green); }
   .forwhom-card.no h3 { color: #c0392b; }
   .forwhom-list { list-style: none; }
-  .forwhom-list li {
-    font-size: 0.95rem; padding: 8px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    display: flex; align-items: flex-start; gap: 9px; color: var(--gray-700);
-  }
+  .forwhom-list li { font-size: 0.95rem; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 9px; color: var(--gray-700); }
   .forwhom-list li:last-child { border-bottom: none; }
   .forwhom-card.yes .forwhom-list li::before { content: '✓'; color: var(--green); font-weight: 700; margin-top: 1px; }
   .forwhom-card.no .forwhom-list li::before { content: '✕'; color: #c0392b; font-weight: 700; margin-top: 1px; }
-  .forwhom-footnote {
-    text-align: center; margin-top: 36px; font-size: 1rem;
-    color: var(--gray-500); font-weight: 500;
-  }
+  .forwhom-footnote { text-align: center; margin-top: 36px; font-size: 1rem; color: var(--gray-500); font-weight: 500; }
   .forwhom-footnote strong { color: var(--dark); }
 
-  /* ─── CTA BOTTOM ─── */
-  #cta-bottom {
-    background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%);
-    text-align: center; padding: 80px 5vw;
-  }
+  #cta-bottom { background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); text-align: center; padding: 80px 5vw; }
   #cta-bottom h2 { color: #fff; margin-bottom: 12px; }
   #cta-bottom p { color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 40px; font-size: 1.05rem; }
   .cta-pair { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-
-  .btn-cta {
-    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
-    color: #fff; border: none;
-    padding: 18px 40px; border-radius: 10px;
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 1.2rem; letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    box-shadow: 0 4px 24px rgba(45,122,34,0.5);
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: inline-block;
-  }
+  .btn-cta { background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%); color: #fff; border: none; padding: 18px 40px; border-radius: 10px; font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none; box-shadow: 0 4px 24px rgba(45,122,34,0.5); transition: transform 0.15s, box-shadow 0.15s; display: inline-block; }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(45,122,34,0.6); }
-
-  .btn-cta-outline {
-    background: transparent; color: #fff;
-    border: 2px solid rgba(255,255,255,0.4);
-    padding: 17px 32px; border-radius: 10px;
-    font-family: var(--font-head); font-weight: 700;
-    font-size: 1.1rem; letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    display: inline-block;
-  }
+  .btn-cta-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 17px 32px; border-radius: 10px; font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; }
   .btn-cta-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 32px 5vw;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
-    gap: 16px;
-  }
+  footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
   footer p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
   footer a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.82rem; }
   footer a:hover { color: var(--green-glow); }
 
-  /* ─── PAGE: REFERRAL ─── */
   #page-referral { display: none; }
-
-  .referral-hero {
-    background: linear-gradient(135deg, var(--dark) 0%, #1a3512 100%);
-    padding: 100px 5vw 80px;
-    text-align: center;
-  }
+  .referral-hero { background: linear-gradient(135deg, var(--dark) 0%, #1a3512 100%); padding: 100px 5vw 80px; text-align: center; }
   .referral-hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); color: #fff; max-width: 700px; margin: 0 auto 16px; }
-  .referral-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; margin-bottom: 0; }
-
   .ref-steps { background: var(--white); padding: 72px 5vw; }
-  .ref-steps-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px; max-width: 860px; margin: 0 auto;
-  }
-  .ref-step {
-    text-align: center; padding: 36px 24px;
-    border-radius: var(--radius); border: 1px solid var(--gray-100);
-  }
-  .ref-step-num {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: var(--green); color: #fff;
-    font-family: var(--font-head); font-weight: 900; font-size: 1.5rem;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-  }
+  .ref-steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 860px; margin: 0 auto; }
+  .ref-step { text-align: center; padding: 36px 24px; border-radius: var(--radius); border: 1px solid var(--gray-100); }
+  .ref-step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--green); color: #fff; font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
   .ref-step h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.25rem; margin-bottom: 8px; }
   .ref-step p { font-size: 0.92rem; color: var(--gray-500); }
-
   .ref-earnings { background: var(--green-pale); padding: 72px 5vw; text-align: center; }
-  .earnings-grid {
-    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;
-  }
-  .earn-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 32px 40px; box-shadow: var(--shadow);
-    min-width: 180px; border-bottom: 3px solid var(--green);
-  }
+  .earnings-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
+  .earn-card { background: var(--white); border-radius: var(--radius); padding: 32px 40px; box-shadow: var(--shadow); min-width: 180px; border-bottom: 3px solid var(--green); }
   .earn-homes { font-size: 0.85rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
   .earn-amount { font-family: var(--font-head); font-weight: 900; font-size: 2.8rem; color: var(--green); line-height: 1; }
   .earn-period { font-size: 0.85rem; color: var(--gray-500); margin-top: 4px; }
-
   .ref-faq { background: var(--white); padding: 72px 5vw; }
   .faq-list { max-width: 680px; margin: 0 auto; }
-  .faq-item {
-    border-bottom: 1px solid var(--gray-100); padding: 22px 0;
-    cursor: pointer;
-  }
-  .faq-q {
-    font-weight: 600; font-size: 1rem; color: var(--dark);
-    display: flex; justify-content: space-between; align-items: center;
-    user-select: none;
-  }
+  .faq-item { border-bottom: 1px solid var(--gray-100); padding: 22px 0; cursor: pointer; }
+  .faq-q { font-weight: 600; font-size: 1rem; color: var(--dark); display: flex; justify-content: space-between; align-items: center; user-select: none; }
   .faq-q .arrow { font-size: 0.9rem; color: var(--green); transition: transform 0.2s; }
   .faq-a { font-size: 0.93rem; color: var(--gray-500); margin-top: 10px; line-height: 1.65; display: none; }
   .faq-item.open .faq-a { display: block; }
   .faq-item.open .arrow { transform: rotate(180deg); }
-
   .ref-cta { background: var(--dark); padding: 80px 5vw; text-align: center; }
   .ref-cta h2 { color: #fff; margin-bottom: 12px; }
   .ref-cta p { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
 
-  /* ─── DIVIDER ─── */
-  .wave-divider { overflow: hidden; line-height: 0; }
-  .wave-divider svg { display: block; width: 100%; }
-
-  /* ─── UTILITY ─── */
-  .text-center { text-align: center; }
-  .mt-8 { margin-top: 8px; }
-  .mb-0 { margin-bottom: 0; }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-content > * {
-    animation: fadeUp 0.7s ease both;
-  }
-  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
-  .hero-content > *:nth-child(3) { animation-delay: 0.32s; }
-  .hero-content > *:nth-child(4) { animation-delay: 0.42s; }
-  .hero-content > *:nth-child(5) { animation-delay: 0.52s; }
-
-  @media (max-width: 768px) {
-    section { padding: 56px 4vw; }
-    .pricing-grid { max-width: 100%; }
-  }
-
-  /* ─── SIGNUP MODAL ─── */
-  .modal-overlay {
-    display: none;
-    position: fixed; inset: 0; z-index: 500;
-    background: rgba(10,20,8,0.72);
-    backdrop-filter: blur(6px);
-    align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .modal-overlay.active { display: flex; }
-
-  .modal-box {
-    background: var(--white);
-    border-radius: 20px;
-    width: 100%; max-width: 480px;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
-    overflow: hidden;
-    animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.88) translateY(24px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .modal-header {
-    background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%);
-    padding: 32px 36px 28px;
-    position: relative;
-  }
-  .modal-header .modal-plan-badge {
-    display: inline-block;
-    background: rgba(77,184,64,0.22);
-    border: 1px solid rgba(77,184,64,0.45);
-    color: #a8eea0;
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
-    padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .modal-header h3 {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 1.8rem; color: #fff; line-height: 1.1;
-    margin-bottom: 6px;
-  }
-  .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
-  .modal-price {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 2.6rem; color: var(--green-glow);
-    line-height: 1; margin-top: 8px;
-  }
-  .modal-price span { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.45); }
-  .modal-close {
-    position: absolute; top: 16px; right: 18px;
-    background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6);
-    width: 32px; height: 32px; border-radius: 50%; font-size: 1rem;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .modal-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
-
-  .modal-body { padding: 32px 36px 36px; }
-
-  .modal-step-indicator {
-    display: flex; gap: 6px; margin-bottom: 28px;
-  }
-  .modal-step-dot {
-    height: 4px; border-radius: 2px; flex: 1;
-    background: var(--gray-100); transition: background 0.3s;
-  }
-  .modal-step-dot.active { background: var(--green); }
-  .modal-step-dot.done { background: var(--green-light); }
-
-  .modal-step { display: none; }
-  .modal-step.active { display: block; }
-
-  .form-label {
-    display: block; font-size: 0.82rem; font-weight: 700;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--gray-500); margin-bottom: 8px;
-  }
-  .form-input {
-    width: 100%; padding: 13px 16px;
-    border: 1.5px solid var(--gray-200); border-radius: 10px;
-    font-family: var(--font-body); font-size: 1rem; color: var(--dark);
-    background: var(--white); transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none; margin-bottom: 20px;
-  }
-  .form-input:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(45,122,34,0.12);
-  }
-  .form-input.error { border-color: #e53e3e; box-shadow: 0 0 0 3px rgba(229,62,62,0.10); }
-  .form-error { color: #e53e3e; font-size: 0.82rem; margin-top: -14px; margin-bottom: 14px; display: none; }
-  .form-error.visible { display: block; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 460px) { .form-row { grid-template-columns: 1fr; } }
-
-  .form-hint {
-    font-size: 0.82rem; color: var(--gray-500);
-    margin-top: -14px; margin-bottom: 20px;
-    display: flex; align-items: center; gap: 5px;
-  }
-  .form-hint::before { content: 'ℹ'; font-size: 0.75rem; color: var(--green); }
-
-  .plan-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-  .plan-option {
-    border: 2px solid var(--gray-200); border-radius: 12px;
-    padding: 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
-    text-align: center; position: relative;
-  }
-  .plan-option:hover { border-color: var(--green); background: var(--green-pale); }
-  .plan-option.selected { border-color: var(--green); background: var(--green-pale); }
-  .plan-option.selected::after {
-    content: '✓'; position: absolute; top: 8px; right: 10px;
-    color: var(--green); font-weight: 700; font-size: 0.85rem;
-  }
-  .plan-option-price { font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; color: var(--dark); }
-  .plan-option-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
-
-  .modal-btn-row { display: flex; gap: 10px; margin-top: 8px; }
-  .modal-btn-back {
-    background: var(--gray-100); color: var(--gray-700); border: none;
-    padding: 14px 20px; border-radius: 10px;
-    font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-    cursor: pointer; transition: background 0.2s;
-  }
-  .modal-btn-back:hover { background: var(--gray-200); }
-  .modal-btn-next {
-    flex: 1;
-    background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
-    color: #fff; border: none;
-    padding: 14px 24px; border-radius: 10px;
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 1.05rem; letter-spacing: 0.04em;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(45,122,34,0.35);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .modal-btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(45,122,34,0.45); }
-  .modal-btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-  .confirm-summary {
-    background: var(--green-pale); border-radius: 12px;
-    padding: 20px; margin-bottom: 24px;
-    border: 1px solid rgba(45,122,34,0.15);
-  }
-  .confirm-row {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.92rem; padding: 6px 0;
-    border-bottom: 1px solid rgba(45,122,34,0.1);
-  }
-  .confirm-row:last-child { border-bottom: none; }
-  .confirm-label { color: var(--gray-500); }
-  .confirm-value { font-weight: 600; color: var(--dark); }
-  .confirm-price { color: var(--green); font-family: var(--font-head); font-weight: 900; font-size: 1.2rem; }
-
-  .modal-trust {
-    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-    margin-top: 20px; padding-top: 20px;
-    border-top: 1px solid var(--gray-100);
-  }
-  .modal-trust-item {
-    font-size: 0.78rem; color: var(--gray-500);
-    display: flex; align-items: center; gap: 4px;
-  }
-  .modal-trust-item::before { content: '🔒'; font-size: 0.7rem; }
-  /* ─── REFERRAL HERO STATS ─── */
-  .ref-hero-stats {
-    display: flex; align-items: center; justify-content: center;
-    gap: 0; margin-top: 48px; flex-wrap: wrap;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 28px 40px;
-    max-width: 560px; margin: 40px auto 0;
-  }
+  .ref-hero-stats { display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 48px; flex-wrap: wrap; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 40px; max-width: 560px; margin: 40px auto 0; }
   .ref-hero-stat { text-align: center; flex: 1; min-width: 120px; }
-  .ref-hero-stat-num {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 2.6rem; color: var(--green-glow); line-height: 1;
-  }
+  .ref-hero-stat-num { font-family: var(--font-head); font-weight: 900; font-size: 2.6rem; color: var(--green-glow); line-height: 1; }
   .ref-hero-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 500; }
-  .ref-hero-stat-divider {
-    width: 1px; height: 48px; background: rgba(255,255,255,0.12); flex-shrink: 0;
-    margin: 0 8px;
-  }
+  .ref-hero-stat-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 8px; }
 
-  /* ─── EARNINGS CALCULATOR ─── */
-  .earn-calc-wrap {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-    max-width: 680px; margin: 0 auto;
-    background: var(--white); border-radius: 20px;
-    padding: 36px 40px; box-shadow: var(--shadow-lg);
-    border: 1px solid var(--gray-100);
-  }
+  .earn-calc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 680px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 36px 40px; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-100); }
   @media (max-width: 600px) { .earn-calc-wrap { grid-template-columns: 1fr; } }
-
-  .earn-slider-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.07em; color: var(--gray-500); display: block; margin-bottom: 16px; }
+  .earn-slider-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-500); display: block; margin-bottom: 16px; }
   .earn-slider-val-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; }
   .earn-slider-val-num { font-family: var(--font-head); font-weight: 900; font-size: 3rem; color: var(--dark); line-height: 1; }
   .earn-slider-val-label { font-size: 0.9rem; color: var(--gray-500); }
-
-  .earn-slider {
-    width: 100%; -webkit-appearance: none; appearance: none;
-    height: 6px; border-radius: 3px;
-    background: linear-gradient(to right, var(--green) 0%, var(--green) 20%, var(--gray-200) 20%);
-    outline: none; cursor: pointer;
-  }
-  .earn-slider::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 22px; height: 22px;
-    border-radius: 50%; background: var(--green);
-    box-shadow: 0 2px 8px rgba(45,122,34,0.4); cursor: pointer;
-    border: 3px solid #fff;
-  }
-  .earn-slider-range-labels {
-    display: flex; justify-content: space-between;
-    font-size: 0.78rem; color: var(--gray-500); margin-top: 8px;
-  }
-
-  .earn-calc-result {
-    display: flex; flex-direction: column; justify-content: center;
-    text-align: center; border-left: 1px solid var(--gray-100);
-    padding-left: 40px;
-  }
+  .earn-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--green) 0%, var(--green) 20%, var(--gray-200) 20%); outline: none; cursor: pointer; }
+  .earn-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--green); box-shadow: 0 2px 8px rgba(45,122,34,0.4); cursor: pointer; border: 3px solid #fff; }
+  .earn-slider-range-labels { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray-500); margin-top: 8px; }
+  .earn-calc-result { display: flex; flex-direction: column; justify-content: center; text-align: center; border-left: 1px solid var(--gray-100); padding-left: 40px; }
   @media (max-width: 600px) { .earn-calc-result { border-left: none; border-top: 1px solid var(--gray-100); padding-left: 0; padding-top: 24px; } }
   .earn-result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 8px; }
   .earn-result-amount { font-family: var(--font-head); font-weight: 900; font-size: 3.8rem; color: var(--green); line-height: 1; margin-bottom: 4px; }
@@ -720,183 +197,113 @@
   .earn-result-annual span { color: var(--dark); font-weight: 600; }
   .earn-result-note { font-size: 0.78rem; color: var(--gray-500); line-height: 1.5; background: var(--green-pale); padding: 8px 12px; border-radius: 8px; }
 
-  /* ─── HOW TRACKING WORKS ─── */
-  @media (max-width: 768px) {
-    .section-inner > div[style*="grid-template-columns:1fr 1fr"] {
-      grid-template-columns: 1fr !important;
-    }
-  }
+  @media (max-width: 768px) { .section-inner > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } }
   .how-track-list { display: flex; flex-direction: column; gap: 20px; }
-  .how-track-item {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 16px; border-radius: 12px; border: 1px solid var(--gray-100);
-    transition: border-color 0.2s;
-  }
+  .how-track-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px; border-radius: 12px; border: 1px solid var(--gray-100); transition: border-color 0.2s; }
   .how-track-item:hover { border-color: var(--green); background: var(--green-pale); }
   .how-track-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
   .how-track-item strong { display: block; font-size: 0.95rem; color: var(--dark); margin-bottom: 4px; }
   .how-track-item p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; margin: 0; }
 
-  /* ─── DASHBOARD MOCKUP ─── */
-  .ref-dashboard-mockup {
-    background: var(--white); border-radius: 16px;
-    border: 1px solid var(--gray-200);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden; font-size: 0.85rem;
-  }
-  .ref-dash-header {
-    background: var(--dark); padding: 14px 20px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  .ref-dashboard-mockup { background: var(--white); border-radius: 16px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-lg); overflow: hidden; font-size: 0.85rem; }
+  .ref-dash-header { background: var(--dark); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
   .ref-dash-logo { color: #a8eea0; font-weight: 600; font-size: 0.82rem; }
   .ref-dash-user { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
-  .ref-dash-stats {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: 1px solid var(--gray-100);
-  }
+  .ref-dash-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--gray-100); }
   .ref-dash-stat { padding: 16px 14px; text-align: center; border-right: 1px solid var(--gray-100); }
   .ref-dash-stat:last-child { border-right: none; }
   .ref-dash-stat-val { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: var(--green); }
   .ref-dash-stat-lbl { font-size: 0.72rem; color: var(--gray-500); margin-top: 2px; }
-  .ref-dash-link-row {
-    padding: 12px 16px; background: var(--green-pale);
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 1px solid var(--gray-100);
-  }
+  .ref-dash-link-row { padding: 12px 16px; background: var(--green-pale); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--gray-100); }
   .ref-dash-link-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--gray-500); white-space: nowrap; }
   .ref-dash-link-box { flex: 1; font-size: 0.78rem; color: var(--green); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ref-dash-copy-btn { background: var(--green); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
-  .ref-dash-table-head {
-    display: grid; grid-template-columns: 1fr auto auto;
-    padding: 8px 16px; background: var(--gray-100);
-    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-    color: var(--gray-500); letter-spacing: 0.06em; gap: 12px;
-  }
-  .ref-dash-row {
-    display: grid; grid-template-columns: 1fr auto auto;
-    padding: 10px 16px; border-bottom: 1px solid var(--gray-100);
-    font-size: 0.84rem; color: var(--dark); gap: 12px; align-items: center;
-  }
+  .ref-dash-table-head { display: grid; grid-template-columns: 1fr auto auto; padding: 8px 16px; background: var(--gray-100); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--gray-500); letter-spacing: 0.06em; gap: 12px; }
+  .ref-dash-row { display: grid; grid-template-columns: 1fr auto auto; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); font-size: 0.84rem; color: var(--dark); gap: 12px; align-items: center; }
   .ref-status { padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
   .ref-status.active { background: rgba(45,122,34,0.12); color: var(--green); }
   .ref-status.paused { background: rgba(200,150,0,0.12); color: #a07800; }
-  .ref-dash-payout {
-    padding: 12px 16px; background: var(--dark);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.82rem; color: rgba(255,255,255,0.6);
-  }
+  .ref-dash-payout { padding: 12px 16px; background: var(--dark); display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
   .ref-dash-payout-amt { color: var(--green-glow); font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; }
 
-  /* ─── WHO CARDS ─── */
-  .who-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 28px 24px; border: 1px solid var(--gray-100);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
+  .who-card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; border: 1px solid var(--gray-100); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
   .who-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--green); }
   .who-icon { font-size: 2rem; margin-bottom: 12px; }
   .who-card h4 { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; margin-bottom: 8px; color: var(--dark); }
   .who-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; }
-  /* ─── PRICE CHECKER ─── */
-  .price-checker { width: 100%; max-width: 560px; margin-bottom: 4px; }
 
-  .price-checker-input-row {
-    display: flex; gap: 0;
-    background: rgba(255,255,255,0.97);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(10,20,8,0.72); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.active { display: flex; }
+  .modal-box { background: var(--white); border-radius: 20px; width: 100%; max-width: 480px; box-shadow: 0 24px 80px rgba(0,0,0,0.35); overflow: hidden; animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both; }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.88) translateY(24px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .modal-header { background: linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding: 32px 36px 28px; position: relative; }
+  .modal-header .modal-plan-badge { display: inline-block; background: rgba(77,184,64,0.22); border: 1px solid rgba(77,184,64,0.45); color: #a8eea0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; margin-bottom: 12px; }
+  .modal-header h3 { font-family: var(--font-head); font-weight: 900; font-size: 1.8rem; color: #fff; line-height: 1.1; margin-bottom: 6px; }
+  .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+  .modal-price { font-family: var(--font-head); font-weight: 900; font-size: 2.6rem; color: var(--green-glow); line-height: 1; margin-top: 8px; }
+  .modal-price span { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.45); }
+  .modal-close { position: absolute; top: 16px; right: 18px; background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6); width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .modal-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  .modal-body { padding: 32px 36px 36px; }
+  .modal-step-indicator { display: flex; gap: 6px; margin-bottom: 28px; }
+  .modal-step-dot { height: 4px; border-radius: 2px; flex: 1; background: var(--gray-100); transition: background 0.3s; }
+  .modal-step-dot.active { background: var(--green); }
+  .modal-step-dot.done { background: var(--green-light); }
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+  .form-label { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 8px; }
+  .form-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font-body); font-size: 1rem; color: var(--dark); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; margin-bottom: 20px; }
+  .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,122,34,0.12); }
+  .form-input.error { border-color: #e53e3e; box-shadow: 0 0 0 3px rgba(229,62,62,0.10); }
+  .form-error { color: #e53e3e; font-size: 0.82rem; margin-top: -14px; margin-bottom: 14px; display: none; }
+  .form-error.visible { display: block; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 460px) { .form-row { grid-template-columns: 1fr; } }
+  .form-hint { font-size: 0.82rem; color: var(--gray-500); margin-top: -14px; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
+  .form-hint::before { content: 'ℹ'; font-size: 0.75rem; color: var(--green); }
+  .plan-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .plan-option { border: 2px solid var(--gray-200); border-radius: 12px; padding: 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s; text-align: center; position: relative; }
+  .plan-option:hover { border-color: var(--green); background: var(--green-pale); }
+  .plan-option.selected { border-color: var(--green); background: var(--green-pale); }
+  .plan-option.selected::after { content: '✓'; position: absolute; top: 8px; right: 10px; color: var(--green); font-weight: 700; font-size: 0.85rem; }
+  .plan-option-price { font-family: var(--font-head); font-weight: 900; font-size: 1.6rem; color: var(--dark); }
+  .plan-option-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 2px; }
+  .modal-btn-row { display: flex; gap: 10px; margin-top: 8px; }
+  .modal-btn-back { background: var(--gray-100); color: var(--gray-700); border: none; padding: 14px 20px; border-radius: 10px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+  .modal-btn-back:hover { background: var(--gray-200); }
+  .modal-btn-next { flex: 1; background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%); color: #fff; border: none; padding: 14px 24px; border-radius: 10px; font-family: var(--font-head); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 16px rgba(45,122,34,0.35); transition: transform 0.15s, box-shadow 0.15s; }
+  .modal-btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(45,122,34,0.45); }
+  .modal-btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .confirm-summary { background: var(--green-pale); border-radius: 12px; padding: 20px; margin-bottom: 24px; border: 1px solid rgba(45,122,34,0.15); }
+  .confirm-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.92rem; padding: 6px 0; border-bottom: 1px solid rgba(45,122,34,0.1); }
+  .confirm-row:last-child { border-bottom: none; }
+  .confirm-label { color: var(--gray-500); }
+  .confirm-value { font-weight: 600; color: var(--dark); }
+  .confirm-price { color: var(--green); font-family: var(--font-head); font-weight: 900; font-size: 1.2rem; }
+  .modal-trust { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-100); }
+  .modal-trust-item { font-size: 0.78rem; color: var(--gray-500); display: flex; align-items: center; gap: 4px; }
+  .modal-trust-item::before { content: '🔒'; font-size: 0.7rem; }
 
-  .price-checker-input {
-    flex: 1; padding: 16px 18px;
-    border: none; outline: none;
-    font-family: var(--font-body); font-size: 0.97rem;
-    color: var(--dark); background: transparent;
-    min-width: 0;
-  }
-  .price-checker-input::placeholder { color: var(--gray-500); }
-
-  .price-checker-btn {
-    background: var(--green); color: #fff; border: none;
-    padding: 16px 22px; cursor: pointer;
-    font-family: var(--font-head); font-weight: 800;
-    font-size: 0.95rem; letter-spacing: 0.03em;
-    white-space: nowrap;
-    transition: background 0.2s;
-    flex-shrink: 0;
-  }
-  .price-checker-btn:hover { background: var(--green-light); }
-
-  .price-result-cards {
-    display: flex; gap: 12px; flex-wrap: wrap;
-  }
-
-  .price-result-card {
-    flex: 1; min-width: 160px;
-    background: rgba(255,255,255,0.12);
-    border: 1.5px solid rgba(255,255,255,0.3);
-    border-radius: 12px; padding: 16px 20px;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    backdrop-filter: blur(8px);
-  }
-  .price-result-card:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.55);
-    transform: translateY(-2px);
-  }
-  .price-result-card.featured {
-    background: rgba(45,122,34,0.35);
-    border-color: var(--green-glow);
-  }
-  .price-result-card.featured:hover {
-    background: rgba(45,122,34,0.5);
-  }
-
-  .price-result-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 4px; font-weight: 500; }
-  .price-result-amount {
-    font-family: var(--font-head); font-weight: 900;
-    font-size: 2rem; color: #fff; line-height: 1;
-    margin-bottom: 10px;
-  }
-  .price-result-amount span { font-size: 1rem; font-weight: 500; opacity: 0.7; }
-  .price-result-cta {
-    font-size: 0.82rem; font-weight: 700; color: var(--green-glow);
-    letter-spacing: 0.03em;
-  }
-  .price-result-card.featured .price-result-cta { color: #a8eea0; }
-
-  .price-result-note {
-    font-size: 0.8rem; color: rgba(255,255,255,0.6);
-    margin-top: 10px; font-weight: 500;
-  }
-
-  .price-no-service {
-    display: flex; gap: 10px; align-items: flex-start;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px; padding: 14px 16px;
-    font-size: 0.88rem; color: rgba(255,255,255,0.85);
-  }
-  .price-no-service strong { display: block; margin-bottom: 3px; color: #fff; }
-  .price-no-service p { margin: 0; color: rgba(255,255,255,0.65); line-height: 1.5; }
-
-  @media (max-width: 480px) {
-    .price-checker-btn { padding: 16px 14px; font-size: 0.85rem; }
-    .price-result-cards { flex-direction: column; }
-  }
+  @media (max-width: 768px) { section { padding: 56px 4vw; } .pricing-grid { max-width: 100%; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.32s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.42s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.52s; }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════ SIGNUP MODAL ═══════════════ -->
+<!-- SIGNUP MODAL -->
 <div class="modal-overlay" id="signupModal" onclick="handleModalOverlayClick(event)">
   <div class="modal-box" id="modalBox">
     <div class="modal-header">
       <div class="modal-plan-badge" id="modalPlanBadge">Weekly Service</div>
       <h3 id="modalHeadline">Let's Get Your Lawn Sorted.</h3>
       <p id="modalSubline">Takes 60 seconds. No commitment required.</p>
-      <div class="modal-price" id="modalPriceDisplay">$45 <span>/ week</span></div>
+      <div class="modal-price" id="modalPriceDisplay">$45 <span>/ week + tax</span></div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
@@ -906,109 +313,79 @@
         <div class="modal-step-dot" id="dot3"></div>
       </div>
 
-      <!-- STEP 1: Contact Info (same for all flows) -->
       <div class="modal-step active" id="step1">
         <label class="form-label">Your Name</label>
         <input type="text" class="form-input" id="fieldName" placeholder="First &amp; Last Name" autocomplete="name">
         <div class="form-error" id="errName">Please enter your name.</div>
-
         <label class="form-label">Email Address</label>
         <input type="email" class="form-input" id="fieldEmail" placeholder="you@email.com" autocomplete="email">
         <div class="form-error" id="errEmail">Please enter a valid email.</div>
-
         <label class="form-label">Mobile Phone</label>
         <input type="tel" class="form-input" id="fieldPhone" placeholder="(555) 000-0000" autocomplete="tel" style="margin-bottom:4px;">
         <div class="form-error" id="errPhone">Please enter a valid phone number.</div>
         <div class="form-hint">We'll only text you — no calls, no spam. Just your service window.</div>
-
         <div class="modal-btn-row">
           <button class="modal-btn-next" style="width:100%;" onclick="goStep(2)">Continue →</button>
         </div>
       </div>
 
-      <!-- STEP 2A: Standard/Large yard — plan + address + date -->
       <div class="modal-step" id="step2">
         <label class="form-label">Select Your Plan</label>
         <div class="plan-selector">
           <div class="plan-option selected" id="planSmall" onclick="selectPlan('small')">
             <div class="plan-option-price">$45</div>
             <div class="plan-option-label">Up to 10,000 sq ft</div>
+            <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">+ 8.25% tax</div>
           </div>
           <div class="plan-option" id="planLarge" onclick="selectPlan('large')">
             <div class="plan-option-price">$60</div>
             <div class="plan-option-label">10,001 – 15,000 sq ft</div>
+            <div style="font-size:0.72rem; color:var(--gray-500); margin-top:3px;">+ 8.25% tax</div>
           </div>
         </div>
         <p style="font-size:0.8rem; color:var(--gray-500); margin-top:-12px; margin-bottom:16px; line-height:1.5;">Not sure of your size? We verify with satellite imagery — you'll never be on the wrong plan. Over 15,000 sq ft? <a href="#" style="color:var(--green); font-weight:600;" onclick="switchToCustom(); return false;">Get a custom quote instead.</a></p>
-
         <label class="form-label">Service Address</label>
         <input type="text" class="form-input" id="fieldAddress" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
         <div class="form-error" id="errAddress">Please enter your service address.</div>
-
         <label class="form-label">Preferred First Mow Date</label>
         <input type="date" class="form-input" id="fieldDate" style="margin-bottom:4px;">
         <div class="form-error" id="errDate">Please select a date at least 72 hours from today.</div>
         <div class="form-hint">First mow requires 72 hours notice. We'll text you to confirm.</div>
-
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
           <button class="modal-btn-next" onclick="goStep(3)">Review &amp; Continue →</button>
         </div>
       </div>
 
-      <!-- STEP 2B: Custom quote — address + yard size description -->
       <div class="modal-step" id="step2c">
         <div style="background:rgba(45,122,34,0.08); border:1px solid rgba(45,122,34,0.2); border-radius:10px; padding:12px 14px; margin-bottom:20px; font-size:0.85rem; color:var(--gray-700); line-height:1.6;">
           🌿 We'll review your yard and send you a custom weekly rate within <strong>24 hours</strong>. No obligation.
         </div>
-
         <label class="form-label">Service Address</label>
         <input type="text" class="form-input" id="fieldAddressCustom" placeholder="123 Maple St, Pearland TX" autocomplete="street-address">
         <div class="form-error" id="errAddressCustom">Please enter your service address.</div>
-
         <label class="form-label">Approx. Yard Size</label>
         <input type="text" class="form-input" id="fieldYardSize" placeholder="e.g. 18,000 sq ft or about 0.4 acres" style="margin-bottom:4px;">
         <div class="form-hint">Best estimate is fine — we'll verify with satellite imagery.</div>
-
         <label class="form-label">Anything Else We Should Know? <span style="font-weight:400; text-transform:none; color:var(--gray-500);">(optional)</span></label>
         <textarea class="form-input" id="fieldNotes" placeholder="e.g. fenced yard, slope, gate code, obstacles..." rows="3" style="resize:vertical; font-family:var(--font-body);"></textarea>
-
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="goStep(1)">← Back</button>
           <button class="modal-btn-next" onclick="goStepCustom(3)">Review &amp; Submit →</button>
         </div>
       </div>
 
-      <!-- STEP 3: Review + CTA (standard flow) -->
       <div class="modal-step" id="step3">
         <div class="confirm-summary" id="confirmSummary">
-          <div class="confirm-row">
-            <span class="confirm-label">Name</span>
-            <span class="confirm-value" id="cName">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Email</span>
-            <span class="confirm-value" id="cEmail">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Phone (SMS)</span>
-            <span class="confirm-value" id="cPhone">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Address</span>
-            <span class="confirm-value" id="cAddress">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Preferred Start</span>
-            <span class="confirm-value" id="cDate">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Weekly Plan</span>
-            <span class="confirm-price" id="cPlan">$45/week</span>
-          </div>
+          <div class="confirm-row"><span class="confirm-label">Name</span><span class="confirm-value" id="cName">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Email</span><span class="confirm-value" id="cEmail">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Phone (SMS)</span><span class="confirm-value" id="cPhone">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Address</span><span class="confirm-value" id="cAddress">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Preferred Start</span><span class="confirm-value" id="cDate">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Weekly Plan</span><span class="confirm-price" id="cPlan">$45/week + tax</span></div>
         </div>
         <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:12px;line-height:1.6;">
-          Clicking below takes you to our secure Stripe checkout to set up your weekly subscription. You won't be charged until your first mow is confirmed.
+          Clicking below takes you to our secure Stripe checkout to set up your weekly subscription. You won't be charged until your first mow is confirmed. <strong style="color:var(--dark);">8.25% sales tax will be added at checkout.</strong>
         </p>
         <div style="background:#fffbeb; border:1px solid #f5d76e; border-radius:10px; padding:12px 14px; margin-bottom:18px; font-size:0.82rem; color:#7a5c00; line-height:1.55; display:flex; gap:8px;">
           <span style="flex-shrink:0;">⚠️</span>
@@ -1025,44 +402,22 @@
         </div>
       </div>
 
-      <!-- STEP 3C: Review + Submit (custom quote flow) -->
       <div class="modal-step" id="step3c">
         <div class="confirm-summary">
-          <div class="confirm-row">
-            <span class="confirm-label">Name</span>
-            <span class="confirm-value" id="ccName">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Email</span>
-            <span class="confirm-value" id="ccEmail">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Phone (SMS)</span>
-            <span class="confirm-value" id="ccPhone">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Address</span>
-            <span class="confirm-value" id="ccAddress">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Yard Size</span>
-            <span class="confirm-value" id="ccYardSize">—</span>
-          </div>
-          <div class="confirm-row">
-            <span class="confirm-label">Notes</span>
-            <span class="confirm-value" id="ccNotes" style="font-size:0.85rem;">—</span>
-          </div>
+          <div class="confirm-row"><span class="confirm-label">Name</span><span class="confirm-value" id="ccName">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Email</span><span class="confirm-value" id="ccEmail">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Phone (SMS)</span><span class="confirm-value" id="ccPhone">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Address</span><span class="confirm-value" id="ccAddress">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Yard Size</span><span class="confirm-value" id="ccYardSize">—</span></div>
+          <div class="confirm-row"><span class="confirm-label">Notes</span><span class="confirm-value" id="ccNotes" style="font-size:0.85rem;">—</span></div>
         </div>
-        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">
-          Everything look right? We'll text and email you a custom quote within <strong style="color:var(--dark);">24 hours</strong>. No payment required.
-        </p>
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">Everything look right? We'll text and email you a custom quote within <strong style="color:var(--dark);">24 hours</strong>. No payment required.</p>
         <div class="modal-btn-row">
           <button class="modal-btn-back" onclick="showCustomStep2()">← Back</button>
           <button class="modal-btn-next" onclick="submitCustomQuote()">Submit Quote Request →</button>
         </div>
       </div>
 
-      <!-- STEP 4: Thank you (custom quote flow only) -->
       <div class="modal-step" id="step4c">
         <div style="text-align:center; padding:12px 0 24px;">
           <div style="font-size:3.5rem; margin-bottom:16px;">✅</div>
@@ -1071,14 +426,12 @@
           <div style="background:var(--green-pale); border-radius:12px; padding:16px 20px; margin-bottom:24px; text-align:left;">
             <p style="font-size:0.85rem; color:var(--gray-700); margin:0; line-height:1.65;">📍 <strong>Address:</strong> <span id="thankYouAddress"></span><br>📐 <strong>Yard Size:</strong> <span id="thankYouSize"></span></p>
           </div>
-          <p style="font-size:0.82rem; color:var(--gray-500); margin-bottom:20px;">While you wait, check out our referral program — earn $10/month for every neighbor you refer.</p>
           <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
             <button class="modal-btn-next" style="flex:none; padding:12px 24px;" onclick="closeModal()">Done</button>
             <button class="modal-btn-back" onclick="closeModal(); showPage('referral');" style="padding:12px 20px;">See Referral Program →</button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -1087,27 +440,17 @@
 <nav>
   <a href="#home" class="nav-logo" onclick="showPage('home')">
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-      <!-- Badge background -->
       <rect width="40" height="40" rx="10" fill="#2d7a22"/>
-      <!-- Grass ground line -->
       <rect x="4" y="27" width="32" height="3" rx="1.5" fill="#a8eea0" opacity="0.5"/>
-      <!-- Rear wheel -->
       <circle cx="10" cy="27" r="4" fill="none" stroke="#fff" stroke-width="2"/>
       <circle cx="10" cy="27" r="1.5" fill="#fff"/>
-      <!-- Front wheel -->
       <circle cx="28" cy="27" r="3" fill="none" stroke="#fff" stroke-width="2"/>
       <circle cx="28" cy="27" r="1.2" fill="#fff"/>
-      <!-- Mower deck / body -->
       <rect x="8" y="20" width="22" height="7" rx="3.5" fill="#fff"/>
-      <!-- Blade indicator line under deck -->
       <line x1="12" y1="23.5" x2="26" y2="23.5" stroke="#2d7a22" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- Engine block on top of deck -->
       <rect x="17" y="15" width="9" height="6" rx="2" fill="#e8f5e5" stroke="#fff" stroke-width="1"/>
-      <!-- Handle bar — angled up-left -->
       <line x1="10" y1="20" x2="6" y2="10" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
-      <!-- Handle grip crossbar -->
       <line x1="4" y1="10" x2="9" y2="8" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
-      <!-- Exhaust / spark detail on engine -->
       <circle cx="23" cy="14" r="1" fill="#4db840"/>
     </svg>
     Gulf Coast Mow
@@ -1121,16 +464,14 @@
   </div>
 </nav>
 
-<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<!-- HOME PAGE -->
 <div id="page-home">
-
-  <!-- HERO -->
   <section id="home" style="padding:0; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end;">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-badge">Now Serving Pearland · Manvel · League City</div>
       <h1>Reliable Weekly Lawn Care<br><em>Without the Hassle.</em></h1>
-      <p class="hero-sub">Mow service starting at $45/week. No contracts. Auto-billing. We handle all the scheduling.</p>
+      <p class="hero-sub">Mow service starting at $45/week + tax. No contracts. Auto-billing. We handle all the scheduling.</p>
       <p class="hero-referral">Earn $10/month per referral — no cap, paid automatically while they're active.</p>
     </div>
     <div class="hero-trust">
@@ -1141,7 +482,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section id="how">
     <div class="section-inner">
       <div class="section-tag">Simple Process</div>
@@ -1153,8 +493,8 @@
           <div class="step-icon">🏡</div>
           <h3>Tell Us About Your Yard</h3>
           <p>Enter your address and confirm your yard size. Pricing is clear and locked in before you subscribe — no surprises.</p>
-          <span class="step-price">Up to 10,000 sq ft — $45/wk</span>
-          <span class="step-price" style="margin-top:6px; display:inline-block;">10,001 – 15,000 sq ft — $60/wk</span>
+          <span class="step-price">Up to 10,000 sq ft — $45/wk + tax</span>
+          <span class="step-price" style="margin-top:6px; display:inline-block;">10,001 – 15,000 sq ft — $60/wk + tax</span>
           <span class="step-price" style="margin-top:6px; display:inline-block; background:#f0f0f0; color:#888;">Over 15,000 sq ft — Contact us</span>
         </div>
         <div class="step-card">
@@ -1173,7 +513,6 @@
     </div>
   </section>
 
-  <!-- WHY BETTER -->
   <section id="why">
     <div class="section-inner">
       <div class="section-tag">Why Gulf Coast Mow</div>
@@ -1188,7 +527,7 @@
         <div class="why-card">
           <div class="why-icon">💲</div>
           <h3>Clear, Upfront Pricing</h3>
-          <p>$45 or $60 per week — that's it. You know the price before you start. No surprise charges, no rate creep, no negotiation every visit.</p>
+          <p>$45 or $60 per week + 8.25% tax — that's it. You know the price before you start. No surprise charges, no rate creep, no negotiation every visit.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">🛡️</div>
@@ -1199,53 +538,35 @@
     </div>
   </section>
 
-  <!-- PRICING -->
   <section id="pricing">
     <div class="section-inner">
-
-      <!-- Header row: title left, zip checker right -->
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap; margin-bottom:40px;">
         <div style="flex:1; min-width:240px;">
           <div class="section-tag">Simple Pricing</div>
           <h2 style="margin-bottom:10px;">Pick Your Plan. That's It.</h2>
-          <p style="color:rgba(255,255,255,0.55); font-size:0.97rem; line-height:1.6; max-width:420px;">Weekly recurring. Auto-billed. Cancel anytime. No contracts.</p>
+          <p style="color:rgba(255,255,255,0.55); font-size:0.97rem; line-height:1.6; max-width:420px;">Weekly recurring. Auto-billed. Cancel anytime. No contracts. <strong style="color:rgba(255,255,255,0.75);">8.25% sales tax added at checkout.</strong></p>
         </div>
-
-        <!-- ZIP CHECKER -->
         <div style="flex-shrink:0; width:100%; max-width:340px;">
           <div id="zipCheckerBox" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:20px 22px;">
             <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Check Your Area</p>
             <p style="color:rgba(255,255,255,0.75); font-size:0.9rem; margin-bottom:14px; line-height:1.5;">Enter your zip code to see if we service your area and unlock pricing.</p>
             <div style="display:flex; gap:0; background:rgba(255,255,255,0.95); border-radius:9px; overflow:hidden;">
-              <input
-                type="text"
-                id="zipInput"
-                maxlength="5"
-                placeholder="e.g. 77584"
-                onkeydown="if(event.key==='Enter') checkZip()"
-                style="flex:1; padding:12px 14px; border:none; outline:none; font-family:var(--font-body); font-size:1rem; color:var(--dark); background:transparent; min-width:0;"
-              >
+              <input type="text" id="zipInput" maxlength="5" placeholder="e.g. 77584" onkeydown="if(event.key==='Enter') checkZip()" style="flex:1; padding:12px 14px; border:none; outline:none; font-family:var(--font-body); font-size:1rem; color:var(--dark); background:transparent; min-width:0;">
               <button onclick="checkZip()" style="background:var(--green); color:#fff; border:none; padding:12px 16px; font-family:var(--font-head); font-weight:800; font-size:0.9rem; cursor:pointer; transition:background 0.2s; white-space:nowrap;" onmouseover="this.style.background='#3a9e2d'" onmouseout="this.style.background='#2d7a22'">Check →</button>
             </div>
-            <!-- Zip result messages -->
-            <div id="zipOk" style="display:none; margin-top:12px; color:#a8eea0; font-size:0.85rem; font-weight:600; display:none; align-items:center; gap:6px;">
-              ✓ <span id="zipOkMsg">Great news — we service your area!</span>
-            </div>
-            <div id="zipNo" style="display:none; margin-top:12px; color:#ffb3a7; font-size:0.85rem; line-height:1.5;">
-              📍 <strong>Not in our area yet.</strong> We serve Pearland, Manvel &amp; League City, TX. <a href="mailto:hello@gulfcoastmow.com?subject=Service%20Area%20Request" style="color:#ffcf99; font-weight:600;">Notify me when you expand →</a>
-            </div>
+            <div id="zipOk" style="display:none; margin-top:12px; color:#a8eea0; font-size:0.85rem; font-weight:600; align-items:center; gap:6px;">✓ <span id="zipOkMsg">Great news — we service your area!</span></div>
+            <div id="zipNo" style="display:none; margin-top:12px; color:#ffb3a7; font-size:0.85rem; line-height:1.5;">📍 <strong>Not in our area yet.</strong> We serve Pearland, Manvel &amp; League City, TX. <a href="mailto:hello@gulfcoastmow.com?subject=Service%20Area%20Request" style="color:#ffcf99; font-weight:600;">Notify me when you expand →</a></div>
           </div>
         </div>
       </div>
 
-      <!-- Pricing cards — hidden until zip confirmed -->
       <div id="pricingCards" style="display:none;">
         <div class="pricing-grid" style="max-width:960px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
           <div class="price-card featured">
             <div class="price-badge">Most Popular</div>
             <div class="price-label">Standard Yard</div>
             <div class="price-amount">$45</div>
-            <div class="price-period">per week, billed weekly</div>
+            <div class="price-period">per week + 8.25% tax, billed weekly</div>
             <div style="display:inline-block; background:rgba(77,184,64,0.18); border:1px solid rgba(77,184,64,0.35); color:#a8eea0; font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:20px; letter-spacing:0.05em;">UP TO 10,000 SQ FT</div>
             <ul class="price-list">
               <li>Weekly mow, trim &amp; blow</li>
@@ -1254,13 +575,13 @@
               <li>7-day re-mow guarantee</li>
               <li>Cancel anytime — just text or email us</li>
             </ul>
-            <a href="#" class="btn-cta" style="width:100%; text-align:center; display:block;" onclick="openModal('small'); return false;">Start Service — $45/wk</a>
+            <a href="#" class="btn-cta" style="width:100%; text-align:center; display:block;" onclick="openModal('small'); return false;">Start Service — $45/wk + tax</a>
           </div>
 
           <div class="price-card">
             <div class="price-label">Large Yard</div>
             <div class="price-amount">$60</div>
-            <div class="price-period">per week, billed weekly</div>
+            <div class="price-period">per week + 8.25% tax, billed weekly</div>
             <div style="display:inline-block; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.6); font-size:0.78rem; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:20px; letter-spacing:0.05em;">10,001 – 15,000 SQ FT</div>
             <ul class="price-list">
               <li>Weekly mow, trim &amp; blow</li>
@@ -1269,7 +590,7 @@
               <li>7-day re-mow guarantee</li>
               <li>Cancel anytime — just text or email us</li>
             </ul>
-            <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0;" onclick="openModal('large'); return false;">Start Service — $60/wk</a>
+            <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0;" onclick="openModal('large'); return false;">Start Service — $60/wk + tax</a>
           </div>
 
           <div class="price-card" style="border-color:rgba(255,255,255,0.07); opacity:0.85;">
@@ -1288,75 +609,47 @@
           </div>
         </div>
 
-        <!-- Overgrowth notice -->
         <div style="margin-top:28px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px 20px; max-width:680px; display:flex; gap:12px; align-items:flex-start;">
           <span style="font-size:1.2rem; flex-shrink:0; margin-top:1px;">⚠️</span>
-          <div>
-            <p style="color:rgba(255,255,255,0.7); font-size:0.88rem; line-height:1.6; margin:0;"><strong style="color:rgba(255,255,255,0.9);">First mow overgrowth note:</strong> If your grass is over 9 inches tall on the first visit, an additional one-time fee (up to 50–100% of the regular rate) may apply. We'll always notify you before charging anything extra.</p>
-          </div>
+          <div><p style="color:rgba(255,255,255,0.7); font-size:0.88rem; line-height:1.6; margin:0;"><strong style="color:rgba(255,255,255,0.9);">First mow overgrowth note:</strong> If your grass is over 9 inches tall on the first visit, an additional one-time fee (up to 50–100% of the regular rate) may apply. We'll always notify you before charging anything extra.</p></div>
         </div>
-        <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Not sure of your yard size? No problem — we confirm it using satellite imagery at signup.</p>
+        <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Not sure of your yard size? No problem — we confirm it using satellite imagery at signup. All prices subject to 8.25% Texas sales tax.</p>
 
-        <!-- Cancel info -->
         <div style="margin-top:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 20px; max-width:680px; display:flex; gap:10px; align-items:flex-start;">
           <span style="font-size:1.1rem; flex-shrink:0; margin-top:2px;">📱</span>
           <div>
             <p style="color:rgba(255,255,255,0.8); font-size:0.88rem; font-weight:600; margin:0 0 6px;">Need to cancel? It takes one message.</p>
-            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0; line-height:1.7;">
-              Text <strong style="color:rgba(255,255,255,0.75);">REPLACE_GOOGLE_PHONE</strong> or email <strong style="color:rgba(255,255,255,0.75);">hello@gulfcoastmow.com</strong> with your name and address. We'll cancel same day — no hassle, no hold music.
-            </p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0; line-height:1.7;">Text <strong style="color:rgba(255,255,255,0.75);">REPLACE_GOOGLE_PHONE</strong> or email <strong style="color:rgba(255,255,255,0.75);">hello@gulfcoastmow.com</strong> with your name and address. We'll cancel same day — no hassle, no hold music.</p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="section-inner">
       <div class="section-tag">Customer Stories</div>
       <h2>What Our Customers In The Gulf Coast Area Are Saying.</h2>
-      <p class="section-sub mb-0"></p>
       <div class="testi-grid" style="margin-top:40px;">
         <div class="testi-card">
           <div class="stars">★★★★★</div>
           <p class="testi-text">"I tried two different guys before this. Both would go MIA for weeks at a time. Gulf Coast Mow just shows up — every single week. It actually works the way it's supposed to."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">JR</div>
-            <div>
-              <div class="testi-name">Jason R.</div>
-              <div class="testi-loc">Pearland, TX</div>
-            </div>
-          </div>
+          <div class="testi-author"><div class="testi-avatar">JR</div><div><div class="testi-name">Jason R.</div><div class="testi-loc">Pearland, TX</div></div></div>
         </div>
         <div class="testi-card">
           <div class="stars">★★★★★</div>
           <p class="testi-text">"I knew exactly what I was paying before I ever signed up. No texts, no haggling, just auto-billing and a clean lawn. I've referred three of my neighbors already."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">ML</div>
-            <div>
-              <div class="testi-name">Michelle L.</div>
-              <div class="testi-loc">Manvel, TX</div>
-            </div>
-          </div>
+          <div class="testi-author"><div class="testi-avatar">ML</div><div><div class="testi-name">Michelle L.</div><div class="testi-loc">Manvel, TX</div></div></div>
         </div>
         <div class="testi-card">
           <div class="stars">★★★★★</div>
           <p class="testi-text">"My last lawn guy was unreliable and kept changing his rate. This service is way more consistent. Set it up on my phone in 5 minutes and haven't thought about it since."</p>
-          <div class="testi-author">
-            <div class="testi-avatar">DT</div>
-            <div>
-              <div class="testi-name">Derek T.</div>
-              <div class="testi-loc">League City, TX</div>
-            </div>
-          </div>
+          <div class="testi-author"><div class="testi-avatar">DT</div><div><div class="testi-name">Derek T.</div><div class="testi-loc">League City, TX</div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOR / NOT FOR -->
   <section id="forwhom">
     <div class="section-inner">
       <div class="section-tag">Is This For You?</div>
@@ -1388,7 +681,6 @@
     </div>
   </section>
 
-  <!-- CTA BOTTOM -->
   <section id="cta-bottom">
     <h2>Your Lawn Sorted. Every Week.</h2>
     <p>Sign up in minutes. We handle the rest. Or refer neighbors and earn $10/month per active yard — no cap, no limit.</p>
@@ -1407,89 +699,49 @@
       <a href="#" onclick="showPage('crew'); return false;">Mow With Us</a>
     </div>
   </footer>
-
 </div>
 
-<!-- ═══════════════════ REFERRAL PAGE ═══════════════════ -->
+<!-- REFERRAL PAGE -->
 <div id="page-referral" style="display:none;">
-
   <div style="height:64px;"></div>
-
-  <!-- REFERRAL HERO -->
   <div class="referral-hero">
     <div class="section-tag" style="color:var(--green-glow); margin-bottom:14px;">Referral Program</div>
     <h1>Earn $10 Every Month<br>For Every Yard You Refer.</h1>
     <p style="color:rgba(255,255,255,0.65); font-size:1.1rem; max-width:540px; margin:12px auto 0;">As long as your referral is a customer, you get paid. No selling, no follow-up, no tracking spreadsheets.</p>
-
     <div class="ref-hero-stats">
-      <div class="ref-hero-stat">
-        <div class="ref-hero-stat-num">$10</div>
-        <div class="ref-hero-stat-label">Per yard / per month</div>
-      </div>
+      <div class="ref-hero-stat"><div class="ref-hero-stat-num">$10</div><div class="ref-hero-stat-label">Per yard / per month</div></div>
       <div class="ref-hero-stat-divider"></div>
-      <div class="ref-hero-stat">
-        <div class="ref-hero-stat-num">∞</div>
-        <div class="ref-hero-stat-label">No cap on referrals</div>
-      </div>
+      <div class="ref-hero-stat"><div class="ref-hero-stat-num">∞</div><div class="ref-hero-stat-label">No cap on referrals</div></div>
       <div class="ref-hero-stat-divider"></div>
-      <div class="ref-hero-stat">
-        <div class="ref-hero-stat-num">Auto</div>
-        <div class="ref-hero-stat-label">Payouts every month</div>
-      </div>
+      <div class="ref-hero-stat"><div class="ref-hero-stat-num">Auto</div><div class="ref-hero-stat-label">Payouts every month</div></div>
     </div>
-
     <div style="margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
       <a href="https://REPLACE_REFERRAL_SIGNUP_URL" class="btn-cta">💰 Get My Referral Link</a>
-      <a href="#ref-how" class="btn-cta-outline" style="border-color:rgba(255,255,255,0.35); color:#fff; padding:17px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1.05rem; letter-spacing:0.04em; text-decoration:none; border:2px solid rgba(255,255,255,0.35); transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">See How It Works ↓</a>
+      <a href="#ref-how" class="btn-cta-outline" style="border:2px solid rgba(255,255,255,0.35); color:#fff; padding:17px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1.05rem; letter-spacing:0.04em; text-decoration:none;">See How It Works ↓</a>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
   <div class="ref-steps" id="ref-how">
     <div style="text-align:center; margin-bottom:52px;">
       <div class="section-tag">Simple Process</div>
       <h2>Three Steps. Then Just Collect.</h2>
-      <p style="color:var(--gray-500); max-width:460px; margin:0 auto; font-size:1rem;">We use <strong>Tolt</strong> or <strong>Rewardful</strong> to handle all the tracking and payouts automatically — no spreadsheets, no manual calculations.</p>
     </div>
     <div class="ref-steps-grid">
-      <div class="ref-step">
-        <div class="ref-step-num">1</div>
-        <div style="font-size:2rem; margin-bottom:12px;">🔗</div>
-        <h3>Get Your Unique Link</h3>
-        <p>Sign up and get a personal referral link instantly. It looks like: <span style="color:var(--green); font-weight:600; font-size:0.88rem;">gulfcoastmow.com?ref=yourname</span></p>
-      </div>
-      <div class="ref-step">
-        <div class="ref-step-num">2</div>
-        <div style="font-size:2rem; margin-bottom:12px;">📲</div>
-        <h3>Share It Anywhere</h3>
-        <p>Text neighbors. Post in Nextdoor or Facebook groups. Share in your HOA chat. Anyone in Pearland, Manvel, or League City is a potential referral.</p>
-      </div>
-      <div class="ref-step">
-        <div class="ref-step-num">3</div>
-        <div style="font-size:2rem; margin-bottom:12px;">💸</div>
-        <h3>Get Paid Every Month</h3>
-        <p>$10 per active customer per month, automatically. You'll receive a payout on the 1st of each month for the previous month's active referrals.</p>
-      </div>
+      <div class="ref-step"><div class="ref-step-num">1</div><div style="font-size:2rem; margin-bottom:12px;">🔗</div><h3>Get Your Unique Link</h3><p>Sign up and get a personal referral link instantly.</p></div>
+      <div class="ref-step"><div class="ref-step-num">2</div><div style="font-size:2rem; margin-bottom:12px;">📲</div><h3>Share It Anywhere</h3><p>Text neighbors. Post in Nextdoor or Facebook groups. Share in your HOA chat.</p></div>
+      <div class="ref-step"><div class="ref-step-num">3</div><div style="font-size:2rem; margin-bottom:12px;">💸</div><h3>Get Paid Every Month</h3><p>$10 per active customer per month, automatically on the 1st.</p></div>
     </div>
   </div>
 
-  <!-- EARNINGS CALCULATOR -->
   <div class="ref-earnings">
     <div class="section-tag">Earnings Calculator</div>
     <h2>See What You Could Earn.</h2>
-    <p style="color:var(--gray-500); margin-top:8px; margin-bottom:36px;">$10 flat per active referral, every month, for as long as they're a customer.</p>
-
     <div class="earn-calc-wrap">
-      <div class="earn-calc-slider-section">
+      <div>
         <label class="earn-slider-label">Drag to see your monthly earnings</label>
-        <div class="earn-slider-val-row">
-          <span class="earn-slider-val-num" id="sliderVal">5</span>
-          <span class="earn-slider-val-label">referred yards</span>
-        </div>
+        <div class="earn-slider-val-row"><span class="earn-slider-val-num" id="sliderVal">5</span><span class="earn-slider-val-label">referred yards</span></div>
         <input type="range" class="earn-slider" id="earningsSlider" min="1" max="25" value="5" oninput="updateEarnings(this.value)">
-        <div class="earn-slider-range-labels">
-          <span>1 yard</span><span>25 yards</span>
-        </div>
+        <div class="earn-slider-range-labels"><span>1 yard</span><span>25 yards</span></div>
       </div>
       <div class="earn-calc-result">
         <div class="earn-result-label">Monthly earnings</div>
@@ -1498,198 +750,28 @@
         <div class="earn-result-note">As long as those yards stay active subscribers.</div>
       </div>
     </div>
-
     <div class="earnings-grid" style="margin-top:40px;">
-      <div class="earn-card">
-        <div class="earn-homes">1 Yard</div>
-        <div class="earn-amount">$10</div>
-        <div class="earn-period">/ month</div>
-      </div>
-      <div class="earn-card">
-        <div class="earn-homes">5 Yards</div>
-        <div class="earn-amount">$50</div>
-        <div class="earn-period">/ month</div>
-      </div>
-      <div class="earn-card">
-        <div class="earn-homes">10 Yards</div>
-        <div class="earn-amount">$100</div>
-        <div class="earn-period">/ month</div>
-      </div>
-      <div class="earn-card" style="border-bottom-color:var(--green-glow);">
-        <div class="earn-homes">20 Yards</div>
-        <div class="earn-amount" style="color:var(--green);">$200</div>
-        <div class="earn-period">/ month</div>
-      </div>
-    </div>
-    <p style="color:var(--gray-500); font-size:0.85rem; margin-top:20px;">No cap. No tiers. Every active referral pays the same $10/month.</p>
-  </div>
-
-  <!-- HOW TRACKING & PAYOUTS WORK -->
-  <div style="background:var(--white); padding:72px 5vw;">
-    <div class="section-inner">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
-
-        <div>
-          <div class="section-tag">How Tracking Works</div>
-          <h2 style="font-size:clamp(1.7rem,3vw,2.4rem); margin-bottom:16px;">We Use Software So Nothing Falls Through the Cracks.</h2>
-          <p style="color:var(--gray-500); margin-bottom:28px; font-size:0.97rem; line-height:1.7;">We run the referral program through <strong style="color:var(--dark);">Tolt</strong> (or Rewardful) — a platform built specifically for subscription businesses running on Stripe. It handles everything automatically.</p>
-
-          <div class="how-track-list">
-            <div class="how-track-item">
-              <div class="how-track-icon">🍪</div>
-              <div>
-                <strong>Cookie + Link Tracking</strong>
-                <p>When someone clicks your link, a tracking cookie is set. Even if they don't sign up immediately, you still get credit if they subscribe within 30 days.</p>
-              </div>
-            </div>
-            <div class="how-track-item">
-              <div class="how-track-icon">🔄</div>
-              <div>
-                <strong>Stripe Integration</strong>
-                <p>Tolt connects directly to our Stripe account. It automatically detects when a referred customer pays their weekly bill and credits your account $10 for that month.</p>
-              </div>
-            </div>
-            <div class="how-track-item">
-              <div class="how-track-icon">📊</div>
-              <div>
-                <strong>Your Own Dashboard</strong>
-                <p>You get a login to your own affiliate dashboard where you can see every referral, their status (active/cancelled), and your pending/paid earnings in real time.</p>
-              </div>
-            </div>
-            <div class="how-track-item">
-              <div class="how-track-icon">🏦</div>
-              <div>
-                <strong>Automatic Payouts</strong>
-                <p>On the 1st of every month, earnings are automatically sent to your PayPal or bank account (ACH). No invoicing, no chasing — just a deposit.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-tag">What Your Dashboard Looks Like</div>
-          <div class="ref-dashboard-mockup">
-            <div class="ref-dash-header">
-              <div class="ref-dash-logo">🌿 Gulf Coast Mow — Affiliate Portal</div>
-              <div class="ref-dash-user">👤 Your Account</div>
-            </div>
-            <div class="ref-dash-stats">
-              <div class="ref-dash-stat">
-                <div class="ref-dash-stat-val">7</div>
-                <div class="ref-dash-stat-lbl">Active Referrals</div>
-              </div>
-              <div class="ref-dash-stat">
-                <div class="ref-dash-stat-val">$70</div>
-                <div class="ref-dash-stat-lbl">This Month</div>
-              </div>
-              <div class="ref-dash-stat">
-                <div class="ref-dash-stat-val">$350</div>
-                <div class="ref-dash-stat-lbl">Total Earned</div>
-              </div>
-            </div>
-            <div class="ref-dash-link-row">
-              <span class="ref-dash-link-label">Your Link</span>
-              <div class="ref-dash-link-box">gulfcoastmow.com?ref=<strong>yourname</strong></div>
-              <div class="ref-dash-copy-btn">Copy</div>
-            </div>
-            <div class="ref-dash-table-head">
-              <span>Referral</span><span>Status</span><span>This Month</span>
-            </div>
-            <div class="ref-dash-row"><span>J. Rodriguez</span><span class="ref-status active">Active</span><span>$10</span></div>
-            <div class="ref-dash-row"><span>M. Thompson</span><span class="ref-status active">Active</span><span>$10</span></div>
-            <div class="ref-dash-row"><span>D. Williams</span><span class="ref-status active">Active</span><span>$10</span></div>
-            <div class="ref-dash-row"><span>C. Patel</span><span class="ref-status paused">Paused</span><span>$0</span></div>
-            <div class="ref-dash-row"><span>S. Johnson</span><span class="ref-status active">Active</span><span>$10</span></div>
-            <div class="ref-dash-payout">
-              <span>💳 Next payout: <strong>August 1st</strong></span>
-              <span class="ref-dash-payout-amt">$70.00</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div class="earn-card"><div class="earn-homes">1 Yard</div><div class="earn-amount">$10</div><div class="earn-period">/ month</div></div>
+      <div class="earn-card"><div class="earn-homes">5 Yards</div><div class="earn-amount">$50</div><div class="earn-period">/ month</div></div>
+      <div class="earn-card"><div class="earn-homes">10 Yards</div><div class="earn-amount">$100</div><div class="earn-period">/ month</div></div>
+      <div class="earn-card" style="border-bottom-color:var(--green-glow);"><div class="earn-homes">20 Yards</div><div class="earn-amount" style="color:var(--green);">$200</div><div class="earn-period">/ month</div></div>
     </div>
   </div>
 
-  <!-- WHO SHOULD REFER -->
-  <div style="background:var(--off-white); padding:72px 5vw;">
-    <div class="section-inner">
-      <div class="section-tag" style="text-align:center;">Who This Is For</div>
-      <h2 style="text-align:center; margin-bottom:48px;">Perfect If You Know Your Neighborhood.</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
-        <div class="who-card">
-          <div class="who-icon">🏘️</div>
-          <h4>HOA Members</h4>
-          <p>You know 50+ homeowners. One post in the community app could earn you $100–$200/month.</p>
-        </div>
-        <div class="who-card">
-          <div class="who-icon">📱</div>
-          <h4>Nextdoor Regulars</h4>
-          <p>Already active on neighborhood social? Your referral link fits naturally in lawn care threads.</p>
-        </div>
-        <div class="who-card">
-          <div class="who-icon">🏡</div>
-          <h4>Current Customers</h4>
-          <p>If you already use Gulf Coast Mow, you're the best advocate. Tell your neighbors and earn while you're at it.</p>
-        </div>
-        <div class="who-card">
-          <div class="who-icon">🤝</div>
-          <h4>Local Connectors</h4>
-          <p>Real estate agents, property managers, anyone who knows homeowners in Pearland, Manvel, or League City.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ -->
   <div class="ref-faq">
-    <div style="text-align:center; margin-bottom:40px;">
-      <div class="section-tag">FAQ</div>
-      <h2>Every Question Answered.</h2>
-    </div>
+    <div style="text-align:center; margin-bottom:40px;"><div class="section-tag">FAQ</div><h2>Every Question Answered.</h2></div>
     <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How does $10/month work exactly? <span class="arrow">▼</span></div>
-        <div class="faq-a">For every person who signs up through your referral link and remains an active subscriber, you earn $10 flat each calendar month. It doesn't matter if they're on the $45/week or $60/week plan — you always earn $10/month per active yard. If a referral cancels, that $10 stops. If they resubscribe, it starts again automatically.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">When and how do I get paid? <span class="arrow">▼</span></div>
-        <div class="faq-a">Payouts are processed automatically on the 1st of every month for the previous month's active referrals. You can receive payment via PayPal or direct bank deposit (ACH). You'll get a payout summary email each month showing exactly which referrals earned what.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How are referrals tracked? Won't I lose credit? <span class="arrow">▼</span></div>
-        <div class="faq-a">We use Tolt (tolt.io), a dedicated affiliate tracking platform built for Stripe subscriptions. When someone clicks your link, a 30-day cookie is set. If they sign up anytime within that 30 days, you get permanent credit for that customer. Tolt connects directly to our Stripe account so there's no manual tracking — it's all automatic and auditable. You can see every referral's status in your dashboard at any time.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What if my referral pauses or cancels? <span class="arrow">▼</span></div>
-        <div class="faq-a">You only earn on active months. If a referral pauses or cancels, the $10 stops for that period. No clawbacks on months already paid — those are yours to keep. If they resubscribe later, the earnings resume automatically. You don't need to do anything.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is there a limit on how many people I can refer? <span class="arrow">▼</span></div>
-        <div class="faq-a">No limit whatsoever. Refer 1 yard or 100 yards — the $10/month rate applies equally to every active referral. There are no tiers, no caps, and no diminishing returns.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Do I need to be a Gulf Coast Mow customer to refer? <span class="arrow">▼</span></div>
-        <div class="faq-a">No. You can join the referral program without being a lawn service customer. Anyone can refer — neighbors, friends, local community members, real estate agents, or anyone who knows homeowners in our service area.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I refer myself or someone in my household? <span class="arrow">▼</span></div>
-        <div class="faq-a">No. Self-referrals are not permitted and are automatically flagged in the system. The referral program is designed for referring other households only. Violations result in removal from the program.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What if someone I referred signed up without using my link? <span class="arrow">▼</span></div>
-        <div class="faq-a">Unfortunately, we can only track referrals that come through your unique link — that's what makes automatic payouts possible. We'd encourage you to share your link directly rather than just mentioning the service, since the link is what connects the signup to your account.</div>
-      </div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does $10/month work exactly? <span class="arrow">▼</span></div><div class="faq-a">For every person who signs up through your referral link and remains an active subscriber, you earn $10 flat each calendar month. If a referral cancels, that $10 stops. If they resubscribe, it starts again automatically.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When and how do I get paid? <span class="arrow">▼</span></div><div class="faq-a">Payouts are processed automatically on the 1st of every month. You can receive payment via PayPal or direct bank deposit (ACH).</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a limit on how many people I can refer? <span class="arrow">▼</span></div><div class="faq-a">No limit whatsoever. Refer 1 yard or 100 yards — the $10/month rate applies equally to every active referral.</div></div>
     </div>
   </div>
 
-  <!-- FINAL CTA -->
-  <div class="ref-cta" id="ref-cta">
+  <div class="ref-cta">
     <div class="section-tag" style="color:var(--green-glow); margin-bottom:12px;">Ready to Start?</div>
     <h2>Your Neighborhood Is Your Income.</h2>
     <p>Sign up free. Get your link. Share it. Collect $10/month per yard, automatically.</p>
-    <a href="https://REPLACE_REFERRAL_SIGNUP_URL" class="btn-cta" style="font-size:1.15rem; padding:18px 44px;">💰 Join the Referral Program — It's Free</a>
-    <p style="color:rgba(255,255,255,0.35); font-size:0.82rem; margin-top:16px;">Powered by Tolt · Stripe-verified payouts · Cancel anytime</p>
+    <a href="https://REPLACE_REFERRAL_SIGNUP_URL" class="btn-cta">💰 Join the Referral Program — It's Free</a>
   </div>
 
   <footer>
@@ -1699,557 +781,183 @@
       <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
     </div>
   </footer>
-
 </div>
 
 <script>
-  // ─── ZIP CHECKER ───
-  const SERVICE_ZIPS = new Set([
-    '77581','77584','77588', // Pearland
-    '77578',                  // Manvel
-    '77539','77573','77574',  // League City
-    '77546','77565'           // Friendswood / Shadow Creek border
-  ]);
+  const SERVICE_ZIPS = new Set(['77581','77584','77588','77578','77539','77573','77574','77546','77565']);
 
   function checkZip() {
     const zip   = document.getElementById('zipInput').value.trim();
     const okEl  = document.getElementById('zipOk');
     const noEl  = document.getElementById('zipNo');
     const cards = document.getElementById('pricingCards');
-
     okEl.style.display = 'none';
     noEl.style.display = 'none';
-
-    if (!/^\d{5}$/.test(zip)) {
-      document.getElementById('zipInput').style.outline = '2px solid #ffb347';
-      setTimeout(() => document.getElementById('zipInput').style.outline = '', 1500);
-      return;
-    }
-
+    if (!/^\d{5}$/.test(zip)) { document.getElementById('zipInput').style.outline = '2px solid #ffb347'; setTimeout(() => document.getElementById('zipInput').style.outline = '', 1500); return; }
     if (SERVICE_ZIPS.has(zip)) {
       okEl.style.display = 'flex';
-      const city = zip === '77578' ? 'Manvel'
-                 : (zip==='77539'||zip==='77573'||zip==='77574') ? 'League City'
-                 : zip === '77546' ? 'Friendswood'
-                 : 'Pearland';
+      const city = zip==='77578'?'Manvel':(zip==='77539'||zip==='77573'||zip==='77574')?'League City':zip==='77546'?'Friendswood':'Pearland';
       document.getElementById('zipOkMsg').textContent = `Great news — we service ${city}!`;
       cards.style.display = 'block';
-      cards.style.animation = 'none';
-      cards.offsetHeight;
-      cards.style.animation = 'fadeUp 0.5s ease both';
       setTimeout(() => cards.scrollIntoView({ behavior:'smooth', block:'nearest' }), 120);
-    } else {
-      noEl.style.display = 'block';
-      cards.style.display = 'none';
-    }
+    } else { noEl.style.display = 'block'; cards.style.display = 'none'; }
   }
-  // ─── PAGE SWITCHING ───
+
   function showPage(page) {
-    const home = document.getElementById('page-home');
-    const ref  = document.getElementById('page-referral');
-    const crew = document.getElementById('page-crew');
-    home.style.display = page === 'home'     ? 'block' : 'none';
-    ref.style.display  = page === 'referral' ? 'block' : 'none';
-    crew.style.display = page === 'crew'     ? 'block' : 'none';
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    document.getElementById('page-home').style.display      = page==='home'     ? 'block' : 'none';
+    document.getElementById('page-referral').style.display  = page==='referral' ? 'block' : 'none';
+    document.getElementById('page-crew').style.display      = page==='crew'     ? 'block' : 'none';
+    window.scrollTo(0,0);
   }
 
-  // ─── EARNINGS SLIDER ───
   function updateEarnings(val) {
-    const num = parseInt(val);
-    const monthly = num * 10;
-    const annual = monthly * 12;
-    const sliderVal = document.getElementById('sliderVal');
-    const earningsAmount = document.getElementById('earningsAmount');
-    const earningsAnnual = document.getElementById('earningsAnnual');
-    const slider = document.getElementById('earningsSlider');
-    if (sliderVal) sliderVal.textContent = num;
-    if (earningsAmount) earningsAmount.textContent = '$' + monthly;
-    if (earningsAnnual) earningsAnnual.textContent = '$' + annual.toLocaleString();
-    if (slider) {
-      const pct = ((num - 1) / 24 * 100).toFixed(1);
-      slider.style.background =
-        `linear-gradient(to right, var(--green) 0%, var(--green) ${pct}%, var(--gray-200) ${pct}%)`;
-    }
+    const num=parseInt(val), monthly=num*10, annual=monthly*12;
+    const slider=document.getElementById('earningsSlider');
+    document.getElementById('sliderVal').textContent=num;
+    document.getElementById('earningsAmount').textContent='$'+monthly;
+    document.getElementById('earningsAnnual').textContent='$'+annual.toLocaleString();
+    if(slider){const pct=((num-1)/24*100).toFixed(1);slider.style.background=`linear-gradient(to right, var(--green) 0%, var(--green) ${pct}%, var(--gray-200) ${pct}%)`;}
   }
 
-  // ─── SMOOTH SCROLL ───
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const id = this.getAttribute('href');
-      if (id === '#') return;
-      const target = document.querySelector(id);
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  // ─── FAQ TOGGLE ───
-  function toggleFaq(el) {
-    el.parentElement.classList.toggle('open');
-  }
-
-  // ─── MODAL STATE ───
-  let selectedPlan = 'small'; // 'small' | 'large' | 'custom'
-
-  const STRIPE_SMALL = ' https://buy.stripe.com/14A4gs9M93IL91z9SEbjW00';
-  const STRIPE_LARGE = ' https://buy.stripe.com/6oU3cof6tfrtcdL4ykbjW01';
-
-  // All step IDs in the system
+  let selectedPlan = 'small';
   const ALL_STEPS = ['step1','step2','step2c','step3','step3c','step4c'];
 
-  function showOnlyStep(id) {
-    ALL_STEPS.forEach(s => {
-      document.getElementById(s).classList.remove('active');
-    });
-    document.getElementById(id).classList.add('active');
-    document.getElementById('modalBox').scrollTop = 0;
-  }
-
-  function setDots(active, total) {
-    // active = 1-indexed current dot, total = how many dots to show
-    [1,2,3].forEach(i => {
-      const dot = document.getElementById('dot'+i);
-      dot.style.display = i <= total ? '' : 'none';
-      dot.classList.remove('active','done');
-      if (i === active) dot.classList.add('active');
-      else if (i < active) dot.classList.add('done');
-    });
-  }
-
-  function get72hrMinDate() {
-    const d = new Date();
-    d.setHours(d.getHours() + 72);
-    return d.toISOString().split('T')[0];
-  }
+  function showOnlyStep(id) { ALL_STEPS.forEach(s=>document.getElementById(s).classList.remove('active')); document.getElementById(id).classList.add('active'); document.getElementById('modalBox').scrollTop=0; }
+  function setDots(active,total) { [1,2,3].forEach(i=>{const dot=document.getElementById('dot'+i);dot.style.display=i<=total?'':'none';dot.classList.remove('active','done');if(i===active)dot.classList.add('active');else if(i<active)dot.classList.add('done');}); }
+  function get72hrMinDate() { const d=new Date();d.setHours(d.getHours()+72);return d.toISOString().split('T')[0]; }
 
   function openModal(plan) {
-    selectedPlan = plan || 'small';
-
-    // Reset all fields
-    ['fieldName','fieldEmail','fieldPhone','fieldAddress','fieldDate',
-     'fieldAddressCustom','fieldYardSize','fieldNotes'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = '';
-    });
-    // Clear errors
-    document.querySelectorAll('.form-error').forEach(e => e.classList.remove('visible'));
-    document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
-
+    selectedPlan=plan||'small';
+    ['fieldName','fieldEmail','fieldPhone','fieldAddress','fieldDate','fieldAddressCustom','fieldYardSize','fieldNotes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.querySelectorAll('.form-error').forEach(e=>e.classList.remove('visible'));
+    document.querySelectorAll('.form-input').forEach(e=>e.classList.remove('error'));
     updatePlanDisplay();
-
-    // Sync plan buttons
-    document.getElementById('planSmall').classList.toggle('selected', selectedPlan === 'small');
-    document.getElementById('planLarge').classList.toggle('selected', selectedPlan === 'large');
-
-    // Set 72hr min date
-    const minDate = get72hrMinDate();
-    document.getElementById('fieldDate').min = minDate;
-
-    // Show correct first step
-    showOnlyStep('step1');
-    setDots(1, 3);
-
+    document.getElementById('planSmall').classList.toggle('selected',selectedPlan==='small');
+    document.getElementById('planLarge').classList.toggle('selected',selectedPlan==='large');
+    document.getElementById('fieldDate').min=get72hrMinDate();
+    showOnlyStep('step1'); setDots(1,3);
     document.getElementById('signupModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
   }
 
-  function closeModal() {
-    document.getElementById('signupModal').classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  function closeModal() { document.getElementById('signupModal').classList.remove('active'); document.body.style.overflow=''; }
+  function handleModalOverlayClick(e) { if(e.target===document.getElementById('signupModal'))closeModal(); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-  function handleModalOverlayClick(e) {
-    if (e.target === document.getElementById('signupModal')) closeModal();
-  }
+  function selectPlan(plan) { selectedPlan=plan; document.getElementById('planSmall').classList.toggle('selected',plan==='small'); document.getElementById('planLarge').classList.toggle('selected',plan==='large'); updatePlanDisplay(); }
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  function selectPlan(plan) {
-    selectedPlan = plan;
-    document.getElementById('planSmall').classList.toggle('selected', plan === 'small');
-    document.getElementById('planLarge').classList.toggle('selected', plan === 'large');
-    updatePlanDisplay();
-  }
-
-  function switchToCustom() {
-    selectedPlan = 'custom';
-    updatePlanDisplay();
-    showOnlyStep('step2c');
-    setDots(2, 3);
-  }
+  function switchToCustom() { selectedPlan='custom'; updatePlanDisplay(); showOnlyStep('step2c'); setDots(2,3); }
 
   function updatePlanDisplay() {
-    const badge = document.getElementById('modalPlanBadge');
-    const price = document.getElementById('modalPriceDisplay');
-    const headline = document.getElementById('modalHeadline');
-    const subline  = document.getElementById('modalSubline');
-
-    if (selectedPlan === 'custom') {
-      badge.textContent = 'Extra-Large Yard — Custom Quote';
-      price.innerHTML   = 'Custom <span>/ week</span>';
-      headline.textContent = 'Let\'s Figure Out Your Rate.';
-      subline.textContent  = 'Tell us about your yard. We\'ll get back to you within 24 hours.';
-    } else {
-      const isSmall = selectedPlan === 'small';
-      badge.textContent = isSmall ? 'Standard Yard — Up to 10,000 sq ft' : 'Large Yard — 10,001–15,000 sq ft';
-      price.innerHTML   = isSmall ? '$45 <span>/ week</span>' : '$60 <span>/ week</span>';
-      headline.textContent = 'Let\'s Get Your Lawn Sorted.';
-      subline.textContent  = 'Takes 60 seconds. No commitment required.';
-    }
+    const badge=document.getElementById('modalPlanBadge'), price=document.getElementById('modalPriceDisplay'), headline=document.getElementById('modalHeadline'), subline=document.getElementById('modalSubline');
+    if(selectedPlan==='custom'){badge.textContent='Extra-Large Yard — Custom Quote';price.innerHTML='Custom <span>/ week</span>';headline.textContent="Let's Figure Out Your Rate.";subline.textContent="Tell us about your yard. We'll get back to you within 24 hours.";}
+    else{const isSmall=selectedPlan==='small';badge.textContent=isSmall?'Standard Yard — Up to 10,000 sq ft':'Large Yard — 10,001–15,000 sq ft';price.innerHTML=isSmall?'$45 <span>/ week + tax</span>':'$60 <span>/ week + tax</span>';headline.textContent="Let's Get Your Lawn Sorted.";subline.textContent="Takes 60 seconds. No commitment required.";}
   }
 
-  // ── Standard flow step navigation ──
-  function goStep(num, reset) {
-    if (!reset && num > currentStandardStep()) {
-      if (!validateStep(currentStandardStep())) return;
-    }
-    if (num === 1) { showOnlyStep('step1'); setDots(1,3); }
-    if (num === 2) { showOnlyStep('step2'); setDots(2,3); }
-    if (num === 3) { populateConfirm(); showOnlyStep('step3'); setDots(3,3); }
+  function goStep(num) {
+    if(num>currentStandardStep()&&!validateStep(currentStandardStep()))return;
+    if(num===1){showOnlyStep('step1');setDots(1,3);}
+    if(num===2){showOnlyStep('step2');setDots(2,3);}
+    if(num===3){populateConfirm();showOnlyStep('step3');setDots(3,3);}
   }
 
   function currentStandardStep() {
-    if (document.getElementById('step1').classList.contains('active')) return 1;
-    if (document.getElementById('step2').classList.contains('active')) return 2;
-    if (document.getElementById('step3').classList.contains('active')) return 3;
-    return 1;
+    if(document.getElementById('step1').classList.contains('active'))return 1;
+    if(document.getElementById('step2').classList.contains('active'))return 2;
+    return 3;
   }
 
-  // ── Custom flow step navigation ──
-  function goStepCustom(num) {
-    if (num === 3) {
-      if (!validateCustomStep2()) return;
-      populateCustomConfirm();
-      showOnlyStep('step3c');
-      setDots(3,3);
-    }
-  }
-
-  function showCustomStep2() {
-    showOnlyStep('step2c');
-    setDots(2,3);
-  }
+  function goStepCustom(num) { if(num===3){if(!validateCustomStep2())return;populateCustomConfirm();showOnlyStep('step3c');setDots(3,3);} }
+  function showCustomStep2() { showOnlyStep('step2c');setDots(2,3); }
 
   function submitCustomQuote() {
-    // Populate thank-you screen
-    document.getElementById('thankYouEmail').textContent   = document.getElementById('fieldEmail').value.trim();
-    document.getElementById('thankYouPhone').textContent   = document.getElementById('fieldPhone').value.trim();
-    document.getElementById('thankYouAddress').textContent = document.getElementById('fieldAddressCustom').value.trim();
-    document.getElementById('thankYouSize').textContent    = document.getElementById('fieldYardSize').value.trim() || 'Not specified';
-
-    // In production: POST this data to your backend/webhook here
-    // For now it just shows the thank-you screen — all data is captured
-    // in the form fields and you can wire a fetch() to Zapier/Make/your API
-
+    document.getElementById('thankYouEmail').textContent=document.getElementById('fieldEmail').value.trim();
+    document.getElementById('thankYouPhone').textContent=document.getElementById('fieldPhone').value.trim();
+    document.getElementById('thankYouAddress').textContent=document.getElementById('fieldAddressCustom').value.trim();
+    document.getElementById('thankYouSize').textContent=document.getElementById('fieldYardSize').value.trim()||'Not specified';
     showOnlyStep('step4c');
-    // Hide step dots on thank-you screen
-    [1,2,3].forEach(i => document.getElementById('dot'+i).style.display = 'none');
+    [1,2,3].forEach(i=>document.getElementById('dot'+i).style.display='none');
   }
 
-  // ── Validation ──
   function validateStep(step) {
-    let valid = true;
-    if (step === 1) {
-      const name  = document.getElementById('fieldName').value.trim();
-      const email = document.getElementById('fieldEmail').value.trim();
-      const phone = document.getElementById('fieldPhone').value.trim().replace(/\D/g,'');
-      setError('errName',  !name);
-      setError('errEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
-      setError('errPhone', phone.length < 10);
-      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || phone.length < 10) valid = false;
-    }
-    if (step === 2) {
-      const addr    = document.getElementById('fieldAddress').value.trim();
-      const dateVal = document.getElementById('fieldDate').value;
-      const minDate = get72hrMinDate();
-      setError('errAddress', !addr);
-      setError('errDate', !dateVal || dateVal < minDate);
-      if (!addr || !dateVal || dateVal < minDate) valid = false;
-    }
+    let valid=true;
+    if(step===1){const name=document.getElementById('fieldName').value.trim(),email=document.getElementById('fieldEmail').value.trim(),phone=document.getElementById('fieldPhone').value.trim().replace(/\D/g,'');setError('errName',!name);setError('errEmail',!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));setError('errPhone',phone.length<10);if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||phone.length<10)valid=false;}
+    if(step===2){const addr=document.getElementById('fieldAddress').value.trim(),dateVal=document.getElementById('fieldDate').value,minDate=get72hrMinDate();setError('errAddress',!addr);setError('errDate',!dateVal||dateVal<minDate);if(!addr||!dateVal||dateVal<minDate)valid=false;}
     return valid;
   }
 
-  function validateCustomStep2() {
-    let valid = true;
-    const addr = document.getElementById('fieldAddressCustom').value.trim();
-    setError('errAddressCustom', !addr);
-    if (!addr) valid = false;
-    return valid;
-  }
+  function validateCustomStep2() { const addr=document.getElementById('fieldAddressCustom').value.trim();setError('errAddressCustom',!addr);return !!addr; }
+  function setError(id,show) { const el=document.getElementById(id);if(!el)return;el.classList.toggle('visible',show);const input=el.previousElementSibling;if(input&&input.classList.contains('form-input'))input.classList.toggle('error',show); }
 
-  function setError(id, show) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.toggle('visible', show);
-    const input = el.previousElementSibling;
-    if (input && input.classList.contains('form-input')) input.classList.toggle('error', show);
-  }
-
-  // ── Confirm population ──
   function populateConfirm() {
-    const dateVal = document.getElementById('fieldDate').value;
-    document.getElementById('cName').textContent    = document.getElementById('fieldName').value.trim();
-    document.getElementById('cEmail').textContent   = document.getElementById('fieldEmail').value.trim();
-    document.getElementById('cPhone').textContent   = document.getElementById('fieldPhone').value.trim();
-    document.getElementById('cAddress').textContent = document.getElementById('fieldAddress').value.trim();
-    document.getElementById('cDate').textContent    = dateVal
-      ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' })
-      : '—';
-    document.getElementById('cPlan').textContent = selectedPlan === 'small' ? '$45/week' : '$60/week';
+    const dateVal=document.getElementById('fieldDate').value;
+    document.getElementById('cName').textContent=document.getElementById('fieldName').value.trim();
+    document.getElementById('cEmail').textContent=document.getElementById('fieldEmail').value.trim();
+    document.getElementById('cPhone').textContent=document.getElementById('fieldPhone').value.trim();
+    document.getElementById('cAddress').textContent=document.getElementById('fieldAddress').value.trim();
+    document.getElementById('cDate').textContent=dateVal?new Date(dateVal+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}):'—';
+    document.getElementById('cPlan').textContent=selectedPlan==='small'?'$45/week + tax':'$60/week + tax';
   }
 
   function populateCustomConfirm() {
-    document.getElementById('ccName').textContent    = document.getElementById('fieldName').value.trim();
-    document.getElementById('ccEmail').textContent   = document.getElementById('fieldEmail').value.trim();
-    document.getElementById('ccPhone').textContent   = document.getElementById('fieldPhone').value.trim();
-    document.getElementById('ccAddress').textContent = document.getElementById('fieldAddressCustom').value.trim();
-    document.getElementById('ccYardSize').textContent = document.getElementById('fieldYardSize').value.trim() || 'Not specified';
-    const notes = document.getElementById('fieldNotes').value.trim();
-    document.getElementById('ccNotes').textContent   = notes || 'None';
+    document.getElementById('ccName').textContent=document.getElementById('fieldName').value.trim();
+    document.getElementById('ccEmail').textContent=document.getElementById('fieldEmail').value.trim();
+    document.getElementById('ccPhone').textContent=document.getElementById('fieldPhone').value.trim();
+    document.getElementById('ccAddress').textContent=document.getElementById('fieldAddressCustom').value.trim();
+    document.getElementById('ccYardSize').textContent=document.getElementById('fieldYardSize').value.trim()||'Not specified';
+    document.getElementById('ccNotes').textContent=document.getElementById('fieldNotes').value.trim()||'None';
   }
 
   // ── Stripe redirect ──
+  const STRIPE_SMALL = 'https://buy.stripe.com/14A4gs9M93IL91z9SEbjW00';
+  const STRIPE_LARGE = 'https://buy.stripe.com/6oU3cof6tfrtcdL4ykbjW01';
+
   function goToStripe() {
-    const email   = document.getElementById('fieldEmail').value.trim();
-    const name    = document.getElementById('fieldName').value.trim();
-    const phone   = document.getElementById('fieldPhone').value.trim();
-    const address = document.getElementById('fieldAddress').value.trim();
-    const date    = document.getElementById('fieldDate').value;
-    const plan    = selectedPlan === 'small' ? '$45/wk' : '$60/wk';
-    const ref     = `${date}|${name}|${phone}|${address}|${plan}`;
-    const base    = selectedPlan === 'small' ? STRIPE_SMALL : STRIPE_LARGE;
-    const url     = `${base}?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${encodeURIComponent(ref)}`;
-    window.location.href = url;
+    const email=document.getElementById('fieldEmail').value.trim(),name=document.getElementById('fieldName').value.trim(),phone=document.getElementById('fieldPhone').value.trim(),address=document.getElementById('fieldAddress').value.trim(),date=document.getElementById('fieldDate').value,plan=selectedPlan==='small'?'$45/wk':'$60/wk';
+    const ref=`${date}|${name}|${phone}|${address}|${plan}`;
+    const base=selectedPlan==='small'?STRIPE_SMALL:STRIPE_LARGE;
+    window.location.href=`${base}?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${encodeURIComponent(ref)}`;
   }
 
-  // ─── INIT ───
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('page-home').style.display = 'block';
-    document.getElementById('page-referral').style.display = 'none';
-    document.getElementById('page-crew').style.display = 'none';
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('page-home').style.display='block';
+    document.getElementById('page-referral').style.display='none';
+    document.getElementById('page-crew').style.display='none';
     updateEarnings(5);
   });
 </script>
 
-<!-- ═══════════════════ CREW PAGE ═══════════════════ -->
+<!-- CREW PAGE -->
 <div id="page-crew" style="display:none;">
-
   <div style="height:64px;"></div>
-
-  <!-- HERO -->
   <div style="background:linear-gradient(135deg, var(--dark) 0%, #1a3512 100%); padding:80px 5vw 72px; text-align:center;">
     <div class="section-tag" style="color:var(--green-glow); margin-bottom:14px;">For Lawn Crews</div>
     <h1 style="font-family:var(--font-head); font-weight:900; font-size:clamp(2.4rem,5vw,4rem); color:#fff; max-width:680px; margin:0 auto 16px; line-height:1.05;">Get Paid to Mow.<br><em style="color:var(--green-glow); font-style:normal;">We Handle Everything Else.</em></h1>
-    <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:520px; margin:0 auto 40px; line-height:1.7;">We bring you the customers, the schedule, and the billing. You show up and mow. Direct deposit to your bank account after every job — no chasing payments, no invoices.</p>
+    <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:520px; margin:0 auto 40px; line-height:1.7;">We bring you the customers, the schedule, and the billing. You show up and mow. Direct deposit to your bank account after every job.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="font-size:1.1rem; padding:16px 36px;">💳 Set Up Direct Deposit → </a>
-      <a href="#crew-how" class="btn-cta-outline" style="border:2px solid rgba(255,255,255,0.35); color:#fff; padding:15px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1rem; letter-spacing:0.04em; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">See How It Works ↓</a>
-    </div>
-
-    <!-- Stats row -->
-    <div style="display:flex; justify-content:center; gap:0; margin-top:52px; flex-wrap:wrap; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:24px 32px; max-width:560px; margin:52px auto 0;">
-      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
-        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">1-2 days</div>
-        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Deposit after job</div>
-      </div>
-      <div style="width:1px; background:rgba(255,255,255,0.1); margin:0 8px;"></div>
-      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
-        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">Weekly</div>
-        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Recurring routes</div>
-      </div>
-      <div style="width:1px; background:rgba(255,255,255,0.1); margin:0 8px;"></div>
-      <div style="flex:1; min-width:130px; text-align:center; padding:8px;">
-        <div style="font-family:var(--font-head); font-weight:900; font-size:2.4rem; color:var(--green-glow); line-height:1;">$0</div>
-        <div style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:4px;">Cost to join</div>
-      </div>
+      <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta">💳 Set Up Direct Deposit →</a>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
-  <div style="background:var(--off-white); padding:72px 5vw;" id="crew-how">
+  <div style="background:var(--off-white); padding:72px 5vw;">
     <div class="section-inner">
-      <div style="text-align:center; margin-bottom:52px;">
-        <div class="section-tag">Simple Process</div>
-        <h2>Four Steps. Then Just Mow.</h2>
-        <p style="color:var(--gray-500); max-width:460px; margin:0 auto; font-size:1rem; line-height:1.7;">We use Stripe to pay you directly and securely. All you need is a bank account and a phone number to get started.</p>
-      </div>
+      <div style="text-align:center; margin-bottom:52px;"><div class="section-tag">Simple Process</div><h2>Four Steps. Then Just Mow.</h2></div>
       <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <div class="step-icon">📋</div>
-          <h3>Apply to Join</h3>
-          <p>Fill out a short form telling us about your crew, your equipment, and which areas you can cover. We'll reach out within 24 hours.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <div class="step-icon">💳</div>
-          <h3>Set Up Direct Deposit</h3>
-          <p>Connect your bank account through Stripe — takes about 5 minutes on your phone. This is how you get paid after every job.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <div class="step-icon">📍</div>
-          <h3>Get Your Schedule</h3>
-          <p>We'll text you the week's addresses every Monday. Each job has the address, yard size, and what needs to be done.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">4</div>
-          <div class="step-icon">💸</div>
-          <h3>Mow, Text a Photo, Get Paid</h3>
-          <p>Finish the job, text us one photo of the completed lawn. We release payment to your account — arrives in 1-2 business days.</p>
-        </div>
+        <div class="step-card"><div class="step-num">1</div><div class="step-icon">📋</div><h3>Apply to Join</h3><p>Fill out a short form. We'll reach out within 24 hours.</p></div>
+        <div class="step-card"><div class="step-num">2</div><div class="step-icon">💳</div><h3>Set Up Direct Deposit</h3><p>Connect your bank through Stripe — takes about 5 minutes.</p></div>
+        <div class="step-card"><div class="step-num">3</div><div class="step-icon">📍</div><h3>Get Your Schedule</h3><p>We'll text you the week's addresses every Monday.</p></div>
+        <div class="step-card"><div class="step-num">4</div><div class="step-icon">💸</div><h3>Mow, Text a Photo, Get Paid</h3><p>Finish the job, text us one photo. Payment arrives in 1-2 business days.</p></div>
       </div>
     </div>
   </div>
 
-  <!-- WHY WORK WITH US -->
-  <div style="background:var(--white); padding:72px 5vw;">
-    <div class="section-inner">
-      <div class="section-tag">Why Gulf Coast Mow</div>
-      <h2>No More Chasing Customers or Payments.</h2>
-      <p class="section-sub">We handle everything on the business side. You focus on doing great work.</p>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">📅</div>
-          <h3>Steady Weekly Work</h3>
-          <p>Our customers are on recurring weekly subscriptions — that means consistent, predictable routes for you. No slow weeks, no scrambling for one-off jobs.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">💰</div>
-          <h3>Guaranteed Payment</h3>
-          <p>Customers pay us upfront via Stripe before you ever show up. Your payment is already collected — there's no chasing, no "I'll get you next time."</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">📱</div>
-          <h3>No App Required</h3>
-          <p>We run everything through text messages and a simple photo confirmation. No app to download, no platform to learn — just a phone and a mower.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WHAT WE NEED FROM YOU -->
-  <div style="background:var(--green-pale); padding:72px 5vw;">
-    <div class="section-inner">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; max-width:860px;">
-        <div>
-          <div class="section-tag">Requirements</div>
-          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:24px;">What We're Looking For</h2>
-          <ul class="forwhom-list" style="list-style:none; padding:0;">
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Reliable push mower, trimmer, and blower</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Truck or trailer to transport equipment</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Ability to service Pearland, Manvel, or League City</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> A phone that can send and receive texts</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> A US bank account for direct deposit</li>
-            <li style="display:flex; gap:10px; padding:10px 0; color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">✓</span> Consistent availability — weekly routes</li>
-          </ul>
-        </div>
-        <div>
-          <div class="section-tag">What You Get</div>
-          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:24px;">Your Side of the Deal</h2>
-          <ul class="forwhom-list" style="list-style:none; padding:0;">
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Steady weekly route in your area</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Direct deposit within 1-2 days of each job</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> No customer billing or collections — ever</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Schedule sent every Monday via text</li>
-            <li style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid rgba(45,122,34,0.12); color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> No apps, no platforms to learn</li>
-            <li style="display:flex; gap:10px; padding:10px 0; color:var(--gray-700); font-size:0.95rem;"><span style="color:var(--green); font-weight:700;">→</span> Grow with us as we expand routes</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STRIPE CONNECT EXPLAINER -->
-  <div style="background:var(--dark); padding:72px 5vw;">
-    <div class="section-inner">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; max-width:860px;">
-        <div>
-          <div class="section-tag" style="color:var(--green-glow);">Getting Paid</div>
-          <h2 style="color:#fff; font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:16px;">Direct Deposit via Stripe — Setup Takes 5 Minutes</h2>
-          <p style="color:rgba(255,255,255,0.6); font-size:0.97rem; line-height:1.75; margin-bottom:28px;">We pay all crew members through <strong style="color:#fff;">Stripe Connect</strong> — the same payment platform used by Amazon, Lyft, and DoorDash to pay their contractors. It's secure, fast, and works with any US bank account.</p>
-          <div class="how-track-list">
-            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
-              <div class="how-track-icon">🏦</div>
-              <div>
-                <strong style="color:#fff;">Connect Your Bank Account</strong>
-                <p style="color:rgba(255,255,255,0.5);">Enter your bank routing and account number securely through Stripe's encrypted portal.</p>
-              </div>
-            </div>
-            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
-              <div class="how-track-icon">✅</div>
-              <div>
-                <strong style="color:#fff;">One-Time Verification</strong>
-                <p style="color:rgba(255,255,255,0.5);">Stripe will verify your identity once using your name, DOB, and last 4 of your SSN — standard for any direct deposit setup.</p>
-              </div>
-            </div>
-            <div class="how-track-item" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1);">
-              <div class="how-track-icon">💸</div>
-              <div>
-                <strong style="color:#fff;">Get Paid After Every Job</strong>
-                <p style="color:rgba(255,255,255,0.5);">Once you confirm a job is done, we release payment. Funds arrive in your bank account within 1-2 business days.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center;">
-          <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:40px 32px;">
-            <div style="font-size:3rem; margin-bottom:16px;">💳</div>
-            <h3 style="font-family:var(--font-head); font-weight:900; font-size:1.8rem; color:#fff; margin-bottom:8px;">Ready to Get Started?</h3>
-            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem; margin-bottom:28px; line-height:1.6;">Click below to set up your Stripe direct deposit account. Once that's done, reach out and we'll add you to the route schedule.</p>
-            <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="display:block; text-align:center; margin-bottom:14px;">Set Up Direct Deposit →</a>
-            <p style="color:rgba(255,255,255,0.3); font-size:0.78rem;">Powered by Stripe · Bank-level encryption · Free to set up</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="ref-faq" style="background:var(--white);">
-    <div style="text-align:center; margin-bottom:40px;">
-      <div class="section-tag">FAQ</div>
-      <h2>Questions From Crews.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How much do I get paid per job? <span class="arrow">▼</span></div>
-        <div class="faq-a">Pay per job is discussed during onboarding and depends on yard size and your area. We structure it so you keep the majority of the job revenue — we take a cut to cover customer acquisition, billing, and platform costs. You'll know the rate before you agree to any route.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Do I need to download an app? <span class="arrow">▼</span></div>
-        <div class="faq-a">No app required. We send your weekly schedule by text every Monday. When a job is done, you text us one photo of the completed lawn and we release your payment. That's it.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How does Stripe work — is it safe? <span class="arrow">▼</span></div>
-        <div class="faq-a">Stripe is one of the largest and most trusted payment platforms in the world — used by Amazon, Lyft, Instacart, and millions of businesses. Your bank info is encrypted and never shared. The setup takes about 5 minutes and is completely secure.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Will I get a 1099 at the end of the year? <span class="arrow">▼</span></div>
-        <div class="faq-a">If your total payments exceed $600 in a calendar year, Stripe automatically generates and sends you a 1099-K for tax purposes. This is standard for independent contractors. Stripe handles the paperwork — you don't need to do anything.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I pick which days or areas I work? <span class="arrow">▼</span></div>
-        <div class="faq-a">Yes — during onboarding we'll ask which zip codes you can cover and what days work for you. We try to build routes that match your availability. The more flexible you are, the more jobs we can send your way.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What if I can't make a scheduled job? <span class="arrow">▼</span></div>
-        <div class="faq-a">Text us as early as possible — at least 24 hours before the scheduled mow if you can. We'll reassign the job. Reliability is the most important thing to us and to our customers, so consistent no-shows will affect whether we can keep you on the route.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FINAL CTA -->
   <div style="background:linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding:72px 5vw; text-align:center;">
     <div class="section-tag" style="color:var(--green-glow); margin-bottom:12px;">Ready to Join?</div>
     <h2 style="color:#fff; margin-bottom:12px;">Start Getting Paid to Mow.</h2>
-    <p style="color:rgba(255,255,255,0.55); max-width:440px; margin:0 auto 36px; font-size:1rem; line-height:1.7;">Set up your direct deposit through Stripe, then text us at <strong style="color:rgba(255,255,255,0.8);">REPLACE_GOOGLE_PHONE</strong> to get added to the schedule.</p>
-    <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta" style="font-size:1.15rem; padding:18px 44px;">💳 Set Up Direct Deposit — It's Free</a>
-    <p style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:16px;">Powered by Stripe · Takes 5 minutes · Questions? Text REPLACE_GOOGLE_PHONE</p>
+    <p style="color:rgba(255,255,255,0.55); max-width:440px; margin:0 auto 36px;">Set up your direct deposit through Stripe, then text us at <strong style="color:rgba(255,255,255,0.8);">REPLACE_GOOGLE_PHONE</strong> to get added to the schedule.</p>
+    <a href="https://connect.stripe.com/express/REPLACE_STRIPE_CONNECT_LINK" class="btn-cta">💳 Set Up Direct Deposit — It's Free</a>
   </div>
 
   <footer>
@@ -2257,10 +965,8 @@
     <div style="display:flex;gap:20px; flex-wrap:wrap;">
       <a href="#" onclick="showPage('home'); return false;">← Back to Home</a>
       <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
-      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Crew questions: text REPLACE_GOOGLE_PHONE</span>
     </div>
   </footer>
-
 </div>
 
 </body>
