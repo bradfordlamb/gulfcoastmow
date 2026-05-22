@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gulf Coast Mow Service — Reliable Weekly Lawn Care</title>
+<title>Gulf Coast Mow Service — Reliable Weekly Lawn Care in Pearland, Manvel & League City</title>
+<meta name="description" content="Reliable weekly lawn care in Pearland, Manvel, League City and nearby areas. Simple pricing starting at $45/week plus tax. No contracts, auto-billing, and a 7-day re-mow guarantee.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gulfcoastmow.com/">
+<meta property="og:title" content="Gulf Coast Mow Service — Reliable Weekly Lawn Care">
+<meta property="og:description" content="Weekly mowing starting at $45/week plus tax. No contracts. Auto-billing. 7-day re-mow guarantee.">
+<meta property="og:url" content="https://gulfcoastmow.com/">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -302,6 +309,20 @@
   .hero-content > *:nth-child(4) { animation-delay: 0.42s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.52s; }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Gulf Coast Mow Service",
+  "url": "https://gulfcoastmow.com/",
+  "email": "",
+  "telephone": "+1-832-895-1693",
+  "areaServed": ["Pearland TX", "Manvel TX", "League City TX", "Friendswood TX"],
+  "description": "Reliable weekly lawn care with simple pricing, auto-billing, no contracts, and a 7-day re-mow guarantee.",
+  "priceRange": "$45-$60 per week"
+}
+</script>
 </head>
 <body>
 
@@ -327,7 +348,7 @@
         <input type="text" class="form-input" id="fieldName" placeholder="First &amp; Last Name" autocomplete="name">
         <div class="form-error" id="errName">Please enter your name.</div>
         <label class="form-label">Email Address</label>
-        <input type="email" class="form-input" id="fieldEmail" placeholder="you@email.com" autocomplete="email">
+        <input type="email" class="form-input" id="fieldEmail" placeholder="blambinvestments@gmail.com" autocomplete="email">
         <div class="form-error" id="errEmail">Please enter a valid email.</div>
         <label class="form-label">Mobile Phone</label>
         <input type="tel" class="form-input" id="fieldPhone" placeholder="(555) 000-0000" autocomplete="tel" style="margin-bottom:4px;">
@@ -468,7 +489,6 @@
     <a href="#how" onclick="showPage('home')">How It Works</a>
     <a href="#pricing" onclick="showPage('home')">Pricing</a>
     <a href="#" onclick="showPage('referral'); return false;">Referrals</a>
-    <a href="#" onclick="showPage('crew'); return false;">Mow With Us</a>
     <a href="#" class="btn-nav" onclick="openModal('small'); return false;">Start Service →</a>
   </div>
 </nav>
@@ -481,13 +501,18 @@
       <div class="hero-badge">Now Serving Pearland · Manvel · League City</div>
       <h1>Reliable Weekly Lawn Care<br><em>Without the Hassle.</em></h1>
       <p class="hero-sub">Mow service starting at $45/week + tax. No contracts. Auto-billing. We handle all the scheduling.</p>
-      <p class="hero-referral">Earn $10/month per referral — no cap, paid automatically while they're active.</p>
+      <p class="hero-referral">Earn $10/month per referral. Referral earnings are capped at $600/year per person due to IRS reporting requirements. while your referral remains active.</p>
+      <div class="cta-group">
+        <a href="#pricing" class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); return false;">Start Service →</a>
+        <a href="#pricing" class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); return false;">See Pricing</a>
+      </div>
+      <p style="color:rgba(255,255,255,0.72); font-size:0.88rem; margin-top:18px; max-width:520px;">Most customers finish signup in under 60 seconds. No phone calls required. Cancel anytime.</p>
     </div>
     <div class="hero-trust">
       <div class="trust-item"><span class="trust-icon">✓</span> No contracts</div>
       <div class="trust-item"><span class="trust-icon">✓</span> Auto-billing via Stripe</div>
       <div class="trust-item"><span class="trust-icon">✓</span> 7-day re-mow guarantee</div>
-      <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime — just text or email us</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime — just text</div>
     </div>
   </section>
 
@@ -564,7 +589,7 @@
               <button onclick="checkZip()" style="background:var(--green); color:#fff; border:none; padding:12px 16px; font-family:var(--font-head); font-weight:800; font-size:0.9rem; cursor:pointer; transition:background 0.2s; white-space:nowrap;" onmouseover="this.style.background='#3a9e2d'" onmouseout="this.style.background='#2d7a22'">Check →</button>
             </div>
             <div id="zipOk" style="display:none; margin-top:12px; color:#a8eea0; font-size:0.85rem; font-weight:600; align-items:center; gap:6px;">✓ <span id="zipOkMsg">Great news — we service your area!</span></div>
-            <div id="zipNo" style="display:none; margin-top:12px; color:#ffb3a7; font-size:0.85rem; line-height:1.5;">📍 <strong>Not in our area yet.</strong> We serve Pearland, Manvel &amp; League City, TX. <a href="mailto:hello@gulfcoastmow.com?subject=Service%20Area%20Request" style="color:#ffcf99; font-weight:600;">Notify me when you expand →</a></div>
+            <div id="zipNo" style="display:none; margin-top:12px; color:#ffb3a7; font-size:0.85rem; line-height:1.5;">📍 <strong>Not in our area yet.</strong> We serve Pearland, Manvel &amp; League City, TX. <a href="mailto:?subject=Service%20Area%20Request" style="color:#ffcf99; font-weight:600;">Notify me when you expand →</a></div>
           </div>
         </div>
       </div>
@@ -582,7 +607,7 @@
               <li>Auto-billing via Stripe</li>
               <li>We handle all scheduling</li>
               <li>7-day re-mow guarantee</li>
-              <li>Cancel anytime — just text or email us</li>
+              <li>Cancel anytime — just text</li>
             </ul>
             <a href="#" class="btn-cta" style="width:100%; text-align:center; display:block;" onclick="openModal('small'); return false;">Start Service — $45/wk + tax</a>
           </div>
@@ -597,7 +622,7 @@
               <li>Auto-billing via Stripe</li>
               <li>We handle all scheduling</li>
               <li>7-day re-mow guarantee</li>
-              <li>Cancel anytime — just text or email us</li>
+              <li>Cancel anytime — just text</li>
             </ul>
             <a href="#" class="btn-cta-outline" style="width:100%; text-align:center; display:block; padding:17px 0;" onclick="openModal('large'); return false;">Start Service — $60/wk + tax</a>
           </div>
@@ -628,7 +653,7 @@
           <span style="font-size:1.1rem; flex-shrink:0; margin-top:2px;">📱</span>
           <div>
             <p style="color:rgba(255,255,255,0.8); font-size:0.88rem; font-weight:600; margin:0 0 6px;">Need to cancel? It takes one message.</p>
-            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0; line-height:1.7;">Text <strong style="color:rgba(255,255,255,0.75);">(832) 895-1693</strong> or email <strong style="color:rgba(255,255,255,0.75);">hello@gulfcoastmow.com</strong> with your name and address. We'll cancel same day — no hassle, no hold music.</p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin:0; line-height:1.7;">Text <strong style="color:rgba(255,255,255,0.75);">(832) 895-1693</strong> or email <strong style="color:rgba(255,255,255,0.75);"></strong> with your name and address. We'll cancel same day — no hassle, no hold music.</p>
           </div>
         </div>
       </div>
@@ -700,13 +725,13 @@
   </section>
 
   <footer>
-    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
+    <p>© 2026 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
     <div style="display:flex;gap:20px; flex-wrap:wrap;">
-      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
-      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Cancel: text (832) 895-1693 or email us</span>
+      <a href="mailto:"></a>
+      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Locally owned · Weekly mowing · 7-day re-mow guarantee</span>
+      <span style="color:rgba(255,255,255,0.35); font-size:0.82rem;">Cancel: text (832) 895-1693</span>
       <a href="#" onclick="showPage('referral'); return false;">Referral Program</a>
-      <a href="#" onclick="showPage('crew'); return false;">Mow With Us</a>
-    </div>
+      </div>
   </footer>
 </div>
 
@@ -784,10 +809,10 @@
   </div>
 
   <footer>
-    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
+    <p>© 2026 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
     <div style="display:flex;gap:20px;">
       <a href="#" onclick="showPage('home'); return false;">← Back to Home</a>
-      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
+      <a href="mailto:"></a>
     </div>
   </footer>
 </div>
@@ -815,7 +840,6 @@
   function showPage(page) {
     document.getElementById('page-home').style.display      = page==='home'     ? 'block' : 'none';
     document.getElementById('page-referral').style.display  = page==='referral' ? 'block' : 'none';
-    document.getElementById('page-crew').style.display      = page==='crew'     ? 'block' : 'none';
     window.scrollTo(0,0);
   }
 
@@ -933,51 +957,9 @@
   document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('page-home').style.display='block';
     document.getElementById('page-referral').style.display='none';
-    document.getElementById('page-crew').style.display='none';
     updateEarnings(5);
   });
 </script>
-
-<!-- CREW PAGE -->
-<div id="page-crew" style="display:none;">
-  <div style="height:64px;"></div>
-  <div style="background:linear-gradient(135deg, var(--dark) 0%, #1a3512 100%); padding:80px 5vw 72px; text-align:center;">
-    <div class="section-tag" style="color:var(--green-glow); margin-bottom:14px;">For Lawn Crews</div>
-    <h1 style="font-family:var(--font-head); font-weight:900; font-size:clamp(2.4rem,5vw,4rem); color:#fff; max-width:680px; margin:0 auto 16px; line-height:1.05;">Get Paid to Mow.<br><em style="color:var(--green-glow); font-style:normal;">We Handle Everything Else.</em></h1>
-    <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:520px; margin:0 auto 40px; line-height:1.7;">We bring you the customers, the schedule, and the billing. You show up and mow. Weekly ACH payment straight to your bank — no apps, no platforms.</p>
-    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="sms:(832)895-1693&body=Hi, I'm interested in mowing with Gulf Coast Mow. Here's my name and area I can cover:" class="btn-cta">📱 Text Us to Apply →</a>
-      <a href="mailto:hello@gulfcoastmow.com?subject=Mow With Us Application" class="btn-cta-outline" style="border:2px solid rgba(255,255,255,0.35); color:#fff; padding:15px 28px; border-radius:10px; font-family:var(--font-head); font-weight:700; font-size:1rem; letter-spacing:0.04em; text-decoration:none;">✉️ Email Us Instead</a>
-    </div>
-  </div>
-
-  <div style="background:var(--off-white); padding:72px 5vw;">
-    <div class="section-inner">
-      <div style="text-align:center; margin-bottom:52px;"><div class="section-tag">Simple Process</div><h2>Four Steps. Then Just Mow.</h2></div>
-      <div class="steps-grid">
-        <div class="step-card"><div class="step-num">1</div><div class="step-icon">📋</div><h3>Apply to Join</h3><p>Fill out a short form. We'll reach out within 24 hours.</p></div>
-        <div class="step-card"><div class="step-num">2</div><div class="step-icon">🏦</div><h3>Share Your Bank Info</h3><p>Provide your bank account and routing number so we can send weekly ACH payments directly to you. No apps or platforms to sign up for.</p></div>
-        <div class="step-card"><div class="step-num">3</div><div class="step-icon">📍</div><h3>Get Your Schedule</h3><p>We'll text you the week's addresses every Monday.</p></div>
-        <div class="step-card"><div class="step-num">4</div><div class="step-icon">💸</div><h3>Mow, Text a Photo, Get Paid</h3><p>Finish the job, text us one photo. Payment arrives in 1-2 business days.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:linear-gradient(135deg, var(--dark) 0%, #1e3a16 100%); padding:72px 5vw; text-align:center;">
-    <div class="section-tag" style="color:var(--green-glow); margin-bottom:12px;">Ready to Join?</div>
-    <h2 style="color:#fff; margin-bottom:12px;">Start Getting Paid to Mow.</h2>
-    <p style="color:rgba(255,255,255,0.55); max-width:440px; margin:0 auto 36px;">Text us your name, what area you cover, and your equipment. We'll reach out within 24 hours to get you on the schedule. Paid weekly via ACH — no apps needed.</p>
-    <a href="sms:(832)895-1693&body=Hi, I'm interested in mowing with Gulf Coast Mow. Here's my name and area I can cover:" class="btn-cta">📱 Text Us to Apply — It's Free</a>
-  </div>
-
-  <footer>
-    <p>© 2025 Gulf Coast Mow Service. Pearland · Manvel · League City, TX.</p>
-    <div style="display:flex;gap:20px; flex-wrap:wrap;">
-      <a href="#" onclick="showPage('home'); return false;">← Back to Home</a>
-      <a href="mailto:hello@gulfcoastmow.com">hello@gulfcoastmow.com</a>
-    </div>
-  </footer>
-</div>
 
 </body>
 </html>
