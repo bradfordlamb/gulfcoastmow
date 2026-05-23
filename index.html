@@ -39,7 +39,7 @@
   /* HERO — centered */
   #home { min-height: 100vh; padding-top: 72px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; }
   .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(135deg, rgba(10,28,8,0.80) 0%, rgba(20,55,12,0.62) 55%, rgba(45,122,34,0.22) 100%), url('hero.jpg') center 50%/cover no-repeat; }
-  .hero-content { position: relative; z-index: 1; max-width: 720px; padding: 60px 5vw 40px; display: flex; flex-direction: column; align-items: center; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; padding: 80px 5vw 40px; display: flex; flex-direction: column; align-items: center; }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(77,184,64,0.18); border: 1px solid rgba(77,184,64,0.4); color: #a8eea0; font-size: 0.82rem; font-weight: 600; padding: 5px 14px; border-radius: 40px; margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
   .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--green-glow); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
@@ -415,8 +415,7 @@
 <!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo" onclick="showPage('home')">
-    <img src="logo_smaller.jpg" alt="Gulf Coast Mow" style="height:48px; width:auto; border-radius:6px;">
-    <span style="font-family:var(--font-head);font-weight:900;font-size:1.3rem;color:var(--green);letter-spacing:0.02em;">Gulf Coast Mow</span>
+    <img src="logo_smaller.png" alt="Gulf Coast Mow" style="height:56px; width:auto; display:block;">
   </a>
   <div class="nav-links">
     <a href="#how" onclick="showPage('home')">How It Works</a>
